@@ -5,119 +5,136 @@
       "hand":      "FFFF 2025 222 222",
       "colorMask": "0000 0000 000 000",
       "jokerMask": "1111 0000 111 111",
-      "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits"
+      "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits",
+      "family": "2025"
     },
     {
       "id": 2,
       "hand":      "222 0000 222 5555",
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
-      "note": "Any 2 Suits"
+      "note": "Any 2 Suits",
+      "family": "2025"
     },
     {
       "id": 3,
       "hand":      "2025 222 555 DDDD",
       "colorMask": "0000 000 000 0000",
       "jokerMask": "0000 111 111 1111",
-      "note": "Any 3 Suits"
+      "note": "Any 3 Suits",
+      "family": "2025"
     },
     {
       "id": 4,
       "hand":      "FF 222 000 222 555",
       "colorMask": "00 000 000 000 000",
       "jokerMask": "00 111 111 111 111",
-      "note": "Any 3 Suits"
+      "note": "Any 3 Suits",
+      "family": "2025"
     },
     {
       "id": 5,
       "hand":      "222 4444 666 8888",
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
-      "note": "Any 1 or 2 Suits"
+      "note": "Any 1 or 2 Suits",
+      "family": "2468"
     },
     {
       "id": 6,
       "hand":      "222 4444 666 8888",
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
-      "note": "Any 1 or 2 Suits"
+      "note": "Any 1 or 2 Suits",
+      "family": "2468"
     },
     {
       "id": 7,
       "hand":      "FF 2222 4444 6666",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
-      "note": "Any 3 Suits"
+      "note": "Any 3 Suits",
+      "family": "2468"
     },
     {
       "id": 8,
       "hand":      "FF 2222 6666 8888",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
-      "note": "Any 3 Suits"
+      "note": "Any 3 Suits",
+      "family": "2468"
     },
     {
       "id": 9,
       "hand":      "22 444 66 888 DDDD",
       "colorMask": "00 000 00 000 0000",
       "jokerMask": "00 111 00 111 1111",
-      "note": "Any 1 Suit"
+      "note": "Any 1 Suit",
+      "family": "2468"
     },
     {
       "id": 10,
       "hand":      "FFFF 2468 222 222",
       "colorMask": "0000 0000 000 000",
       "jokerMask": "1111 0000 111 111",
-      "note": "Any 3 Suits, Like Pungs Any Even No."
+      "note": "Any 3 Suits, Like Pungs Any Even No.",
+      "family": "2468"
     },
     {
       "id": 11,
       "hand":      "FFF 22 44 666 8888",
       "colorMask": "000 00 00 000 0000",
       "jokerMask": "111 00 00 111 1111",
-      "note": "Any 1 Suit"
+      "note": "Any 1 Suit",
+      "family": "2468"
     },
     {
       "id": 12,
       "hand":      "222 4444 666 88 88",
       "colorMask": "000 0000 000 00 00",
       "jokerMask": "111 1111 111 00 00",
-      "note": "Any 3 Suits, Pairs 8s Only"
+      "note": "Any 3 Suits, Pairs 8s Only",
+      "family": "2468"
     },
     {
       "id": 13,
       "hand":      "FF 2222 DDDD 2222",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
-      "note": "Any 3 Suits, Like Kongs Any Even No."
+      "note": "Any 3 Suits, Like Kongs Any Even No.",
+      "family": "2468"
     },
     {
       "id": 14,
       "hand":      "22 44 66 88 222 222",
       "colorMask": "00 00 00 00 000 000",
       "jokerMask": "00 00 00 00 111 111",
-      "note": "Any 3 Suits, Like Pungs Any Even No."
+      "note": "Any 3 Suits, Like Pungs Any Even No.",
+      "family": "2468"
     },
     {
       "id": 15,
       "hand":      "FF 1111 D 1111 D 11",
       "colorMask": "00 0000 0 0000 0 00",
       "jokerMask": "00 1111 0 1111 0 00",
-      "note": "Any3 Suits"
+      "note": "Any3 Suits",
+      "family": "ANY LIKE NUMBERS"
     },
     {
       "id": 16,
       "hand":      "FFFF 11 111 111 11",
       "colorMask": "0000 00 000 000 00",
       "jokerMask": "1111 00 111 111 00",
-      "note": "Any3 Suits, Pairs Must Be Same Suit"
+      "note": "Any3 Suits, Pairs Must Be Same Suit",
+      "family": "ANY LIKE NUMBERS"
     },
     {
       "id": 17,
       "hand":      "FF 111 111 111 DDD",
       "colorMask": "00 000 000 000 000",
       "jokerMask": "00 111 111 111 111",
-      "note": "Any 3 Suits, Any Dragon"
+      "note": "Any 3 Suits, Any Dragon",
+      "family": "ANY LIKE NUMBERS"
     }
   ]
 }

@@ -21,8 +21,30 @@ def extract_hands(image_path):
     
     hands = []
     valid_chars = set('0123456789FD')
+    current_family = ''  # Track which section/family we're in
+    
+    # List of valid section headers
+    section_headers = ['2025', '2468', 'ANY LIKE NUMBERS']
     
     for line_text in text_lines:
+        line_stripped = line_text.strip().upper()
+        
+        # Check if this is a section header
+        # Headers are lines without '(' and without many hand characters
+        is_header = False
+        if '(' not in line_stripped:
+            # Count hand characters
+            hand_chars_count = sum(1 for c in line_stripped if c in valid_chars)
+            for header in section_headers:
+                if header.upper() in line_stripped and hand_chars_count < 8:
+                    current_family = header
+                    is_header = True
+                    break
+        
+        # Skip header lines - don't process them as hands
+        if is_header:
+            continue
+        
         # Extract the hand pattern (everything up to the paren or end)
         hand_part = line_text.split('(')[0].strip() if '(' in line_text else line_text.strip()
         
@@ -149,7 +171,8 @@ def extract_hands(image_path):
                 'hand': formatted,
                 'colorMask': formatted_colorMask,
                 'jokerMask': formatted_jokerMask,
-                'note': note
+                'note': note,
+                'family': current_family if current_family else ''
             })
     
     return hands
