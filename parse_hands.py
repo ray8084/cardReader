@@ -90,8 +90,12 @@ def extract_hands(image_path):
                 concealed_char = last_match.group(1).upper()
                 points = last_match.group(2)
                 # Normalize points: OCR may misread 5 as D
-                points = points.replace('D', '5')
+                points = points.replace('D', '5').replace('O', '0')
                 concealed = (concealed_char == 'C')
+        
+        # If we couldn't extract points, default to 25
+        if not points:
+            points = '25'
         
         # Check for patterns that indicate multiple hands
         # Look for "-01-", "-or-", " or ", etc.
