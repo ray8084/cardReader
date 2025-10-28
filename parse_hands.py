@@ -29,6 +29,9 @@ def extract_hands(image_path):
         if not hand_part:
             continue
         
+        # OCR can misread '1' as 'T' or 'I', normalize them
+        hand_part = hand_part.replace('T', '1').replace('I', '1')
+        
         # Extract note
         note = ''
         if '(' in line_text and ')' in line_text:
@@ -63,24 +66,51 @@ def extract_hands(image_path):
             char_count = 0
             
             for part in parts:
-                # Filter to only valid characters
+                # Filter to only valid characters (after T/I normalization)
                 valid_part = ''.join([c for c in part if c in valid_chars])
                 if not valid_part:
                     continue
                 
-                # Check if adding this part would exceed 14 chars
-                if char_count + len(valid_part) <= 14:
-                    hand_groups.append(valid_part)
-                    char_count += len(valid_part)
-                else:
-                    # Need to truncate the last part
-                    remaining = 14 - char_count
-                    if remaining > 0:
-                        hand_groups.append(valid_part[:remaining])
+                # Split concatenated characters (e.g., "D1111" -> ["D", "1111"])
+                # Look for transitions from letter to number or vice versa
+                split_part = []
+                i = 0
+                while i < len(valid_part):
+                    # Find a run of digits
+                    if valid_part[i] in '0123456789':
+                        digits = ''
+                        while i < len(valid_part) and valid_part[i] in '0123456789':
+                            digits += valid_part[i]
+                            i += 1
+                        split_part.append(digits)
+                    # Find a run of letters
+                    elif valid_part[i] in 'FD':
+                        letter = ''
+                        while i < len(valid_part) and valid_part[i] in 'FD':
+                            letter += valid_part[i]
+                            i += 1
+                        split_part.append(letter)
+                    else:
+                        i += 1
+                
+                for subpart in split_part:
+                    # Check if adding this part would exceed 14 chars
+                    if char_count + len(subpart) <= 14:
+                        hand_groups.append(subpart)
+                        char_count += len(subpart)
+                    else:
+                        # Need to truncate the last part
+                        remaining = 14 - char_count
+                        if remaining > 0:
+                            hand_groups.append(subpart[:remaining])
+                        break
+                
+                if char_count >= 14:
                     break
             
             # We need at least 14 characters total
             total_chars = sum(len(g) for g in hand_groups)
+            
             if total_chars < 14:
                 continue
             
