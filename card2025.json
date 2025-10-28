@@ -3,7 +3,7 @@
     {
       "id": 1,
       "hand": "FFFF 2025 222 222",
-      "mask": "0000 gggg 000 000",
+      "mask": "0000 gggg rrr 000",
       "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits"
     },
     {
@@ -15,13 +15,13 @@
     {
       "id": 3,
       "hand": "2025 222 555 DDDD",
-      "mask": "0000 gg0 000 0000",
+      "mask": "0000 ggr 000 0000",
       "note": "Any 3 Suits"
     },
     {
       "id": 4,
       "hand": "FF 222 000 222",
-      "mask": "00 gg0 000 000",
+      "mask": "00 ggr 000 rr0",
       "note": "Any 3 Suits"
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": 6,
       "hand": "FF 2222 4444 6666",
-      "mask": "00 gg00 0000 0000",
+      "mask": "00 ggrr 0000 0000",
       "note": "Any 3 Suits. X 25"
     },
     {
@@ -45,7 +45,7 @@
     {
       "id": 8,
       "hand": "FFFF 2468 222 222",
-      "mask": "0000 g000 g00 000",
+      "mask": "0000 g000 grr r00",
       "note": "Any 3 Suits, Like Pungs Any Even No. . a eeu evens X 25"
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": 10,
       "hand": "FF 2222 DDDD 2222",
-      "mask": "00 gg00 0000 0000",
+      "mask": "00 ggrr 0000 r000",
       "note": "Any 3 Suits, Like Kongs Any Even No"
     },
     {

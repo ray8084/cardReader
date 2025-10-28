@@ -331,10 +331,10 @@ class MahjongCardReader:
                             )
                             red_ratio = np.sum(red_mask > 0) / (region.size + 1)
                             
-                            # Determine color (threshold 15% of pixels)
-                            if green_ratio > 0.15:
+                            # Determine color (lower threshold for better detection)
+                            if green_ratio > 0.1 or (green_ratio > 0.05 and green_ratio > red_ratio):
                                 color_mask.append('g')
-                            elif red_ratio > 0.15:
+                            elif red_ratio > 0.1 or (red_ratio > 0.05 and red_ratio > green_ratio):
                                 color_mask.append('r')
                             else:
                                 color_mask.append('0')
