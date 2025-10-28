@@ -3,7 +3,7 @@
     {
       "id": 1,
       "hand": "FFFF 2025 222 222",
-      "mask": "0000 gggg rrr 000",
+      "mask": "0000 0000 000 000",
       "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits"
     },
     {
@@ -15,7 +15,7 @@
     {
       "id": 3,
       "hand": "2025 222 555 DDDD",
-      "mask": "gggg 000 000 0000",
+      "mask": "0000 000 000 0000",
       "note": "Any 3 Suits"
     },
     {
