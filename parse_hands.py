@@ -54,6 +54,10 @@ def extract_hands(image_path):
         # OCR can misread '1' as 'T' or 'I', normalize them
         hand_part = hand_part.replace('T', '1').replace('I', '1')
         
+        # Skip lines that are clearly not mahjong hands (like NOTE lines)
+        if any(word in hand_part.upper() for word in ['NOTE:', 'DRAGON', 'USED', 'ZERO', 'MAY', 'BE', 'WITH', 'ANY']):
+            continue
+        
         # Extract note
         note = ''
         if '(' in line_text and ')' in line_text:
