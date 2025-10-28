@@ -11,12 +11,13 @@ pytesseract.pytesseract.tesseract_cmd = "/opt/homebrew/bin/tesseract"
 
 def detect_char_color(image, x, y, w, h, mask_red, mask_green):
     """Detect if character is red or green by sampling pixels"""
-    # Expand region for better sampling
-    expand = 5
-    y1 = max(0, y - expand)
-    y2 = min(mask_red.shape[0], y + h + expand)
-    x1 = max(0, x - expand)
-    x2 = min(mask_red.shape[1], x + w + expand)
+    # Expand region significantly for better sampling
+    expand_y = max(15, h * 2)
+    expand_x = max(15, w * 2)
+    y1 = max(0, y - expand_y)
+    y2 = min(mask_red.shape[0], y + h + expand_y)
+    x1 = max(0, x - expand_x)
+    x2 = min(mask_red.shape[1], x + w + expand_x)
     
     region_red = mask_red[y1:y2, x1:x2]
     region_green = mask_green[y1:y2, x1:x2]
@@ -28,9 +29,10 @@ def detect_char_color(image, x, y, w, h, mask_red, mask_green):
     red_ratio = np.sum(region_red > 0) / total
     green_ratio = np.sum(region_green > 0) / total
     
-    if green_ratio > 0.03 and green_ratio > red_ratio * 1.2:
+    # Lower threshold and more sensitive detection
+    if green_ratio > 0.02 and green_ratio > red_ratio * 1.1:
         return 'g'
-    elif red_ratio > 0.03 and red_ratio > green_ratio * 1.2:
+    elif red_ratio > 0.02 and red_ratio > green_ratio * 1.1:
         return 'r'
     return '0'
 
@@ -41,19 +43,19 @@ def extract_hands(image_path):
     img = cv2.imread(image_path)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
-    # Red masks
-    lower_red1 = np.array([0, 80, 80])
-    upper_red1 = np.array([10, 255, 255])
-    lower_red2 = np.array([170, 80, 80])
+    # Red masks - more sensitive
+    lower_red1 = np.array([0, 50, 50])
+    upper_red1 = np.array([15, 255, 255])
+    lower_red2 = np.array([165, 50, 50])
     upper_red2 = np.array([180, 255, 255])
     mask_red = cv2.bitwise_or(
         cv2.inRange(hsv, lower_red1, upper_red1),
         cv2.inRange(hsv, lower_red2, upper_red2)
     )
     
-    # Green mask
-    lower_green = np.array([35, 60, 60])
-    upper_green = np.array([85, 255, 255])
+    # Green mask - more sensitive
+    lower_green = np.array([30, 40, 40])
+    upper_green = np.array([90, 255, 255])
     mask_green = cv2.inRange(hsv, lower_green, upper_green)
     
     # Run OCR
