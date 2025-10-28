@@ -59,16 +59,19 @@ def extract_hands(image_path):
         if '(' in line_text and ')' in line_text:
             note = line_text[line_text.find('(')+1:line_text.find(')')].strip()
         
-        # Extract points value from end of line
-        # Points are typically at the very end, like "25" or "30"
+        # Extract points value and concealed status from end of line
+        # Points are typically at the end, like "25" or "30", preceded by C (concealed) or X (open)
         points = ''
+        concealed = False
         if line_text and ')' in line_text:
             # Get text after the closing paren
             text_after_note = line_text[line_text.rfind(')')+1:].strip()
-            # Look for a number at the end
-            match = re.search(r'(\d+)\s*$', text_after_note)
+            # Look for C or X followed by a number at the end
+            match = re.search(r'([CX])\s*(\d+)\s*$', text_after_note)
             if match:
-                points = match.group(1)
+                concealed_char = match.group(1)
+                points = match.group(2)
+                concealed = (concealed_char == 'C')
         
         # Check for patterns that indicate multiple hands
         # Look for "-01-", "-or-", " or ", etc.
@@ -184,7 +187,8 @@ def extract_hands(image_path):
                 'jokerMask': formatted_jokerMask,
                 'note': note,
                 'family': current_family if current_family else '',
-                'points': points
+                'points': points,
+                'concealed': concealed
             })
     
     return hands
