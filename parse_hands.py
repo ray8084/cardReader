@@ -218,13 +218,13 @@ def extract_hands(image_path):
     return hands
 
 if __name__ == '__main__':
-    hands = extract_hands('2025p1.png')
+    hands = extract_hands('2024p1.png')
     
     print(f"Extracted {len(hands)} hands")
     for h in hands[:10]:
         print(f"{h['id']}. {h['hand']} | {h['colorMask']}")
     
-    with open('card2025.json', 'w') as f:
+    with open('card2024.json', 'w') as f:
         json_str = json.dumps({'hands': hands}, indent=2)
         # Add 6 spaces after colon for hand only
         lines = json_str.split('\n')
@@ -238,5 +238,5 @@ if __name__ == '__main__':
                 result_lines.append(line)
         f.write('\n'.join(result_lines))
     
-    print(f"\nSaved to card2025.json")
+    print(f"\nSaved to card2024.json")
 

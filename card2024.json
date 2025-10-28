@@ -1,0 +1,114 @@
+{
+  "hands": [
+    {
+      "id": 0,
+      "hand":      "222 000 2222 4444",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
+      "note": "try 2suis",
+      "family": "",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 1,
+      "hand":      "FFFF 2222 0000 24",
+      "colorMask": "0000 0000 0000 00",
+      "jokerMask": "1111 1111 1111 00",
+      "note": "hry 2suis",
+      "family": "",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 2,
+      "hand":      "FF 2024 2222 2222",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "00 0000 1111 1111",
+      "note": "Any 3 Suits Like Kongs 25 of 43",
+      "family": "",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 3,
+      "hand":      "222 444 6666 8888",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
+      "note": "Any 1 or2 Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 4,
+      "hand":      "22 444 44 666 8888",
+      "colorMask": "00 000 00 000 0000",
+      "jokerMask": "00 111 00 111 1111",
+      "note": "Any3 Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 5,
+      "hand":      "22 44 666 888 DDDD",
+      "colorMask": "00 00 000 000 0000",
+      "jokerMask": "00 00 111 111 1111",
+      "note": "Any 1 Suit w Matching Dragons",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 6,
+      "hand":      "FFFF 4444 6666 24",
+      "colorMask": "0000 0000 0000 00",
+      "jokerMask": "1111 1111 1111 00",
+      "note": "Any3 Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 7,
+      "hand":      "FF 2222 44 66 8888",
+      "colorMask": "00 0000 00 00 0000",
+      "jokerMask": "00 1111 00 00 1111",
+      "note": "Any 1 or2Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 8,
+      "hand":      "FF 222 44 666 88 88",
+      "colorMask": "00 000 00 000 00 00",
+      "jokerMask": "00 111 00 111 00 00",
+      "note": "Any3 Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 9,
+      "hand":      "FFFF 111 1111 111",
+      "colorMask": "0000 000 0000 000",
+      "jokerMask": "1111 111 1111 111",
+      "note": "Any3 Suits",
+      "family": "ANY LIKE NUMBERS",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 10,
+      "hand":      "11 DDD 11 DDD 1111",
+      "colorMask": "00 000 00 000 0000",
+      "jokerMask": "00 111 00 111 1111",
+      "note": "Any3 Suits, Pairs and Dragons Match",
+      "family": "ANY LIKE NUMBERS",
+      "points": "25",
+      "concealed": false
+    }
+  ]
+}
