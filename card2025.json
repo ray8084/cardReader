@@ -102,7 +102,7 @@
       "id": 15,
       "hand":      "FF 1111 D 1111 D 11",
       "colorMask": "00 0000 0 0000 0 00",
-      "jokerMask": "00 1111 1 1111 1 00",
+      "jokerMask": "00 1111 0 1111 0 00",
       "note": "Any3 Suits"
     },
     {
