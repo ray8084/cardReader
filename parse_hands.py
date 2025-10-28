@@ -66,10 +66,18 @@ def extract_hands(image_path):
         if line_text and ')' in line_text:
             # Get text after the closing paren
             text_after_note = line_text[line_text.rfind(')')+1:].strip()
-            # Look for C or X followed by a number at the end
-            match = re.search(r'([CX])\s*(\d+)\s*$', text_after_note)
+            # Look for C or X (case insensitive) followed by a number anywhere in text after paren
+            # Handle cases like "C 30" or "C30" or "c 30" or "X 25" etc
+            match = re.search(r'([CcXx]).*?(\d+)', text_after_note)
             if match:
-                concealed_char = match.group(1)
+                concealed_char = match.group(1).upper()
+                points = match.group(2)
+                concealed = (concealed_char == 'C')
+        elif line_text:
+            # Also look for C or X in the line if there's no paren
+            match = re.search(r'([CcXx]).*?(\d+)', line_text)
+            if match:
+                concealed_char = match.group(1).upper()
                 points = match.group(2)
                 concealed = (concealed_char == 'C')
         
