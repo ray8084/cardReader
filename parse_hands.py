@@ -119,20 +119,25 @@ def extract_hands(image_path):
             for part in hand_groups:
                 colorMask_parts.append('0' * len(part))
             
-            # Create jokerMask that's all '1's matching the spacing of each hand
-            # EXCEPT pairs (2 identical chars) and singles (length 1) which become '0's
+            # Create jokerMask based on whether all chars are the same
+            # - Pairs (length 2 with same char): '0's (cannot use jokers)
+            # - Singles (length 1): '0's (cannot use jokers)
+            # - All same chars (length 3+): '1's (can use jokers)
+            # - Different chars: '0's (cannot use jokers)
             jokerMask_parts = []
             for part in hand_groups:
-                # Check if this is a pair (length 2 with same character) or single (length 1)
-                if len(part) == 2 and len(set(part)) == 1:
-                    # It's a pair, use '0's (cannot use jokers in pairs)
-                    jokerMask_parts.append('0' * len(part))
-                elif len(part) == 1:
-                    # It's a single character, use '0's (cannot use jokers for singles)
+                if len(part) == 1:
+                    # Single character, use '0's (cannot use jokers)
                     jokerMask_parts.append('0')
-                else:
-                    # Not a pair or single, use '1's (can use jokers)
+                elif len(part) == 2 and len(set(part)) == 1:
+                    # Pair, use '0's (cannot use jokers in pairs)
+                    jokerMask_parts.append('0' * len(part))
+                elif len(set(part)) == 1:
+                    # All characters are the same (length 3+), use '1's (can use jokers)
                     jokerMask_parts.append('1' * len(part))
+                else:
+                    # Different characters, use '0's (cannot use jokers)
+                    jokerMask_parts.append('0' * len(part))
             
             # Build formatted hand with proper spacing
             formatted = ' '.join(hand_groups)
