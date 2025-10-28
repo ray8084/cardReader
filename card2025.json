@@ -1,7 +1,7 @@
 {
   "hands": [
     {
-      "id": 1,
+      "id": 0,
       "hand":      "FFFF 2025 222 222",
       "colorMask": "0000 0000 000 000",
       "jokerMask": "1111 0000 111 111",
@@ -11,7 +11,7 @@
       "concealed": false
     },
     {
-      "id": 2,
+      "id": 1,
       "hand":      "222 0000 222 5555",
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
@@ -21,7 +21,7 @@
       "concealed": false
     },
     {
-      "id": 3,
+      "id": 2,
       "hand":      "2025 222 555 DDDD",
       "colorMask": "0000 000 000 0000",
       "jokerMask": "0000 111 111 1111",
@@ -31,7 +31,7 @@
       "concealed": false
     },
     {
-      "id": 4,
+      "id": 3,
       "hand":      "FF 222 000 222 555",
       "colorMask": "00 000 000 000 000",
       "jokerMask": "00 111 111 111 111",
@@ -39,6 +39,16 @@
       "family": "2025",
       "points": "30",
       "concealed": true
+    },
+    {
+      "id": 4,
+      "hand":      "222 4444 666 8888",
+      "colorMask": "000 0000 000 0000",
+      "jokerMask": "111 1111 111 1111",
+      "note": "Any 1 or 2 Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
     },
     {
       "id": 5,
@@ -52,16 +62,6 @@
     },
     {
       "id": 6,
-      "hand":      "222 4444 666 8888",
-      "colorMask": "000 0000 000 0000",
-      "jokerMask": "111 1111 111 1111",
-      "note": "Any 1 or 2 Suits",
-      "family": "2468",
-      "points": "25",
-      "concealed": false
-    },
-    {
-      "id": 7,
       "hand":      "FF 2222 4444 6666",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
@@ -71,7 +71,7 @@
       "concealed": false
     },
     {
-      "id": 8,
+      "id": 7,
       "hand":      "FF 2222 6666 8888",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
@@ -81,7 +81,7 @@
       "concealed": false
     },
     {
-      "id": 9,
+      "id": 8,
       "hand":      "22 444 66 888 DDDD",
       "colorMask": "00 000 00 000 0000",
       "jokerMask": "00 111 00 111 1111",
@@ -91,7 +91,7 @@
       "concealed": false
     },
     {
-      "id": 10,
+      "id": 9,
       "hand":      "FFFF 2468 222 222",
       "colorMask": "0000 0000 000 000",
       "jokerMask": "1111 0000 111 111",
@@ -101,7 +101,7 @@
       "concealed": false
     },
     {
-      "id": 11,
+      "id": 10,
       "hand":      "FFF 22 44 666 8888",
       "colorMask": "000 00 00 000 0000",
       "jokerMask": "111 00 00 111 1111",
@@ -111,7 +111,7 @@
       "concealed": false
     },
     {
-      "id": 12,
+      "id": 11,
       "hand":      "222 4444 666 88 88",
       "colorMask": "000 0000 000 00 00",
       "jokerMask": "111 1111 111 00 00",
@@ -121,7 +121,7 @@
       "concealed": false
     },
     {
-      "id": 13,
+      "id": 12,
       "hand":      "FF 2222 DDDD 2222",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
@@ -131,7 +131,7 @@
       "concealed": false
     },
     {
-      "id": 14,
+      "id": 13,
       "hand":      "22 44 66 88 222 222",
       "colorMask": "00 00 00 00 000 000",
       "jokerMask": "00 00 00 00 111 111",
@@ -141,7 +141,7 @@
       "concealed": true
     },
     {
-      "id": 15,
+      "id": 14,
       "hand":      "FF 1111 D 1111 D 11",
       "colorMask": "00 0000 0 0000 0 00",
       "jokerMask": "00 1111 0 1111 0 00",
@@ -151,7 +151,7 @@
       "concealed": false
     },
     {
-      "id": 16,
+      "id": 15,
       "hand":      "FFFF 11 111 111 11",
       "colorMask": "0000 00 000 000 00",
       "jokerMask": "1111 00 111 111 00",
@@ -161,7 +161,7 @@
       "concealed": false
     },
     {
-      "id": 17,
+      "id": 16,
       "hand":      "FF 111 111 111 DDD",
       "colorMask": "00 000 000 000 000",
       "jokerMask": "00 111 111 111 111",

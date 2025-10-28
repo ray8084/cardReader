@@ -197,7 +197,7 @@ def extract_hands(image_path):
             formatted_jokerMask = ' '.join(jokerMask_parts)
             
             hands.append({
-                'id': len(hands) + 1,
+                'id': len(hands),
                 'hand': formatted,
                 'colorMask': formatted_colorMask,
                 'jokerMask': formatted_jokerMask,
