@@ -20,11 +20,11 @@ def extract_hands(image_path):
     text_lines = pytesseract.image_to_string(img, config=config).split('\n')
     
     hands = []
-    valid_chars = set('0123456789FD')
+    valid_chars = set('0123456789FDNEWS')
     current_family = ''  # Track which section/family we're in
     
     # List of valid section headers
-    section_headers = ['2025', '2468', 'ANY LIKE NUMBERS']
+    section_headers = ['2025', '2468', 'ANY LIKE NUMBERS', '2024']
     
     for line_text in text_lines:
         line_stripped = line_text.strip().upper()
@@ -144,9 +144,9 @@ def extract_hands(image_path):
                             i += 1
                         split_part.append(digits)
                     # Find a run of letters
-                    elif valid_part[i] in 'FD':
+                    elif valid_part[i] in 'FDNEWS':
                         letter = ''
-                        while i < len(valid_part) and valid_part[i] in 'FD':
+                        while i < len(valid_part) and valid_part[i] in 'FDNEWS':
                             letter += valid_part[i]
                             i += 1
                         split_part.append(letter)
