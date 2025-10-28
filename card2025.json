@@ -1,0 +1,60 @@
+{
+  "hands": [
+    {
+      "hand": "FFFF 2025 222 222",
+      "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits"
+    },
+    {
+      "hand": "222 0000 222 5555",
+      "note": "Any 2 Suits"
+    },
+    {
+      "hand": "2025 222 555 DDDD",
+      "note": "Any 3 Suits"
+    },
+    {
+      "hand": "FF 222 000 222",
+      "note": "Any 3 Suits"
+    },
+    {
+      "hand": "222 4444 666 8888",
+      "note": "Any 1 or 2 Suits. X 25"
+    },
+    {
+      "hand": "FF 2222 4444 6666",
+      "note": "Any 3 Suits. X 25"
+    },
+    {
+      "hand": "22 444 66 888",
+      "note": "Any 1 Suit"
+    },
+    {
+      "hand": "FFFF 2468 222 222",
+      "note": "Any 3 Suits, Like Pungs Any Even No. . a eeu evens X 25"
+    },
+    {
+      "hand": "FFF 22 44 666",
+      "note": "Any { Suit"
+    },
+    {
+      "hand": "FF 2222 DDDD 2222",
+      "note": "Any 3 Suits, Like Kongs Any Even No"
+    },
+    {
+      "hand": "22 44 66 88",
+      "note": "Any 3 Suits, Like Pungs Any Even No"
+    },
+    {
+      "hand": "FF 1111 D 1111",
+      "note": "Any 3 Suits"
+    },
+    {
+      "hand": "FFFF 11 111 111",
+      "note": "Any8 Suits, Pairs Must Be Same Suit"
+    },
+    {
+      "hand": "FF 111 111 111",
+      "note": "Any3 Suits, Any Dragon"
+    }
+  ]
+}

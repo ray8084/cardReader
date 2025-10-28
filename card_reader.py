@@ -1,28 +1,25 @@
 """
 Mahjong Card Reader
 Reads a mahjong card PNG image and extracts hand information to JSON
+Expected format: 17 hands, each with 14 characters (0-9, F, D)
 """
 
 import json
 import sys
+import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 import cv2
 import numpy as np
 from PIL import Image
+import pytesseract
+
+# Configure tesseract path (adjust if needed)
+pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'
 
 
 class MahjongCardReader:
-    """Reads and processes mahjong card images"""
-    
-    # Mahjong tile categories
-    TILE_CATEGORIES = {
-        'characters': ['1m', '2m', '3m', '4m', '5m', '6m', '7m', '8m', '9m'],
-        'dots': ['1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p'],
-        'bamboos': ['1s', '2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s'],
-        'winds': ['E', 'S', 'W', 'N'],  # East, South, West, North
-        'dragons': ['D', 'H', 'C']  # Dragon, Haku (White), Chun (Red)
-    }
+    """Reads and processes mahjong card images using OCR"""
     
     def __init__(self, image_path: str):
         """Initialize with image path"""
@@ -31,106 +28,238 @@ class MahjongCardReader:
             raise FileNotFoundError(f"Image not found: {image_path}")
         
         self.image = None
-        self.gray_image = None
         self.load_image()
     
     def load_image(self):
-        """Load and preprocess the image"""
+        """Load the image"""
         self.image = cv2.imread(str(self.image_path))
         if self.image is None:
             raise ValueError(f"Could not load image: {self.image_path}")
-        
-        self.gray_image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
     
-    def detect_tiles(self) -> List[Dict]:
-        """
-        Detect mahjong tiles in the image
-        This is a simplified version - you'll need to customize based on your specific card format
-        """
-        tiles = []
+    def preprocess_image(self):
+        """Preprocess image for better OCR"""
+        # Convert to grayscale
+        gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         
-        # Apply threshold to find tile regions
-        _, thresh = cv2.threshold(self.gray_image, 127, 255, cv2.THRESH_BINARY_INV)
+        # Apply threshold to get binary image
+        _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
         
-        # Find contours (potential tile regions)
-        contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # Denoise
+        denoised = cv2.fastNlMeansDenoising(binary, None, 10, 7, 21)
         
-        # Filter contours by size to find tile-like regions
-        for contour in contours:
-            area = cv2.contourArea(contour)
-            x, y, w, h = cv2.boundingRect(contour)
-            
-            # Adjust these thresholds based on your actual tile size
-            if 500 < area < 50000:  # Filter by area
-                aspect_ratio = w / h if h > 0 else 0
-                
-                # Tiles are roughly rectangular
-                if 0.3 < aspect_ratio < 3.0:
-                    tile_region = self.image[y:y+h, x:x+w]
-                    tile_data = self.recognize_tile(tile_region)
+        return denoised
+    
+    def extract_text_with_ocr(self):
+        """Extract text from image using OCR"""
+        # Try different preprocessing approaches
+        processed_images = []
+        
+        # Original image
+        processed_images.append(self.image)
+        
+        # Preprocessed image
+        preprocessed = self.preprocess_image()
+        processed_images.append(preprocessed)
+        
+        # Try with different configurations
+        configs = [
+            '--psm 3',  # Fully automatic page segmentation (default)
+            '--psm 6',  # Assume a single uniform block of text
+            '--psm 11',  # Sparse text
+            '--psm 12',  # Treat the image as a single text line
+        ]
+        
+        best_result = ""
+        best_confidence = 0
+        
+        for img in processed_images:
+            for config in configs:
+                try:
+                    # Extract text
+                    text = pytesseract.image_to_string(img, config=config)
                     
-                    tiles.append({
-                        'position': {'x': int(x), 'y': int(y), 'width': int(w), 'height': int(h)},
-                        'tile': tile_data,
-                        'confidence': 0.8  # Placeholder
+                    # Get confidence scores
+                    data = pytesseract.image_to_data(img, config=config, output_type=pytesseract.Output.DICT)
+                    confidences = [int(x) for x in data['conf'] if int(x) > 0]
+                    avg_confidence = np.mean(confidences) if confidences else 0
+                    
+                    print(f"OCR attempt (config: {config}): confidence={avg_confidence:.1f}")
+                    print(f"Text preview: {text[:200]}...")
+                    
+                    if avg_confidence > best_confidence:
+                        best_result = text
+                        best_confidence = avg_confidence
+                except Exception as e:
+                    print(f"Error with config {config}: {e}")
+                    continue
+        
+        print(f"\nBest OCR result (confidence: {best_confidence:.1f})")
+        print(f"Extracted text:\n{best_result}")
+        return best_result
+    
+    def parse_hands_from_text(self, text: str) -> List[List[str]]:
+        """
+        Parse hands from OCR text
+        Expected format: lines with space-separated symbols
+        Each hand should have 14 characters (0-9, F, D)
+        """
+        hands = []
+        lines = text.strip().split('\n')
+        
+        valid_chars = set('0123456789FD')
+        
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            
+            # Split by spaces and extract characters
+            parts = re.split(r'\s+', line)
+            hand_chars = []
+            
+            for part in parts:
+                # Extract only valid characters
+                chars = ''.join(c for c in part if c in valid_chars)
+                if chars:
+                    hand_chars.append(chars)
+            
+            # Join to get the hand string
+            hand_str = ''.join(hand_chars)
+            
+            # Filter valid hands (must contain valid chars, reasonable length)
+            # Hands typically are 10-20 characters when including spaces
+            if len(hand_str) >= 10 and any(c in valid_chars for c in hand_str):
+                # Extract exactly 14 characters if we can
+                if len(hand_str) >= 14:
+                    # Take first 14 valid characters
+                    chars = [c for c in hand_str if c in valid_chars]
+                    if len(chars) >= 14:
+                        hand = chars[:14]
+                        hands.append(hand)
+                        print(f"Found hand: {''.join(hand)}")
+                    elif len(chars) >= 10:
+                        # Partial hand, keep it
+                        hands.append(chars)
+                        print(f"Found partial hand: {''.join(chars)}")
+        
+        print(f"\nTotal hands found: {len(hands)}")
+        return hands
+    
+    def parse_hands_v2(self, text: str) -> List[Dict]:
+        """
+        Parse all hands from OCR text with notes
+        """
+        lines = text.strip().split('\n')
+        hands = []
+        valid_chars = set('0123456789FD')
+        seen_hands = set()
+        
+        for line_num, line in enumerate(lines, 1):
+            line = line.strip()
+            if not line:
+                continue
+            
+            # Skip clearly non-hand lines
+            if any(x in line for x in ['VALUES', 'ANY LIKE']):
+                continue
+            if line.startswith('X ') or line.startswith('Cc ') or line.startswith('xX '):
+                continue
+            
+            # Extract all valid characters for hand matching
+            chars = [c for c in line if c in valid_chars]
+            
+            # Need at least 14 valid characters for a hand
+            if len(chars) >= 14:
+                # Take first 14 chars for hand string
+                hand_chars = chars[:14]
+                hand_str = ''.join(hand_chars)
+                
+                # Clean up: remove trailing numbers that are OCR artifacts
+                while len(hand_str) > 14 and hand_str[-3:] in ['325', ' 25', ' 30', '8 2']:
+                    hand_str = hand_str[:-1]
+                    hand_chars = hand_chars[:-1]
+                
+                if len(hand_str) >= 14:
+                    hand_str = hand_str[:14]
+                    hand_chars = hand_chars[:14]
+                    
+                    # Skip if we've seen this exact hand
+                    if hand_str in seen_hands:
+                        continue
+                    seen_hands.add(hand_str)
+                    
+                    # Extract the note (everything after the hand pattern)
+                    # Look for parenthetical text or text after the hand
+                    note = ""
+                    
+                    # Try to find the note in the original line
+                    # Notes typically appear in parentheses or after the hand
+                    if '(' in line:
+                        # Get text after first '('
+                        paren_start = line.find('(')
+                        note = line[paren_start:].replace('(', '').replace(')', '').strip()
+                        # Clean up common OCR artifacts
+                        note = re.sub(r'\s+', ' ', note)
+                        if note.endswith('.'):
+                            note = note[:-1]
+                    
+                    # Format hand with spaces based on original OCR line
+                    hand_formatted = hand_str
+                    
+                    # Try to extract the formatted version from the original line
+                    # Look for sequences of F or digits in the original line
+                    if '(' in line:
+                        # Get the part before the parenthesis
+                        before_paren = line.split('(')[0].strip()
+                        # Extract just the hand part (before any OCR artifacts)
+                        hand_parts = []
+                        current_part = ""
+                        for char in before_paren:
+                            if char in valid_chars:
+                                current_part += char
+                            elif char.isspace() and current_part:
+                                hand_parts.append(current_part)
+                                current_part = ""
+                            elif current_part and len(current_part) >= 14:
+                                break
+                        if current_part:
+                            hand_parts.append(current_part)
+                        
+                        # If we got good parts from the original, use them
+                        if len(hand_parts) >= 3:
+                            hand_formatted = ' '.join(hand_parts[:4])  # Take first 4 parts
+                        elif len(hand_parts) >= 2:
+                            hand_formatted = ' '.join(hand_parts)
+                    
+                    # Fallback: simple spacing if we didn't extract from original
+                    if hand_formatted == hand_str and len(hand_str) == 14:
+                        # Default spacing
+                        hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
+                    
+                    hands.append({
+                        'hand': hand_formatted,
+                        'note': note or 'No description captured'
                     })
+                    print(f"Hand {len(hands)}: {hand_str}")
+                    if note:
+                        print(f"  Note: {note[:50]}")
         
-        return tiles
-    
-    def recognize_tile(self, tile_region: np.ndarray) -> str:
-        """
-        Recognize individual tile from image region
-        This is a placeholder - you'll need to implement actual tile recognition
-        Options:
-        1. Template matching with reference images
-        2. Deep learning model (CNN)
-        3. OCR combined with pattern recognition
-        """
-        # TODO: Implement actual tile recognition
-        # This could use:
-        # - Template matching
-        # - Feature detection (SIFT, ORB)
-        # - Machine learning model
-        # - OCR for numbers/characters
-        
-        return "unknown"  # Placeholder
-    
-    def parse_hands(self, tiles: List[Dict]) -> Dict:
-        """
-        Parse detected tiles into mahjong hands
-        A mahjong hand typically has 13-14 tiles
-        """
-        hands = {
-            'hand_count': 0,
-            'hands': []
-        }
-        
-        # Group tiles that might form hands
-        # This is a simplified approach
-        if len(tiles) >= 13:
-            # For now, create a single hand with all detected tiles
-            hand = {
-                'tiles': [t['tile'] for t in tiles[:14]],  # Standard hand is 14 tiles
-                'position': tiles[0]['position'] if tiles else None
-            }
-            hands['hands'].append(hand)
-            hands['hand_count'] = 1
-        
+        print(f"\nTotal: {len(hands)} unique hands found")
         return hands
     
     def process(self) -> Dict:
         """Main processing method"""
         print("Processing image...")
-        tiles = self.detect_tiles()
-        print(f"Detected {len(tiles)} potential tiles")
         
-        hands = self.parse_hands(tiles)
+        # Extract text using OCR
+        text = self.extract_text_with_ocr()
         
+        # Parse hands from text
+        hands_data = self.parse_hands_v2(text)
+        
+        # Simplified output - just the hands
         result = {
-            'image_path': str(self.image_path),
-            'tiles_detected': len(tiles),
-            'hands': hands,
-            'raw_tiles': tiles
+            'hands': hands_data
         }
         
         return result
@@ -138,7 +267,7 @@ class MahjongCardReader:
     def save_json(self, output_path: str = None):
         """Save results to JSON file"""
         if output_path is None:
-            output_path = self.image_path.stem + '_hands.json'
+            output_path = 'card2025.json'
         
         result = self.process()
         
@@ -146,7 +275,7 @@ class MahjongCardReader:
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         
-        print(f"Results saved to: {output_file}")
+        print(f"\nResults saved to: {output_file}")
         return output_file
 
 
@@ -167,9 +296,10 @@ def main():
         reader.save_json(output_path)
     except Exception as e:
         print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
 
 
 if __name__ == "__main__":
     main()
-
