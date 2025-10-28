@@ -217,6 +217,11 @@ def extract_hands_hybrid(image_path):
         hand_variants = split_pattern.split(hand_part)
         
         if len(hand_variants) == 1:
+            # Try "-1:-" pattern
+            colon_pattern = re.compile(r'-\d+:-')
+            hand_variants = colon_pattern.split(hand_part)
+        
+        if len(hand_variants) == 1:
             or_pattern = re.compile(r'(?:\s|-)*or(?:\s|-)', re.IGNORECASE)
             hand_variants = or_pattern.split(hand_part)
         

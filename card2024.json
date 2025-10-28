@@ -51,6 +51,16 @@
   },
   {
       "id": 5,
+      "hand":      "222 444 6666 8888",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
+      "note": "Any 1 or2 Suits",
+      "family": "2468",
+      "points": "25",
+      "concealed": false
+  },
+  {
+      "id": 6,
       "hand":      "22 444 44 666 8888",
       "colorMask": "00 000 00 000 0000",
       "jokerMask": "00 111 00 111 1111",
@@ -60,7 +70,7 @@
       "concealed": false
   },
   {
-      "id": 6,
+      "id": 7,
       "hand":      "22 44 666 888 DDDD",
       "colorMask": "00 00 000 000 0000",
       "jokerMask": "00 00 111 111 1111",
@@ -70,7 +80,7 @@
       "concealed": false
   },
   {
-      "id": 7,
+      "id": 8,
       "hand":      "FFFF 4444 6666 24",
       "colorMask": "0000 0000 0000 00",
       "jokerMask": "1111 1111 1111 00",
@@ -80,7 +90,7 @@
       "concealed": false
   },
   {
-      "id": 8,
+      "id": 9,
       "hand":      "FF 2222 44 66 8888",
       "colorMask": "00 0000 00 00 0000",
       "jokerMask": "00 1111 00 00 1111",
@@ -90,7 +100,7 @@
       "concealed": false
   },
   {
-      "id": 9,
+      "id": 10,
       "hand":      "FF 222 44 666 88 88",
       "colorMask": "00 000 00 000 00 00",
       "jokerMask": "00 111 00 111 00 00",
@@ -100,7 +110,7 @@
       "concealed": false
   },
   {
-      "id": 10,
+      "id": 11,
       "hand":      "FFFF 111 1111 111",
       "colorMask": "0000 000 0000 000",
       "jokerMask": "1111 111 1111 111",
@@ -110,7 +120,7 @@
       "concealed": false
   },
   {
-      "id": 11,
+      "id": 12,
       "hand":      "11 DDD 11 DDD 1111",
       "colorMask": "00 000 00 000 0000",
       "jokerMask": "00 111 00 111 1111",
@@ -120,7 +130,7 @@
       "concealed": false
   },
   {
-      "id": 12,
+      "id": 13,
       "hand":      "FF 1111 NEWS 1111",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 0000 1111",
@@ -130,7 +140,7 @@
       "concealed": false
   },
   {
-      "id": 13,
+      "id": 14,
       "hand":      "FF 1111 6666 7777",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
@@ -140,7 +150,7 @@
       "concealed": false
   },
   {
-      "id": 14,
+      "id": 15,
       "hand":      "FF 2222 5555 7777",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
@@ -150,7 +160,7 @@
       "concealed": false
   },
   {
-      "id": 15,
+      "id": 16,
       "hand":      "FF 3333 4444 7777",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
