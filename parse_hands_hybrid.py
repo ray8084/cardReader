@@ -74,10 +74,54 @@ def extract_hands_hybrid(image_path):
             break
     
     if addition_hands_found:
-        # Add EasyOCR Addition Hands lines
-        for line in easyocr_lines:
-            if ('FF' in line and '=' in line) or 'ADDITION HANDS' in line.upper():
+        # Add EasyOCR Addition Hands lines - handle fragmented hands properly
+        i = 0
+        while i < len(easyocr_lines):
+            line = easyocr_lines[i]
+            
+            # Look for FF patterns that are fragmented
+            if (len(line.split()) <= 2 and 
+                any(char in line for char in 'FDNEWS') and
+                'FF' in line and
+                i + 1 < len(easyocr_lines)):
+                
+                # Combine this line with the next few lines to form a complete hand
+                combined_line = line
+                j = i + 1
+                
+                # Keep combining until we have a complete hand
+                while j < len(easyocr_lines):
+                    next_line = easyocr_lines[j]
+                    
+                    # Check if this looks like continuation of the same hand
+                    if (any(char in next_line for char in '0123456789=') or
+                        next_line.strip() in ['Suit)', 'Any', '25', 'X25']):
+                        combined_line += ' ' + next_line
+                        j += 1
+                        
+                        # Stop if we have a complete hand (ends with Suit) or points
+                        if (next_line.strip() in ['Suit)', '25', 'X25'] or 
+                            'Suit)' in combined_line):
+                            break
+                    else:
+                        break
+                
+                # Only add if we have a reasonable hand length
+                if len(combined_line.split()) >= 4 and len(combined_line.split()) <= 8:
+                    text_lines.append(combined_line)
+                    i = j  # Skip all combined lines
+                    continue
+            
+            # Add other Addition Hands related lines
+            if 'ADDITION HANDS' in line.upper():
                 text_lines.append(line)
+            
+            # Also add complete Addition Hands that don't need combining
+            if ('FF' in line and '=' in line and 'Suit)' in line and 
+                len(line.split()) >= 4 and len(line.split()) <= 8):
+                text_lines.append(line)
+            
+            i += 1
     
     hands = []
     valid_chars = set('0123456789FDNEWS')

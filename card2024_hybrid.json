@@ -112,6 +112,26 @@
     },
     {
       "id": 11,
+      "hand":      "FF 1111 6666 7777",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "00 1111 1111 1111",
+      "note": "Any Suit",
+      "family": "ADDITION HANDS",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 12,
+      "hand":      "FF 2222 5555 7777",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "00 1111 1111 1111",
+      "note": "Any Suit",
+      "family": "ADDITION HANDS",
+      "points": "25",
+      "concealed": false
+    },
+    {
+      "id": 13,
       "hand":      "FF 3333 4444 7777",
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
