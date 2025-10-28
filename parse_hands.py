@@ -120,9 +120,16 @@ def extract_hands(image_path):
                 colorMask_parts.append('0' * len(part))
             
             # Create jokerMask that's all '1's matching the spacing of each hand
+            # EXCEPT pairs (2 identical chars) which become '0's (cannot use jokers in pairs)
             jokerMask_parts = []
             for part in hand_groups:
-                jokerMask_parts.append('1' * len(part))
+                # Check if this is a pair (length 2 with same character)
+                if len(part) == 2 and len(set(part)) == 1:
+                    # It's a pair, use '0's (cannot use jokers)
+                    jokerMask_parts.append('0' * len(part))
+                else:
+                    # Not a pair, use '1's (can use jokers)
+                    jokerMask_parts.append('1' * len(part))
             
             # Build formatted hand with proper spacing
             formatted = ' '.join(hand_groups)
