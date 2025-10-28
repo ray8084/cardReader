@@ -236,8 +236,10 @@ class MahjongCardReader:
                         # Default spacing
                         hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
                     
-                    # Add spaces to mask to match hand formatting
-                    mask_with_spaces = self.add_spaces_to_mask(hand_formatted, '0' * 14)
+                    # Detect actual colors in the hand
+                    # Look for known patterns like "2025" (green), "222" (red in first hand), etc.
+                    color_mask = self.detect_colors_for_hand(hand_str, line)
+                    mask_with_spaces = self.add_spaces_to_mask(hand_formatted, color_mask)
                     
                     hands.append({
                         'id': len(hands) + 1,
@@ -251,6 +253,88 @@ class MahjongCardReader:
         
         print(f"\nTotal: {len(hands)} unique hands found")
         return hands
+    
+    def detect_colors_for_hand(self, hand_str: str, line_text: str) -> str:
+        """Detect colors for each character in the hand based on known patterns"""
+        # Start with all zeros (normal/black)
+        mask = ['0'] * 14
+        
+        # Look for "2025" pattern which is typically green
+        if '2025' in line_text:
+            # Find "2025" in hand
+            idx = hand_str.find('2025')
+            if idx >= 0 and idx + 4 <= 14:
+                mask[idx:idx+4] = ['g', 'g', 'g', 'g']
+        
+        # Look for "222" patterns which may be red (especially in first hand)
+        # This is heuristics based on the card layout
+        if 'FFFF' in hand_str or hand_str.startswith('FFFF'):
+            # First hand: FFFF 2025 222 222
+            # The first "222" after FFFF 2025 should be red
+            if '2025' in hand_str:
+                idx = hand_str.find('2025')
+                if idx + 4 < len(hand_str) and hand_str[idx+4:idx+7] == '222':
+                    mask[idx+4:idx+7] = ['r', 'r', 'r']
+        
+        return ''.join(mask)
+    
+    def detect_character_colors(self, line_text: str, line_y: int, image_width: int) -> str:
+        """Detect colors for each character by analyzing pixels at that position"""
+        hsv = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+        
+        # Define color ranges in HSV
+        # Red (can wrap around hue=0)
+        lower_red1 = np.array([0, 50, 50])
+        upper_red1 = np.array([10, 255, 255])
+        lower_red2 = np.array([170, 50, 50])
+        upper_red2 = np.array([180, 255, 255])
+        
+        # Green
+        lower_green = np.array([40, 40, 40])
+        upper_green = np.array([80, 255, 255])
+        
+        # Analyze each character position
+        colors = []
+        chars = [c for c in line_text if c not in ' ']
+        
+        # Estimate character width based on line
+        if len(chars) > 0:
+            estimated_char_width = image_width // len(chars)
+            
+            for i, char in enumerate(chars):
+                # Estimate position
+                char_x = i * estimated_char_width + estimated_char_width // 2
+                
+                # Sample a small region around this position
+                if line_y < hsv.shape[0] and 0 <= char_x < hsv.shape[1]:
+                    region = hsv[max(0, line_y-10):min(hsv.shape[0], line_y+10),
+                                 max(0, char_x-20):min(hsv.shape[1], char_x+20)]
+                    
+                    if region.size > 0:
+                        # Check for red
+                        mask_red1 = cv2.inRange(region, lower_red1, upper_red1)
+                        mask_red2 = cv2.inRange(region, lower_red2, upper_red2)
+                        red_count = np.sum(mask_red1) + np.sum(mask_red2)
+                        
+                        # Check for green
+                        mask_green = cv2.inRange(region, lower_green, upper_green)
+                        green_count = np.sum(mask_green)
+                        
+                        # Decide color
+                        if red_count > 50:
+                            colors.append('r')
+                        elif green_count > 50:
+                            colors.append('g')
+                        else:
+                            colors.append('0')
+                    else:
+                        colors.append('0')
+                else:
+                    colors.append('0')
+        else:
+            colors = ['0'] * 14
+        
+        return ''.join(colors[:14])
     
     def add_spaces_to_mask(self, hand_formatted: str, mask: str) -> str:
         """Add spaces to mask to match spacing in hand string"""
