@@ -254,87 +254,106 @@ class MahjongCardReader:
         return hands
     
     def detect_colors_from_image(self, line_text: str) -> str:
-        """Detect colors by running OCR on separate color layers (from ChatGPT script)"""
+        """Detect colors by sampling pixels from OCR character positions"""
         valid_chars = set('0123456789FD')
         chars = [c for c in line_text if c in valid_chars]
         
         if len(chars) < 14:
             return '0' * 14
         
-        chars = chars[:14]  # Take first 14
-        char_str = ''.join(chars)
+        chars = chars[:14]
         
-        # Create HSV color masks
-        hsv = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
-        
-        # Red masks
-        lower_red1 = np.array([0, 50, 50])
-        upper_red1 = np.array([10, 255, 255])
-        lower_red2 = np.array([170, 50, 50])
-        upper_red2 = np.array([180, 255, 255])
-        mask_red = cv2.bitwise_or(
-            cv2.inRange(hsv, lower_red1, upper_red1),
-            cv2.inRange(hsv, lower_red2, upper_red2)
-        )
-        
-        # Green mask
-        lower_green = np.array([40, 50, 50])
-        upper_green = np.array([80, 255, 255])
-        mask_green = cv2.inRange(hsv, lower_green, upper_green)
-        
-        # Apply masks and get text from each layer
-        red_text = ""
-        green_text = ""
-        
+        # Run OCR to get character-level bounding boxes  
         try:
-            # Process red layer
-            red_masked = cv2.bitwise_and(self.image, self.image, mask=mask_red)
-            if np.any(mask_red):
-                gray = cv2.cvtColor(red_masked, cv2.COLOR_BGR2GRAY)
-                _, binary = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
-                red_text = pytesseract.image_to_string(binary, config='--psm 6')
+            config = '--oem 3 --psm 6'
+            data = pytesseract.image_to_data(self.image, config=config, output_type=pytesseract.Output.DICT)
             
-            # Process green layer
-            green_masked = cv2.bitwise_and(self.image, self.image, mask=mask_green)
-            if np.any(mask_green):
-                gray = cv2.cvtColor(green_masked, cv2.COLOR_BGR2GRAY)
-                _, binary = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
-                green_text = pytesseract.image_to_string(binary, config='--psm 6')
-        except:
-            pass
-        
-        # Extract valid chars from each layer (preserve order)
-        red_chars = [c for c in red_text if c in valid_chars]
-        green_chars = [c for c in green_text if c in valid_chars]
-        
-        # Build color mask by comparing character sequences
-        color_mask = []
-        
-        # Create sets for quick lookup
-        green_set = set(green_chars)
-        red_set = set(red_chars)
-        
-        for i, char in enumerate(chars):
-            found_color = '0'  # default black
+            # Build list of all valid characters with their positions
+            all_chars_with_pos = []
+            for i in range(len(data["text"])):
+                text = data["text"][i]
+                if text and data["conf"][i] > 0:
+                    for c in text:
+                        if c in valid_chars:
+                            all_chars_with_pos.append({
+                                'char': c,
+                                'left': data["left"][i],
+                                'top': data["top"][i],
+                                'width': data["width"][i],
+                                'height': data["height"][i]
+                            })
             
-            # Check both green and red layers
-            # Prefer color if found in corresponding layer
-            if char in green_set and i < len(green_chars):
-                # Check if this specific position matches
-                if green_chars[i % len(green_chars)] == char:
-                    found_color = 'g'
-            elif char in red_set and i < len(red_chars):
-                # Check if this specific position matches  
-                if red_chars[i % len(red_chars)] == char:
-                    found_color = 'r'
+            # Find matching characters from our hand in the OCR data
+            # Match by character (simple approach)
+            hsv = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+            color_mask = []
+            ocr_idx = 0
             
-            color_mask.append(found_color)
-        
-        # Ensure 14 chars
-        while len(color_mask) < 14:
-            color_mask.append('0')
-        
-        return ''.join(color_mask[:14])
+            for i, char in enumerate(chars):
+                found = False
+                
+                # Try to find this character in OCR data
+                for j in range(ocr_idx, min(ocr_idx + 5, len(all_chars_with_pos))):
+                    if all_chars_with_pos[j]['char'] == char:
+                        # Found matching character, sample its color
+                        left = all_chars_with_pos[j]['left']
+                        top = all_chars_with_pos[j]['top']
+                        width = all_chars_with_pos[j]['width']
+                        height = all_chars_with_pos[j]['height']
+                        
+                        # Sample center of character
+                        center_y = top + height // 2
+                        center_x = left + width // 2
+                        
+                        # Sample small region
+                        y1 = max(0, center_y - height // 4)
+                        y2 = min(hsv.shape[0], center_y + height // 4)
+                        x1 = max(0, center_x - width // 4)
+                        x2 = min(hsv.shape[1], center_x + width // 4)
+                        
+                        if y2 > y1 and x2 > x1:
+                            region = hsv[y1:y2, x1:x2]
+                            
+                            # Check green
+                            lower_green = np.array([40, 50, 50])
+                            upper_green = np.array([80, 255, 255])
+                            green_mask = cv2.inRange(region, lower_green, upper_green)
+                            green_ratio = np.sum(green_mask > 0) / (region.size + 1)
+                            
+                            # Check red
+                            lower_red1 = np.array([0, 50, 50])
+                            upper_red1 = np.array([10, 255, 255])
+                            lower_red2 = np.array([170, 50, 50])
+                            upper_red2 = np.array([180, 255, 255])
+                            red_mask = cv2.bitwise_or(
+                                cv2.inRange(region, lower_red1, upper_red1),
+                                cv2.inRange(region, lower_red2, upper_red2)
+                            )
+                            red_ratio = np.sum(red_mask > 0) / (region.size + 1)
+                            
+                            # Determine color (threshold 15% of pixels)
+                            if green_ratio > 0.15:
+                                color_mask.append('g')
+                            elif red_ratio > 0.15:
+                                color_mask.append('r')
+                            else:
+                                color_mask.append('0')
+                            found = True
+                            ocr_idx = j + 1
+                            break
+                
+                if not found:
+                    color_mask.append('0')
+            
+            # Ensure 14 chars
+            while len(color_mask) < 14:
+                color_mask.append('0')
+            
+            return ''.join(color_mask[:14])
+            
+        except Exception as e:
+            print(f"Error in color detection: {e}")
+            return '0' * 14
     
     def detect_character_colors(self, line_text: str, line_y: int, image_width: int) -> str:
         """Detect colors for each character by analyzing pixels at that position"""
