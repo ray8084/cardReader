@@ -236,10 +236,13 @@ class MahjongCardReader:
                         # Default spacing
                         hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
                     
+                    # Add spaces to mask to match hand formatting
+                    mask_with_spaces = self.add_spaces_to_mask(hand_formatted, '0' * 14)
+                    
                     hands.append({
                         'id': len(hands) + 1,
                         'hand': hand_formatted,
-                        'mask': '0' * 14,  # Placeholder color mask (0=black, g=green, r=red)
+                        'mask': mask_with_spaces,  # Color mask with spaces matching hand
                         'note': note or 'No description captured'
                     })
                     print(f"Hand {len(hands)}: {hand_str}")
@@ -248,6 +251,31 @@ class MahjongCardReader:
         
         print(f"\nTotal: {len(hands)} unique hands found")
         return hands
+    
+    def add_spaces_to_mask(self, hand_formatted: str, mask: str) -> str:
+        """Add spaces to mask to match spacing in hand string"""
+        if not hand_formatted or not mask:
+            return mask
+        
+        # Count non-space characters in hand
+        non_space_chars = ''.join([c for c in hand_formatted if c != ' '])
+        
+        # Ensure mask has enough characters
+        if len(mask) < len(non_space_chars):
+            mask = mask.ljust(len(non_space_chars), '0')
+        
+        # Build result with spaces
+        result = ""
+        mask_idx = 0
+        for char in hand_formatted:
+            if char == ' ':
+                result += ' '
+            else:
+                if mask_idx < len(mask):
+                    result += mask[mask_idx]
+                    mask_idx += 1
+        
+        return result
     
     def process(self) -> Dict:
         """Main processing method"""
