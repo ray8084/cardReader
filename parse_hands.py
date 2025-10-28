@@ -24,19 +24,27 @@ def extract_hands(image_path):
     current_family = ''  # Track which section/family we're in
     
     # List of valid section headers
-    section_headers = ['2025', '2468', 'ANY LIKE NUMBERS', '2024']
+    section_headers = ['2025', '2468', 'ANY LIKE NUMBERS', '2024', 'ADDITION HANDS', 'LUCKY SEVENS']
     
     for line_text in text_lines:
         line_stripped = line_text.strip().upper()
         
         # Check if this is a section header
         # Headers are lines without '(' and without many hand characters
+        # Exception: lines with parentheses that contain section header names
         is_header = False
         if '(' not in line_stripped:
             # Count hand characters
             hand_chars_count = sum(1 for c in line_stripped if c in valid_chars)
             for header in section_headers:
                 if header.upper() in line_stripped and hand_chars_count < 8:
+                    current_family = header
+                    is_header = True
+                    break
+        else:
+            # Check if line with parentheses contains a section header
+            for header in section_headers:
+                if header.upper() in line_stripped:
                     current_family = header
                     is_header = True
                     break
@@ -55,7 +63,7 @@ def extract_hands(image_path):
         hand_part = hand_part.replace('T', '1').replace('I', '1')
         
         # Skip lines that are clearly not mahjong hands (like NOTE lines)
-        if any(word in hand_part.upper() for word in ['NOTE:', 'DRAGON', 'USED', 'ZERO', 'MAY', 'BE', 'WITH', 'ANY']):
+        if any(word in hand_part.upper() for word in ['NOTE:', 'DRAGON', 'USED', 'ZERO', 'MAY', 'BE', 'WITH', 'ANY', 'ADD111ON']):
             continue
         
         # Extract note
@@ -131,7 +139,9 @@ def extract_hands(image_path):
             
             for part in parts:
                 # Filter to only valid characters (after T/I normalization)
-                valid_part = ''.join([c for c in part if c in valid_chars])
+                # Also remove common OCR artifacts like ']', '+', '='
+                clean_part = part.replace(']', '').replace('+', '').replace('=', '')
+                valid_part = ''.join([c for c in clean_part if c in valid_chars])
                 if not valid_part:
                     continue
                 
