@@ -71,22 +71,26 @@ def extract_hands(image_path):
             # Replace common OCR misreads for C
             text_after_note_normalized = text_after_note.replace('€', 'C').replace('©', 'C')
             
-            # Look for C or X before numbers
-            all_matches = list(re.finditer(r'([CcXx])\s*(\d+)', text_after_note_normalized))
+            # Look for C or X before numbers, also handle OCR misreads like 3O (30) or 2D (25)
+            all_matches = list(re.finditer(r'([CcXx])\s*(\d+[DO]?)', text_after_note_normalized))
             if all_matches:
                 # Take the last match (closest to end)
                 last_match = all_matches[-1]
                 concealed_char = last_match.group(1).upper()
                 points = last_match.group(2)
+                # Normalize points: OCR may misread 5 as D or 0 as O
+                points = points.replace('D', '5').replace('O', '0')
                 concealed = (concealed_char == 'C')
         elif line_text:
             # Also look for C or X in the line if there's no paren
             text_normalized = line_text.replace('€', 'C').replace('©', 'C')
-            all_matches = list(re.finditer(r'([CcXx])\s*(\d+)', text_normalized))
+            all_matches = list(re.finditer(r'([CcXx])\s*(\d+[DO]?)', text_normalized))
             if all_matches:
                 last_match = all_matches[-1]
                 concealed_char = last_match.group(1).upper()
                 points = last_match.group(2)
+                # Normalize points: OCR may misread 5 as D
+                points = points.replace('D', '5')
                 concealed = (concealed_char == 'C')
         
         # Check for patterns that indicate multiple hands
