@@ -142,11 +142,26 @@ def extract_hands_hybrid(image_path):
                     is_header = True
                     break
         else:
+            # Check if line with parentheses contains a section header
+            # But be more specific - only treat as header if it's clearly a header line
             for header in section_headers:
                 if header.upper() in line_stripped:
-                    current_family = header
-                    is_header = True
-                    break
+                    # Only treat as header if it's a simple header line (not a hand with the header name in it)
+                    # Be very restrictive - only match clear header patterns
+                    if (line_stripped.startswith(header.upper()) or 
+                        line_stripped.endswith(header.upper()) or
+                        f"({header.upper()})" in line_stripped):
+                        current_family = header
+                        is_header = True
+                        break
+        
+        # Debug: print lines that might be 2024 hands
+        if '2024' in line_stripped or ('N' in line_stripped and 'E' in line_stripped and 'W' in line_stripped and 'S' in line_stripped):
+            print(f"Processing potential 2024 line: {repr(line_text)} -> {repr(line_stripped)}")
+            print(f"  is_header: {is_header}")
+            if is_header:
+                print(f"  Skipped as header")
+                continue
         
         if is_header:
             continue
@@ -302,17 +317,23 @@ if __name__ == '__main__':
     for h in hands[:10]:
         print(f"{h['id']}. {h['hand']} | {h['colorMask']}")
     
-    # Save to JSON file
-    with open('card2024_hybrid.json', 'w') as f:
-        json_str = json.dumps({'hands': hands}, indent=2)
-        lines = json_str.split('\n')
-        result_lines = []
-        for line in lines:
-            if '"hand":' in line:
-                new_line = line.replace(': "', ':      "')
-                result_lines.append(new_line)
-            else:
-                result_lines.append(line)
-        f.write('\n'.join(result_lines))
+    # Save to JSON file with custom formatting
+    with open('card2024.json', 'w') as f:
+        f.write('[\n')
+        for i, hand in enumerate(hands):
+            f.write('  {\n')
+            f.write(f'      "id": {hand["id"]},\n')
+            f.write(f'      "hand":      "{hand["hand"]}",\n')
+            f.write(f'      "colorMask": "{hand["colorMask"]}",\n')
+            f.write(f'      "jokerMask": "{hand["jokerMask"]}",\n')
+            f.write(f'      "note": "{hand["note"]}",\n')
+            f.write(f'      "family": "{hand["family"]}",\n')
+            f.write(f'      "points": "{hand["points"]}",\n')
+            f.write(f'      "concealed": {str(hand["concealed"]).lower()}\n')
+            f.write('  }')
+            if i < len(hands) - 1:
+                f.write(',')
+            f.write('\n')
+        f.write(']\n')
     
-    print(f"\nSaved to card2024_hybrid.json")
+    print(f"\nSaved to card2024.json")
