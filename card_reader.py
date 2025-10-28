@@ -237,6 +237,7 @@ class MahjongCardReader:
                         hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
                     
                     hands.append({
+                        'id': len(hands) + 1,
                         'hand': hand_formatted,
                         'note': note or 'No description captured'
                     })
