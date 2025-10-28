@@ -61,24 +61,32 @@ def extract_hands(image_path):
         
         # Extract points value and concealed status from end of line
         # Points are typically at the end, like "25" or "30", preceded by C (concealed) or X (open)
+        # OCR might misread C as €, c, or other characters
         points = ''
         concealed = False
         if line_text and ')' in line_text:
             # Get text after the closing paren
             text_after_note = line_text[line_text.rfind(')')+1:].strip()
-            # Look for C or X (case insensitive) followed by a number anywhere in text after paren
-            # Handle cases like "C 30" or "C30" or "c 30" or "X 25" etc
-            match = re.search(r'([CcXx]).*?(\d+)', text_after_note)
-            if match:
-                concealed_char = match.group(1).upper()
-                points = match.group(2)
+            
+            # Replace common OCR misreads for C
+            text_after_note_normalized = text_after_note.replace('€', 'C').replace('©', 'C')
+            
+            # Look for C or X before numbers
+            all_matches = list(re.finditer(r'([CcXx])\s*(\d+)', text_after_note_normalized))
+            if all_matches:
+                # Take the last match (closest to end)
+                last_match = all_matches[-1]
+                concealed_char = last_match.group(1).upper()
+                points = last_match.group(2)
                 concealed = (concealed_char == 'C')
         elif line_text:
             # Also look for C or X in the line if there's no paren
-            match = re.search(r'([CcXx]).*?(\d+)', line_text)
-            if match:
-                concealed_char = match.group(1).upper()
-                points = match.group(2)
+            text_normalized = line_text.replace('€', 'C').replace('©', 'C')
+            all_matches = list(re.finditer(r'([CcXx])\s*(\d+)', text_normalized))
+            if all_matches:
+                last_match = all_matches[-1]
+                concealed_char = last_match.group(1).upper()
+                points = last_match.group(2)
                 concealed = (concealed_char == 'C')
         
         # Check for patterns that indicate multiple hands

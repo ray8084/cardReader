@@ -18,7 +18,7 @@
       "note": "Any 2 Suits",
       "family": "2025",
       "points": "2",
-      "concealed": true
+      "concealed": false
     },
     {
       "id": 3,
@@ -27,7 +27,7 @@
       "jokerMask": "0000 111 111 1111",
       "note": "Any 3 Suits",
       "family": "2025",
-      "points": "3",
+      "points": "",
       "concealed": false
     },
     {
@@ -97,7 +97,7 @@
       "jokerMask": "1111 0000 111 111",
       "note": "Any 3 Suits, Like Pungs Any Even No.",
       "family": "2468",
-      "points": "25",
+      "points": "",
       "concealed": false
     },
     {
@@ -167,8 +167,8 @@
       "jokerMask": "00 111 111 111 111",
       "note": "Any 3 Suits, Any Dragon",
       "family": "ANY LIKE NUMBERS",
-      "points": "",
-      "concealed": false
+      "points": "30",
+      "concealed": true
     }
   ]
 }
