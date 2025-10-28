@@ -148,6 +148,7 @@ class MahjongCardReader:
     def parse_hands_v2(self, text: str) -> List[Dict]:
         """
         Parse all hands from OCR text with notes
+        Handles lines with multiple hands separated by "-01-"
         """
         lines = text.strip().split('\n')
         hands = []
@@ -165,90 +166,89 @@ class MahjongCardReader:
             if line.startswith('X ') or line.startswith('Cc ') or line.startswith('xX '):
                 continue
             
-            # Extract all valid characters for hand matching
-            chars = [c for c in line if c in valid_chars]
+            # Check if line contains multiple hands separated by "-01-"
+            if '-01-' in line:
+                # Split into multiple hands
+                parts = line.split('-01-')
+                for part in parts:
+                    self._parse_single_hand(part, hands, valid_chars, seen_hands, line_num)
+            else:
+                self._parse_single_hand(line, hands, valid_chars, seen_hands, line_num)
+        
+        print(f"\nTotal: {len(hands)} unique hands found")
+        return hands
+    
+    def _parse_single_hand(self, line: str, hands: List, valid_chars: set, seen_hands: set, line_num: int):
+        """Parse a single hand from a line"""
+        # Extract all valid characters
+        chars = [c for c in line if c in valid_chars]
+        
+        # Need at least 13-14 valid characters for a hand
+        if len(chars) < 13:
+            return
+        
+        # Need exactly 14 chars - take what we have
+        if len(chars) == 14:
+            hand_str = ''.join(chars)
+            hand_chars = chars
+        elif len(chars) > 14:
+            # Take first 14, but be smarter about cleaning artifacts
+            hand_str = ''.join(chars[:14])
+            hand_chars = chars[:14]
+        elif len(chars) == 13:
+            # Only 13 chars - skip for now (incomplete)
+            return
+        else:
+            return
+        
+        # Skip if we've seen this exact hand
+        if hand_str in seen_hands:
+            return
+        seen_hands.add(hand_str)
+        
+        # Extract the note
+        note = ""
+        if '(' in line:
+            paren_start = line.find('(')
+            note = line[paren_start:].replace('(', '').replace(')', '').strip()
+            note = re.sub(r'\s+', ' ', note)
+            if note.endswith('.'):
+                note = note[:-1]
+        
+        # Format hand with spaces
+        hand_formatted = hand_str
+        if '(' in line:
+            before_paren = line.split('(')[0].strip()
+            hand_parts = []
+            current_part = ""
+            for char in before_paren:
+                if char in valid_chars:
+                    current_part += char
+                elif char.isspace() and current_part:
+                    hand_parts.append(current_part)
+                    current_part = ""
+            if current_part:
+                hand_parts.append(current_part)
             
-            # Need at least 14 valid characters for a hand
-            if len(chars) >= 14:
-                # Take first 14 chars for hand string
-                hand_chars = chars[:14]
-                hand_str = ''.join(hand_chars)
-                
-                # Clean up: remove trailing numbers that are OCR artifacts
-                while len(hand_str) > 14 and hand_str[-3:] in ['325', ' 25', ' 30', '8 2']:
-                    hand_str = hand_str[:-1]
-                    hand_chars = hand_chars[:-1]
-                
-                if len(hand_str) >= 14:
-                    hand_str = hand_str[:14]
-                    hand_chars = hand_chars[:14]
-                    
-                    # Skip if we've seen this exact hand
-                    if hand_str in seen_hands:
-                        continue
-                    seen_hands.add(hand_str)
-                    
-                    # Extract the note (everything after the hand pattern)
-                    # Look for parenthetical text or text after the hand
-                    note = ""
-                    
-                    # Try to find the note in the original line
-                    # Notes typically appear in parentheses or after the hand
-                    if '(' in line:
-                        # Get text after first '('
-                        paren_start = line.find('(')
-                        note = line[paren_start:].replace('(', '').replace(')', '').strip()
-                        # Clean up common OCR artifacts
-                        note = re.sub(r'\s+', ' ', note)
-                        if note.endswith('.'):
-                            note = note[:-1]
-                    
-                    # Format hand with spaces based on original OCR line
-                    hand_formatted = hand_str
-                    
-                    # Try to extract the formatted version from the original line
-                    # Look for sequences of F or digits in the original line
-                    if '(' in line:
-                        # Get the part before the parenthesis
-                        before_paren = line.split('(')[0].strip()
-                        # Extract just the hand part (before any OCR artifacts)
-                        hand_parts = []
-                        current_part = ""
-                        for char in before_paren:
-                            if char in valid_chars:
-                                current_part += char
-                            elif char.isspace() and current_part:
-                                hand_parts.append(current_part)
-                                current_part = ""
-                            elif current_part and len(current_part) >= 14:
-                                break
-                        if current_part:
-                            hand_parts.append(current_part)
-                        
-                        # If we got good parts from the original, use them
-                        if len(hand_parts) >= 3:
-                            hand_formatted = ' '.join(hand_parts[:4])  # Take first 4 parts
-                        elif len(hand_parts) >= 2:
-                            hand_formatted = ' '.join(hand_parts)
-                    
-                    # Fallback: simple spacing if we didn't extract from original
-                    if hand_formatted == hand_str and len(hand_str) == 14:
-                        # Default spacing
-                        hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
-                    
-                    # Detect actual colors in the hand by analyzing OCR results with color info
-                    color_mask = self.detect_colors_from_image(line)
-                    mask_with_spaces = self.add_spaces_to_mask(hand_formatted, color_mask)
-                    
-                    hands.append({
-                        'id': len(hands) + 1,
-                        'hand': hand_formatted,
-                        'mask': mask_with_spaces,  # Color mask with spaces matching hand
-                        'note': note or 'No description captured'
-                    })
-                    print(f"Hand {len(hands)}: {hand_str}")
-                    if note:
-                        print(f"  Note: {note[:50]}")
+            if len(hand_parts) >= 2:
+                hand_formatted = ' '.join(hand_parts)
+        
+        if hand_formatted == hand_str and len(hand_str) == 14:
+            hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
+        
+        # Detect colors
+        color_mask = self.detect_colors_from_image(line)
+        mask_with_spaces = self.add_spaces_to_mask(hand_formatted, color_mask)
+        
+        hands.append({
+            'id': len(hands) + 1,
+            'hand': hand_formatted,
+            'mask': mask_with_spaces,
+            'note': note or 'No description captured'
+        })
+        print(f"Hand {len(hands)}: {hand_str} (raw: {len(hand_str)} chars, formatted: {len(hand_formatted.replace(' ', ''))} chars)")
+        if note:
+            print(f"  Note: {note[:50]}")
         
         print(f"\nTotal: {len(hands)} unique hands found")
         return hands

@@ -20,68 +20,74 @@
     },
     {
       "id": 4,
-      "hand": "FF 222 000 222",
-      "mask": "00 ggr 000 rr0",
+      "hand": "FF 222 000 222 555",
+      "mask": "00 ggr 000 rr0 000",
       "note": "Any 3 Suits"
     },
     {
       "id": 5,
-      "hand": "222 4444 666 8888",
-      "mask": "000 0000 000 0000",
-      "note": "Any 1 or 2 Suits. X 25"
+      "hand": "2224 4446 668 888",
+      "mask": "0000 0000 000 000",
+      "note": "No description captured"
     },
     {
       "id": 6,
-      "hand": "FF 2222 4444 6666",
+      "hand": "FF22 2244 446 666",
+      "mask": "00gg rr00 000 000",
+      "note": "No description captured"
+    },
+    {
+      "id": 7,
+      "hand": "FF 2222 6666 8888",
       "mask": "00 ggrr 0000 0000",
       "note": "Any 3 Suits. X 25"
     },
     {
-      "id": 7,
-      "hand": "22 444 66 888",
-      "mask": "00 000 00 000",
+      "id": 8,
+      "hand": "22 444 66 888 DDDD",
+      "mask": "00 000 00 000 0000",
       "note": "Any 1 Suit"
     },
     {
-      "id": 8,
+      "id": 9,
       "hand": "FFFF 2468 222 222",
       "mask": "0000 g000 grr r00",
       "note": "Any 3 Suits, Like Pungs Any Even No. . a eeu evens X 25"
     },
     {
-      "id": 9,
-      "hand": "FFF 22 44 666",
-      "mask": "000 gg 00 000",
+      "id": 10,
+      "hand": "FFF 22 44 666 8888",
+      "mask": "000 gg 00 000 0000",
       "note": "Any { Suit"
     },
     {
-      "id": 10,
+      "id": 11,
       "hand": "FF 2222 DDDD 2222",
       "mask": "00 ggrr 0000 r000",
       "note": "Any 3 Suits, Like Kongs Any Even No"
     },
     {
-      "id": 11,
-      "hand": "22 44 66 88",
-      "mask": "00 00 00 00",
+      "id": 12,
+      "hand": "22 44 66 88 222 222",
+      "mask": "00 00 00 00 000 000",
       "note": "Any 3 Suits, Like Pungs Any Even No"
     },
     {
-      "id": 12,
-      "hand": "FF 1111 D 1111",
-      "mask": "00 0000 0 0000",
+      "id": 13,
+      "hand": "FF 1111 D 1111 D117",
+      "mask": "00 0000 0 0000 0000",
       "note": "Any 3 Suits"
     },
     {
-      "id": 13,
-      "hand": "FFFF 11 111 111",
-      "mask": "0000 00 000 000",
+      "id": 14,
+      "hand": "FFFF 11 111 111 11",
+      "mask": "0000 00 000 000 00",
       "note": "Any8 Suits, Pairs Must Be Same Suit"
     },
     {
-      "id": 14,
-      "hand": "FF 111 111 111",
-      "mask": "00 000 000 000",
+      "id": 15,
+      "hand": "FF 111 111 111 DDD",
+      "mask": "00 000 000 000 000",
       "note": "Any3 Suits, Any Dragon"
     }
   ]
