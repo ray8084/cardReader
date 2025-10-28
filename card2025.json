@@ -6,7 +6,8 @@
       "colorMask": "0000 0000 000 000",
       "jokerMask": "1111 0000 111 111",
       "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits",
-      "family": "2025"
+      "family": "2025",
+      "points": "25"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
       "note": "Any 2 Suits",
-      "family": "2025"
+      "family": "2025",
+      "points": ""
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "colorMask": "0000 000 000 0000",
       "jokerMask": "0000 111 111 1111",
       "note": "Any 3 Suits",
-      "family": "2025"
+      "family": "2025",
+      "points": ""
     },
     {
       "id": 4,
@@ -30,7 +33,8 @@
       "colorMask": "00 000 000 000 000",
       "jokerMask": "00 111 111 111 111",
       "note": "Any 3 Suits",
-      "family": "2025"
+      "family": "2025",
+      "points": "30"
     },
     {
       "id": 5,
@@ -38,7 +42,8 @@
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
       "note": "Any 1 or 2 Suits",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "colorMask": "000 0000 000 0000",
       "jokerMask": "111 1111 111 1111",
       "note": "Any 1 or 2 Suits",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 7,
@@ -54,7 +60,8 @@
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
       "note": "Any 3 Suits",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 8,
@@ -62,7 +69,8 @@
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
       "note": "Any 3 Suits",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 9,
@@ -70,7 +78,8 @@
       "colorMask": "00 000 00 000 0000",
       "jokerMask": "00 111 00 111 1111",
       "note": "Any 1 Suit",
-      "family": "2468"
+      "family": "2468",
+      "points": ""
     },
     {
       "id": 10,
@@ -78,7 +87,8 @@
       "colorMask": "0000 0000 000 000",
       "jokerMask": "1111 0000 111 111",
       "note": "Any 3 Suits, Like Pungs Any Even No.",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 11,
@@ -86,7 +96,8 @@
       "colorMask": "000 00 00 000 0000",
       "jokerMask": "111 00 00 111 1111",
       "note": "Any 1 Suit",
-      "family": "2468"
+      "family": "2468",
+      "points": ""
     },
     {
       "id": 12,
@@ -94,7 +105,8 @@
       "colorMask": "000 0000 000 00 00",
       "jokerMask": "111 1111 111 00 00",
       "note": "Any 3 Suits, Pairs 8s Only",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 13,
@@ -102,7 +114,8 @@
       "colorMask": "00 0000 0000 0000",
       "jokerMask": "00 1111 1111 1111",
       "note": "Any 3 Suits, Like Kongs Any Even No.",
-      "family": "2468"
+      "family": "2468",
+      "points": "25"
     },
     {
       "id": 14,
@@ -110,7 +123,8 @@
       "colorMask": "00 00 00 00 000 000",
       "jokerMask": "00 00 00 00 111 111",
       "note": "Any 3 Suits, Like Pungs Any Even No.",
-      "family": "2468"
+      "family": "2468",
+      "points": "30"
     },
     {
       "id": 15,
@@ -118,7 +132,8 @@
       "colorMask": "00 0000 0 0000 0 00",
       "jokerMask": "00 1111 0 1111 0 00",
       "note": "Any3 Suits",
-      "family": "ANY LIKE NUMBERS"
+      "family": "ANY LIKE NUMBERS",
+      "points": ""
     },
     {
       "id": 16,
@@ -126,7 +141,8 @@
       "colorMask": "0000 00 000 000 00",
       "jokerMask": "1111 00 111 111 00",
       "note": "Any3 Suits, Pairs Must Be Same Suit",
-      "family": "ANY LIKE NUMBERS"
+      "family": "ANY LIKE NUMBERS",
+      "points": "30"
     },
     {
       "id": 17,
@@ -134,7 +150,8 @@
       "colorMask": "00 000 000 000 000",
       "jokerMask": "00 111 111 111 111",
       "note": "Any 3 Suits, Any Dragon",
-      "family": "ANY LIKE NUMBERS"
+      "family": "ANY LIKE NUMBERS",
+      "points": "30"
     }
   ]
 }

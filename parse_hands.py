@@ -59,6 +59,17 @@ def extract_hands(image_path):
         if '(' in line_text and ')' in line_text:
             note = line_text[line_text.find('(')+1:line_text.find(')')].strip()
         
+        # Extract points value from end of line
+        # Points are typically at the very end, like "25" or "30"
+        points = ''
+        if line_text and ')' in line_text:
+            # Get text after the closing paren
+            text_after_note = line_text[line_text.rfind(')')+1:].strip()
+            # Look for a number at the end
+            match = re.search(r'(\d+)\s*$', text_after_note)
+            if match:
+                points = match.group(1)
+        
         # Check for patterns that indicate multiple hands
         # Look for "-01-", "-or-", " or ", etc.
         
@@ -172,7 +183,8 @@ def extract_hands(image_path):
                 'colorMask': formatted_colorMask,
                 'jokerMask': formatted_jokerMask,
                 'note': note,
-                'family': current_family if current_family else ''
+                'family': current_family if current_family else '',
+                'points': points
             })
     
     return hands
