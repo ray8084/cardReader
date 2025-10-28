@@ -3,67 +3,67 @@
     {
       "id": 1,
       "hand": "FFFF 2025 222 222",
-      "mask": "0000 0000 000 000",
+      "mask": "0000 g0g0 0g0 ggg",
       "note": "Any3 Suits, Like Pungs 2s or 5s in Opp. Suits"
     },
     {
       "id": 2,
       "hand": "222 0000 222 5555",
-      "mask": "000 0000 000 0000",
+      "mask": "g0g 0000 g0g g000",
       "note": "Any 2 Suits"
     },
     {
       "id": 3,
       "hand": "2025 222 555 DDDD",
-      "mask": "0000 000 000 0000",
+      "mask": "gggg ggg 000 0000",
       "note": "Any 3 Suits"
     },
     {
       "id": 4,
       "hand": "FF 222 000 222",
-      "mask": "00 000 000 000",
+      "mask": "00 g0g 000 0g0",
       "note": "Any 3 Suits"
     },
     {
       "id": 5,
       "hand": "222 4444 666 8888",
-      "mask": "000 0000 000 0000",
+      "mask": "g0g 0000 000 0000",
       "note": "Any 1 or 2 Suits. X 25"
     },
     {
       "id": 6,
       "hand": "FF 2222 4444 6666",
-      "mask": "00 0000 0000 0000",
+      "mask": "00 g0gg 0000 0000",
       "note": "Any 3 Suits. X 25"
     },
     {
       "id": 7,
       "hand": "22 444 66 888",
-      "mask": "00 000 00 000",
+      "mask": "g0 000 00 000",
       "note": "Any 1 Suit"
     },
     {
       "id": 8,
       "hand": "FFFF 2468 222 222",
-      "mask": "0000 0000 000 000",
+      "mask": "0000 g000 0g0 ggg",
       "note": "Any 3 Suits, Like Pungs Any Even No. . a eeu evens X 25"
     },
     {
       "id": 9,
       "hand": "FFF 22 44 666",
-      "mask": "000 00 00 000",
+      "mask": "000 0g 00 000",
       "note": "Any { Suit"
     },
     {
       "id": 10,
       "hand": "FF 2222 DDDD 2222",
-      "mask": "00 0000 0000 0000",
+      "mask": "00 g0gg 0000 0ggg",
       "note": "Any 3 Suits, Like Kongs Any Even No"
     },
     {
       "id": 11,
       "hand": "22 44 66 88",
-      "mask": "00 00 00 00",
+      "mask": "g0 00 00 00",
       "note": "Any 3 Suits, Like Pungs Any Even No"
     },
     {
