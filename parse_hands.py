@@ -66,75 +66,105 @@ def extract_hands(image_path):
     valid_chars = set('0123456789FD')
     
     for line_text in text_lines:
-        clean = ''.join([c for c in line_text if c in valid_chars])
+        # First try to extract patterns from the original line
+        # Pattern: groups of chars separated by spaces
+        # Look for patterns like "222 0000 222 5555" or "FFFF 2025 222 222"
         
-        # Get 14 chars (may have extra chars at end like section numbers)
-        if 13 <= len(clean):
-            # Take first 14 for the hand
-            hand_text = clean[:14]
+        # Extract the hand pattern (everything up to the paren or end)
+        hand_part = line_text.split('(')[0].strip() if '(' in line_text else line_text.strip()
+        
+        # Parse the original line to get spaced groups
+        # Example: "222 0000 222 5555" -> ["222", "0000", "222", "5555"]
+        parts = hand_part.split()
+        hand_groups = []
+        for part in parts:
+            # Only take valid mahjong characters
+            valid_part = ''.join([c for c in part if c in valid_chars])
+            if valid_part:
+                hand_groups.append(valid_part)
+        
+        # Combine groups into hand text
+        full_hand = ''.join(hand_groups)
+        
+        # We need 14 characters total
+        if len(full_hand) < 13:
+            continue
             
-            # Build hand positions
-            positions = []
-            for i in range(len(data['text'])):
-                word = data['text'][i].strip()
-                if not word or data['conf'][i] < 30:
-                    continue
-                
-                x, y = data['left'][i], data['top'][i]
-                w, h = data['width'][i], data['height'][i]
-                
-                # Split into chars
-                char_w = w // len(word) if len(word) > 0 else w
-                for j, char in enumerate(word):
-                    if char in valid_chars:
-                        positions.append({
-                            'char': char,
-                            'x': x + j * char_w,
-                            'y': y,
-                            'w': char_w,
-                            'h': h
-                        })
+        hand_text = full_hand[:14]
+        
+        # Build hand positions
+        positions = []
+        for i in range(len(data['text'])):
+            word = data['text'][i].strip()
+            if not word or data['conf'][i] < 30:
+                continue
             
-            # Build mask by finding each character and sampling color
-            mask = ''
-            pos_idx = 0
-            for char in hand_text:
-                found_color = False
-                # Try to find matching char in positions
-                for i in range(pos_idx, len(positions)):
-                    if positions[i]['char'] == char:
-                        color = detect_char_color(
-                            img,
-                            positions[i]['x'],
-                            positions[i]['y'],
-                            positions[i]['w'],
-                            positions[i]['h'],
-                            mask_red,
-                            mask_green
-                        )
-                        mask += color
-                        pos_idx = i + 1
-                        found_color = True
-                        break
-                
-                if not found_color:
-                    mask += '0'
+            x, y = data['left'][i], data['top'][i]
+            w, h = data['width'][i], data['height'][i]
             
-            # Extract note
-            note = ''
-            if '(' in line_text and ')' in line_text:
-                note = line_text[line_text.find('(')+1:line_text.find(')')].strip()
+            # Split into chars
+            char_w = w // len(word) if len(word) > 0 else w
+            for j, char in enumerate(word):
+                if char in valid_chars:
+                    positions.append({
+                        'char': char,
+                        'x': x + j * char_w,
+                        'y': y,
+                        'w': char_w,
+                        'h': h
+                    })
+        
+        # Build mask by finding each character and sampling color
+        mask = ''
+        pos_idx = 0
+        for char in hand_text:
+            found_color = False
+            # Try to find matching char in positions
+            for i in range(pos_idx, len(positions)):
+                if positions[i]['char'] == char:
+                    color = detect_char_color(
+                        img,
+                        positions[i]['x'],
+                        positions[i]['y'],
+                        positions[i]['w'],
+                        positions[i]['h'],
+                        mask_red,
+                        mask_green
+                    )
+                    mask += color
+                    pos_idx = i + 1
+                    found_color = True
+                    break
             
-            # Format
-            formatted = f"{hand_text[0:4]} {hand_text[4:8]} {hand_text[8:11]} {hand_text[11:14]}"
-            formatted_mask = f"{mask[0:4]} {mask[4:8]} {mask[8:11]} {mask[11:14]}"
-            
-            hands.append({
-                'id': len(hands) + 1,
-                'hand': formatted,
-                'mask': formatted_mask,
-                'note': note
-            })
+            if not found_color:
+                mask += '0'
+        
+        # Extract note
+        note = ''
+        if '(' in line_text and ')' in line_text:
+            note = line_text[line_text.find('(')+1:line_text.find(')')].strip()
+        
+        # Preserve original spacing from hand_part
+        # Build formatted hand and mask with original spacing
+        formatted_parts = []
+        mask_parts = []
+        for i, part in enumerate(hand_groups):
+            formatted_parts.append(part)
+            # Get corresponding mask for this part
+            start_idx = sum(len(p) for p in hand_groups[:i])
+            end_idx = start_idx + len(part)
+            mask_parts.append(mask[start_idx:end_idx])
+        
+        # Join with spaces matching the original
+        formatted = ' '.join(formatted_parts)
+        formatted_mask = ' '.join(mask_parts)
+        
+        hands.append({
+            'id': len(hands) + 1,
+            'hand': formatted,
+            'mask': formatted_mask,
+            'note': note
+        })
     
     return hands
 
