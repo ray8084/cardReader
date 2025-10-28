@@ -196,8 +196,15 @@ class MahjongCardReader:
             hand_str = ''.join(chars[:14])
             hand_chars = chars[:14]
         elif len(chars) == 13:
-            # Only 13 chars - skip for now (incomplete)
-            return
+            # Only 13 chars - pad with one more char or accept
+            # Try to find one more character in surrounding context
+            # For now, just use what we have
+            hand_str = ''.join(chars)
+            hand_chars = chars + ['0']  # Pad with dummy
+        elif len(chars) == 15:
+            # Has extra char, take first 14
+            hand_str = ''.join(chars[:14])
+            hand_chars = chars[:14]
         else:
             return
         
@@ -236,8 +243,8 @@ class MahjongCardReader:
         if hand_formatted == hand_str and len(hand_str) == 14:
             hand_formatted = f"{hand_str[0:4]} {hand_str[4:8]} {hand_str[8:11]} {hand_str[11:14]}"
         
-        # Detect colors
-        color_mask = self.detect_colors_from_image(line)
+        # Detect colors by actually sampling pixels
+        color_mask = self.detect_colors_actual(line, hand_str)
         mask_with_spaces = self.add_spaces_to_mask(hand_formatted, color_mask)
         
         hands.append({
@@ -253,8 +260,15 @@ class MahjongCardReader:
         print(f"\nTotal: {len(hands)} unique hands found")
         return hands
     
+    def detect_colors_actual(self, line_text: str, hand_str: str) -> str:
+        """Detect colors by actually sampling the image at character positions"""
+        # This will use HSV color segmentation from the full image
+        # We already have color masks created in detect_colors_from_image
+        # Just call that to get actual pixel sampling
+        return self.detect_colors_from_image(line_text)
+    
     def detect_colors_from_image(self, line_text: str) -> str:
-        """Detect colors by sampling pixels from OCR character positions"""
+        """Detect colors by creating color masks and sampling those regions"""
         valid_chars = set('0123456789FD')
         chars = [c for c in line_text if c in valid_chars]
         
@@ -263,86 +277,96 @@ class MahjongCardReader:
         
         chars = chars[:14]
         
-        # Run OCR to get character-level bounding boxes  
         try:
+            # Create HSV color masks for the entire image
+            hsv = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+            
+            # Red color ranges
+            lower_red1 = np.array([0, 30, 30])
+            upper_red1 = np.array([10, 255, 255])
+            lower_red2 = np.array([170, 30, 30])
+            upper_red2 = np.array([180, 255, 255])
+            mask_red = cv2.bitwise_or(
+                cv2.inRange(hsv, lower_red1, upper_red1),
+                cv2.inRange(hsv, lower_red2, upper_red2)
+            )
+            
+            # Green color range  
+            lower_green = np.array([35, 30, 30])
+            upper_green = np.array([85, 255, 255])
+            mask_green = cv2.inRange(hsv, lower_green, upper_green)
+            
+            # Run OCR to get character positions
             config = '--oem 3 --psm 6'
             data = pytesseract.image_to_data(self.image, config=config, output_type=pytesseract.Output.DICT)
             
-            # Build list of all valid characters with their positions
+            # Build all character positions
             all_chars_with_pos = []
             for i in range(len(data["text"])):
                 text = data["text"][i]
-                if text and data["conf"][i] > 0:
-                    for c in text:
+                if text and data["conf"][i] > 40:  # Only high confidence
+                    for j, c in enumerate(text):
                         if c in valid_chars:
                             all_chars_with_pos.append({
                                 'char': c,
-                                'left': data["left"][i],
+                                'left': data["left"][i] + j * (data["width"][i] // len(text)) if len(text) > 0 else data["left"][i],
                                 'top': data["top"][i],
-                                'width': data["width"][i],
+                                'width': data["width"][i] // len(text) if len(text) > 0 else data["width"][i],
                                 'height': data["height"][i]
                             })
             
-            # Find matching characters from our hand in the OCR data
-            # Match by character (simple approach)
-            hsv = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+            # For each character in our hand, find matching position and sample color
             color_mask = []
-            ocr_idx = 0
+            ocr_match_idx = 0
             
             for i, char in enumerate(chars):
-                found = False
+                best_match_idx = None
+                best_distance = float('inf')
                 
-                # Try to find this character in OCR data
-                for j in range(ocr_idx, min(ocr_idx + 5, len(all_chars_with_pos))):
+                # Find the best matching character in a small window
+                search_window = 10
+                for j in range(ocr_match_idx, min(ocr_match_idx + search_window, len(all_chars_with_pos))):
                     if all_chars_with_pos[j]['char'] == char:
-                        # Found matching character, sample its color
-                        left = all_chars_with_pos[j]['left']
-                        top = all_chars_with_pos[j]['top']
-                        width = all_chars_with_pos[j]['width']
-                        height = all_chars_with_pos[j]['height']
-                        
-                        # Sample center of character
-                        center_y = top + height // 2
-                        center_x = left + width // 2
-                        
-                        # Sample small region
-                        y1 = max(0, center_y - height // 4)
-                        y2 = min(hsv.shape[0], center_y + height // 4)
-                        x1 = max(0, center_x - width // 4)
-                        x2 = min(hsv.shape[1], center_x + width // 4)
-                        
-                        if y2 > y1 and x2 > x1:
-                            region = hsv[y1:y2, x1:x2]
-                            
-                            # Check green
-                            lower_green = np.array([40, 50, 50])
-                            upper_green = np.array([80, 255, 255])
-                            green_mask = cv2.inRange(region, lower_green, upper_green)
-                            green_ratio = np.sum(green_mask > 0) / (region.size + 1)
-                            
-                            # Check red
-                            lower_red1 = np.array([0, 50, 50])
-                            upper_red1 = np.array([10, 255, 255])
-                            lower_red2 = np.array([170, 50, 50])
-                            upper_red2 = np.array([180, 255, 255])
-                            red_mask = cv2.bitwise_or(
-                                cv2.inRange(region, lower_red1, upper_red1),
-                                cv2.inRange(region, lower_red2, upper_red2)
-                            )
-                            red_ratio = np.sum(red_mask > 0) / (region.size + 1)
-                            
-                            # Determine color (lower threshold for better detection)
-                            if green_ratio > 0.1 or (green_ratio > 0.05 and green_ratio > red_ratio):
-                                color_mask.append('g')
-                            elif red_ratio > 0.1 or (red_ratio > 0.05 and red_ratio > green_ratio):
-                                color_mask.append('r')
-                            else:
-                                color_mask.append('0')
-                            found = True
-                            ocr_idx = j + 1
-                            break
+                        best_match_idx = j
+                        best_distance = abs(j - ocr_match_idx)
+                        break
                 
-                if not found:
+                if best_match_idx is not None:
+                    pos = all_chars_with_pos[best_match_idx]
+                    left, top = pos['left'], pos['top']
+                    width, height = pos['width'], pos['height']
+                    
+                    # Sample a region around this character
+                    center_x = left + width // 2
+                    center_y = top + height // 2
+                    
+                    # Expand sampling region
+                    y1 = max(0, center_y - 15)
+                    y2 = min(hsv.shape[0], center_y + 15)
+                    x1 = max(0, center_x - 20)
+                    x2 = min(hsv.shape[1], center_x + 20)
+                    
+                    if y2 > y1 and x2 > x1:
+                        # Sample green and red masks at this region
+                        green_regions = np.sum(mask_green[y1:y2, x1:x2] > 0)
+                        red_regions = np.sum(mask_red[y1:y2, x1:x2] > 0)
+                        total_pixels = (y2 - y1) * (x2 - x1)
+                        
+                        green_ratio = green_regions / total_pixels if total_pixels > 0 else 0
+                        red_ratio = red_regions / total_pixels if total_pixels > 0 else 0
+                        
+                        # Lower threshold for detection
+                        if green_ratio > 0.08:
+                            color_mask.append('g')
+                        elif red_ratio > 0.08:
+                            color_mask.append('r')
+                        else:
+                            color_mask.append('0')
+                        
+                        ocr_match_idx = best_match_idx + 1
+                    else:
+                        color_mask.append('0')
+                else:
                     color_mask.append('0')
             
             # Ensure 14 chars
@@ -353,6 +377,8 @@ class MahjongCardReader:
             
         except Exception as e:
             print(f"Error in color detection: {e}")
+            import traceback
+            traceback.print_exc()
             return '0' * 14
     
     def detect_character_colors(self, line_text: str, line_y: int, image_width: int) -> str:

@@ -9,7 +9,7 @@
     {
       "id": 2,
       "hand": "222 0000 222 5555",
-      "mask": "000 0000 000 0000",
+      "mask": "00g g000 grr 0000",
       "note": "Any 2 Suits"
     },
     {
@@ -27,7 +27,7 @@
     {
       "id": 5,
       "hand": "2224 4446 668 888",
-      "mask": "0000 0000 000 000",
+      "mask": "00g0 0000 000 000",
       "note": "No description captured"
     },
     {
@@ -69,7 +69,7 @@
     {
       "id": 12,
       "hand": "22 44 66 88 222 222",
-      "mask": "00 00 00 00 000 000",
+      "mask": "00 00 00 00 ggr rr0",
       "note": "Any 3 Suits, Like Pungs Any Even No"
     },
     {
