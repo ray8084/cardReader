@@ -119,14 +119,21 @@ def extract_hands(image_path):
             for part in hand_groups:
                 colorMask_parts.append('0' * len(part))
             
+            # Create jokerMask that's all '1's matching the spacing of each hand
+            jokerMask_parts = []
+            for part in hand_groups:
+                jokerMask_parts.append('1' * len(part))
+            
             # Build formatted hand with proper spacing
             formatted = ' '.join(hand_groups)
             formatted_colorMask = ' '.join(colorMask_parts)
+            formatted_jokerMask = ' '.join(jokerMask_parts)
             
             hands.append({
                 'id': len(hands) + 1,
                 'hand': formatted,
                 'colorMask': formatted_colorMask,
+                'jokerMask': formatted_jokerMask,
                 'note': note
             })
     
