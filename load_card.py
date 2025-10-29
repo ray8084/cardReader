@@ -126,6 +126,9 @@ class Card{year}:
             joker_mask = joker_mask.replace('"', '\\"')
             family = family.replace('"', '\\"')
             
+            # Generate mask by replacing all non-space characters with 0s
+            mask = ''.join('0' if c != ' ' else ' ' for c in text)
+            
             script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
         
 '''
