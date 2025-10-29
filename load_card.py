@@ -209,4 +209,6 @@ def main():
     generate_python_script(data)
 
 if __name__ == "__main__":
-    main()
+    # COMMENTED OUT - We are now hand-editing generate2014.py
+    # main()
+    print("load_card.py is disabled to prevent overwriting hand-edited generate2014.py")
