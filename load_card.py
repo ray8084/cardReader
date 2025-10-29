@@ -126,20 +126,28 @@ class Card{year}:
             joker_mask = joker_mask.replace('"', '\\"')
             family = family.replace('"', '\\"')
             
-            # Generate mask by replacing all non-space characters with 0s
-            mask = ''.join('0' if c != ' ' else ' ' for c in text)
+            # Generate mask by replacing only tile characters with 0s, ignore special chars
+            mask = ''.join('0' if c not in ' +=' else ' ' for c in text)
             
-            # Generate joker_mask by replacing all non-space characters with 1s
-            joker_mask = ''.join('1' if c != ' ' else ' ' for c in text)
+            # Clean up multiple consecutive spaces
+            import re
+            mask = re.sub(r' +', ' ', mask)
+            
+            # Generate joker_mask by replacing only tile characters with 1s, ignore special chars
+            joker_mask = ''.join('1' if c not in ' +=' else ' ' for c in text)
+            
+            # Clean up multiple consecutive spaces
+            import re
+            joker_mask = re.sub(r' +', ' ', joker_mask)
             
             # Replace pairs of 1s with 0s since jokers cannot be used in pairs
-            # Only replace standalone "11" pairs, not within longer sequences like "1111"
-            import re
-            joker_mask = re.sub(r'\b11\b', '00', joker_mask)
+            # Handle pairs at the end of the string and pairs surrounded by spaces
+            joker_mask = re.sub(r' 11 ', ' 00 ', joker_mask)  # pairs in middle
+            joker_mask = re.sub(r' 11$', ' 00', joker_mask)   # pairs at end
             
             # Analyze tile groups and modify joker mask for non-matching tiles
-            # Split by spaces to get individual tile groups
-            tile_groups = text.split()
+            # Split by spaces to get individual tile groups (filter out special chars)
+            tile_groups = [group for group in text.split() if group not in ['+', '=']]
             joker_mask_parts = joker_mask.split()
             
             for i, group in enumerate(tile_groups):
