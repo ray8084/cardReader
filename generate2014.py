@@ -76,10 +76,12 @@ class Card2014:
         p1 = self.add_hand(1, "2222 44 6666 88 88", "gggg gg gggg rr 00", "1111 00 1111 00 00", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
         p1.generateTileSetsMixedSuit()
 
-        p2 = self.add_hand(2, "22 44 444 666 8888", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits, Kong 8s", "2468", False, 25)
-        
-        p3 = self.add_hand(3, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
-        
+        p2 = self.add_hand(2, "22 44 444 666 8888", "gg gg rrr rrr 0000", "00 00 111 111 1111", "Any 3 Suits, Kong 8s", "2468", False, 25)
+        p2.generateTileSetsMixedSuit()
+
+        p3 = self.add_hand(3, "222 444 6666 8888", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
+        p3.generateTileSetsMixedSuit()
+
         p4 = self.add_hand(4, "222 888 DDDD DDDD", "000 000 0000 0000", "111 111 1111 1111", "Any 3 Suits", "2468", False, 25)
         
         p5 = self.add_hand(5, "FF 222 444 666 888", "00 000 000 000 000", "00 111 111 111 111", "", "2468", True, 30)

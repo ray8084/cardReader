@@ -116,24 +116,38 @@
     {
       "id": 2,
       "hand": "22 44 444 666 8888",
-      "colorMask": "00 00 000 000 0000",
+      "colorMask": "gg gg rrr rrr 0000",
       "jokerMask": "00 00 111 111 1111",
       "note": "Any 3 Suits, Kong 8s",
       "family": "2468",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [12, 12, 14, 14, 24, 24, 24, 26, 26, 26, 8, 8, 8, 8],
+          [22, 22, 24, 24, 14, 14, 14, 16, 16, 16, 8, 8, 8, 8],
+          [2, 2, 4, 4, 24, 24, 24, 26, 26, 26, 18, 18, 18, 18],
+          [22, 22, 24, 24, 4, 4, 4, 6, 6, 6, 18, 18, 18, 18],
+          [2, 2, 4, 4, 14, 14, 14, 16, 16, 16, 28, 28, 28, 28],
+          [12, 12, 14, 14, 4, 4, 4, 6, 6, 6, 28, 28, 28, 28]
+      ]
     },
     {
       "id": 3,
       "hand": "222 444 6666 8888",
-      "colorMask": "000 000 0000 0000",
+      "colorMask": "ggg ggg rrrr rrrr",
       "jokerMask": "111 111 1111 1111",
       "note": "Any 2 Suits",
       "family": "2468",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [12, 12, 12, 14, 14, 14, 26, 26, 26, 26, 28, 28, 28, 28],
+          [22, 22, 22, 24, 24, 24, 16, 16, 16, 16, 18, 18, 18, 18],
+          [2, 2, 2, 4, 4, 4, 26, 26, 26, 26, 28, 28, 28, 28],
+          [22, 22, 22, 24, 24, 24, 6, 6, 6, 6, 8, 8, 8, 8],
+          [2, 2, 2, 4, 4, 4, 16, 16, 16, 16, 18, 18, 18, 18],
+          [12, 12, 12, 14, 14, 14, 6, 6, 6, 6, 8, 8, 8, 8]
+      ]
     },
     {
       "id": 4,
@@ -687,9 +701,9 @@
     }
   ],
   "summary": {
-    "hands_with_valid_tiles": 7,
-    "hands_without_valid_tiles": 52,
-    "total_tiles_used": 378,
+    "hands_with_valid_tiles": 9,
+    "hands_without_valid_tiles": 50,
+    "total_tiles_used": 546,
     "families": {
       "2014": {
         "total_hands": 5,
@@ -698,8 +712,8 @@
       },
       "2468": {
         "total_hands": 6,
-        "valid_hands": 2,
-        "invalid_hands": 4
+        "valid_hands": 4,
+        "invalid_hands": 2
       },
       "Like Numbers": {
         "total_hands": 1,
