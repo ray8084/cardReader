@@ -251,13 +251,7 @@ class Card2014:
             
             # Add tile sets if they exist
             for i, tile_set in enumerate(hand.tile_sets):
-                tile_set_data = {
-                    "set_id": i + 1,
-                    "tile_ids": tile_set,  # Keep as list for now
-                    "tile_count": len(tile_set),
-                    "readable_format": self.condense_tile_set(tile_set)
-                }
-                hand_data["tile_sets"].append(tile_set_data)
+                hand_data["tile_sets"].append(tile_set)
             
             json_data["hands"].append(hand_data)
         
@@ -292,17 +286,16 @@ class Card2014:
         with open(filename, 'w', encoding='utf-8') as f:
             json_str = json.dumps(json_data, indent=2, ensure_ascii=False, separators=(',', ': '))
             
-            # Replace tile_ids arrays to be on single lines using simple string replacement
+            # Replace tile arrays to be on single lines using simple string replacement
             lines = json_str.split('\n')
             result_lines = []
             i = 0
             while i < len(lines):
                 line = lines[i]
-                if '"tile_ids": [' in line:
-                    # Found start of tile_ids array - skip the opening bracket line
-                    i += 1
-                    # Collect all the tile ID lines until we find the closing bracket
+                if line.strip().startswith('[') and not line.strip().startswith('[['):
+                    # Found start of tile array - collect all the tile ID lines until we find the closing bracket
                     tile_lines = []
+                    i += 1
                     while i < len(lines) and ']' not in lines[i]:
                         tile_lines.append(lines[i].strip().rstrip(','))
                         i += 1
@@ -311,7 +304,7 @@ class Card2014:
                         i += 1
                     # Create single line with all tile IDs
                     tile_ids_str = ', '.join(tile_lines)
-                    result_lines.append(f'          "tile_ids": [{tile_ids_str}],')
+                    result_lines.append(f'          [{tile_ids_str}],')
                 else:
                     result_lines.append(line)
                     i += 1
