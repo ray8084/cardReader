@@ -35,6 +35,10 @@ class Card2014:
         for hand in self.hand_list:
             total_tiles += len(hand.tile_sets) * 14  # Assuming 14 tiles per hand
             print(f"{hand.id+1} count:{len(hand.tile_sets)} - {hand}")
+            # Dump tile sets for hands that have them
+            if len(hand.tile_sets) > 0:
+                for i, tile_set in enumerate(hand.tile_sets):
+                    print(f"  Set {i+1}: {tile_set}")
         print(f"Total tiles: {total_tiles}")
     
     def get_year(self) -> str:
@@ -50,6 +54,7 @@ class Card2014:
 
     def generate2014(self):
         p0 = self.add_hand(0, "NNNN EW SSSS 2014", "0000 00 0000 0000", "1111 00 1111 0000", "Any 1 Suit", "2014", False, 25)
+        p0.generateTileSetStatic()
         
         p1 = self.add_hand(1, "222 000 1111 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
         
