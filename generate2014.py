@@ -55,38 +55,38 @@ class Card2014:
 
     def generate2014(self):
         p0 = self.add_hand(0, "NNNN EW SSSS 2014", "0000 00 0000 0000", "1111 00 1111 0000", "Any 1 Suit", "2014", False, 25)
-        p0.generateTileSetsMixedSuit()
+        p0.generateTileSets()
         
         p1 = self.add_hand(1, "222 000 1111 4444", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
-        p1.generateTileSetsMixedSuit()
+        p1.generateTileSets()
     
         p2 = self.add_hand(2, "FFFF 2222 0000 14", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "2014", False, 30)
-        p2.generateTileSetsMixedSuit()
+        p2.generateTileSets()
         
         p3 = self.add_hand(3, "FF 2014 1111 4444", "00 gggg rrrr 0000", "00 0000 1111 1111", "Any 3 Suits", "2014", False, 25)
-        p3.generateTileSetsMixedSuit()
+        p3.generateTileSets()
         
         p4 = self.add_hand(4, "FFFF DDD 2014 DDD", "0000 ggg rrrr 000", "1111 111 0000 111", "Any 2 Dragons, 2 or 3 Suits", "2014", True, 35)
-        p4.generateTileSetsMixedSuit()
+        p4.generateTileSets()
 
     def generate2468(self):
         p0 = self.add_hand(0, "22 44 666 888 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "", "2468", False, 25)
-        p0.generateTileSetsMixedSuit()
+        p0.generateTileSets()
 
         p1 = self.add_hand(1, "2222 44 6666 88 88", "gggg gg gggg rr 00", "1111 00 1111 00 00", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
-        p1.generateTileSetsMixedSuit()
+        p1.generateTileSets()
 
         p2 = self.add_hand(2, "22 44 444 666 8888", "gg gg rrr rrr 0000", "00 00 111 111 1111", "Any 3 Suits, Kong 8s", "2468", False, 25)
-        p2.generateTileSetsMixedSuit()
+        p2.generateTileSets()
 
         p3 = self.add_hand(3, "222 444 6666 8888", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
-        p3.generateTileSetsMixedSuit()
+        p3.generateTileSets()
 
         p4 = self.add_hand(4, "222 888 DDDD DDDD", "ggg ggg rrrr 0000", "111 111 1111 1111", "Any 3 Suits", "2468", False, 25)
-        p4.generateTileSetsMixedSuit()
+        p4.generateTileSets()
 
         p5 = self.add_hand(5, "FF 222 444 666 888", "00 000 000 000 000", "00 111 111 111 111", "", "2468", True, 30)
-        p5.generateTileSetsMixedSuit()
+        p5.generateTileSets()
 
     def generateLikeNumbers(self):
         p0 = self.add_hand(0, "FFFF 1111 11 1111", "0000 0000 00 0000", "1111 1111 00 1111", "Any Like No.", "Like Numbers", False, 25)

@@ -72,7 +72,7 @@ class Hand:
         """
         return f"{self.family} {self.text} {self.note}"
     
-    def generateTileSetsMixedSuit(self):
+    def generateTileSets(self):
         """
         Generate tile sets with mixed suits for this hand.
         
