@@ -73,8 +73,9 @@ class Card2014:
         p0 = self.add_hand(0, "22 44 666 888 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "", "2468", False, 25)
         p0.generateTileSetStatic()
 
-        p1 = self.add_hand(1, "2222 44 6666 88 88", "0000 00 0000 00 00", "1111 00 1111 00 00", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
-        
+        p1 = self.add_hand(1, "2222 44 6666 88 88", "gggg gg gggg rr 00", "1111 00 1111 00 00", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
+        p1.generateTileSetsMixedSuit()
+
         p2 = self.add_hand(2, "22 44 444 666 8888", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits, Kong 8s", "2468", False, 25)
         
         p3 = self.add_hand(3, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
@@ -250,7 +251,9 @@ class Card2014:
             }
             
             # Add tile sets if they exist
+            print(f"DEBUG: Hand {hand.id} ({hand.text}) has {len(hand.tile_sets)} tile sets")
             for i, tile_set in enumerate(hand.tile_sets):
+                print(f"DEBUG: Adding tile set {i}: {tile_set}")
                 hand_data["tile_sets"].append(tile_set)
             
             json_data["hands"].append(hand_data)
@@ -381,4 +384,4 @@ if __name__ == "__main__":
     
     # Example usage of new methods:
     # card.print_hands_detailed()  # Print detailed hand information
-    # card.export_to_json()       # Export to JSON file
+    card.export_to_json()       # Export to JSON file

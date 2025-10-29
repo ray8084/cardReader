@@ -92,18 +92,26 @@
       "family": "2468",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [2, 2, 4, 4, 6, 6, 6, 8, 8, 8, 10, 10, 10, 10],
+          [12, 12, 14, 14, 16, 16, 16, 18, 18, 18, 20, 20, 20, 20],
+          [22, 22, 24, 24, 26, 26, 26, 28, 28, 28, 30, 30, 30, 30]
+      ]
     },
     {
       "id": 1,
       "hand": "2222 44 6666 88 88",
-      "colorMask": "0000 00 0000 00 00",
+      "colorMask": "gggg gg gggg rr 00",
       "jokerMask": "1111 00 1111 00 00",
       "note": "Any 3 Suits, Pairs 8s Other 2 Suits",
       "family": "2468",
       "points": "30",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [12, 12, 12, 12, 14, 14, 16, 16, 16, 16, 28, 28, 8, 8],
+          [22, 22, 22, 22, 24, 24, 26, 26, 26, 26, 18, 18, 8, 8],
+          [2, 2, 2, 2, 4, 4, 6, 6, 6, 6, 28, 28, 18, 18]
+      ]
     },
     {
       "id": 2,
@@ -679,9 +687,9 @@
     }
   ],
   "summary": {
-    "hands_with_valid_tiles": 5,
-    "hands_without_valid_tiles": 54,
-    "total_tiles_used": 294,
+    "hands_with_valid_tiles": 7,
+    "hands_without_valid_tiles": 52,
+    "total_tiles_used": 378,
     "families": {
       "2014": {
         "total_hands": 5,
@@ -690,8 +698,8 @@
       },
       "2468": {
         "total_hands": 6,
-        "valid_hands": 0,
-        "invalid_hands": 6
+        "valid_hands": 2,
+        "invalid_hands": 4
       },
       "Like Numbers": {
         "total_hands": 1,
