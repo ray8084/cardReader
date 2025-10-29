@@ -106,7 +106,53 @@ class Hand:
         """
         Generate tile sets with mixed suits for this hand.
         
-        This method will create tile combinations using different suits
-        for different parts of the hand pattern.
+        Uses the mask to determine which tiles get which suit combinations:
+        - 'g' (green): outer loop determines suit
+        - 'r' (red): inner loop determines suit  
+        - '0' (black): uses first suit (index 0)
         """
-        pass
+        from tile import TILE_MAPPINGS
+        
+        # Parse the hand text into individual characters (tiles)
+        tiles = []
+        for group in self.text.split():
+            if group not in ['+', '=']:  # Skip special characters
+                tiles.extend(list(group))  # Add each individual tile
+        
+        # Parse the mask into individual characters
+        mask_chars = []
+        for group in self.mask.split():
+            mask_chars.extend(list(group))  # Add each mask character
+        
+        # Generate tile sets with mixed suits
+        # Outer loop: determines suit for green ('g') tiles
+        for green_suit in range(3):
+            # Inner loop: determines suit for red ('r') tiles
+            for red_suit in range(3):
+                if green_suit == red_suit:  # Skip same suit combinations
+                    continue
+                    
+                tile_set = []
+                
+                # Process each individual tile
+                for i, tile in enumerate(tiles):
+                    if tile in TILE_MAPPINGS:
+                        tile_ids = TILE_MAPPINGS[tile]
+                        
+                        # Determine which suit to use based on mask
+                        if i < len(mask_chars):
+                            mask_char = mask_chars[i]
+                            if mask_char == 'g':  # Green - use outer loop suit
+                                tile_id = tile_ids[green_suit]
+                            elif mask_char == 'r':  # Red - use inner loop suit
+                                tile_id = tile_ids[red_suit]
+                            else:  # Black ('0') or other - use first suit
+                                tile_id = tile_ids[0]
+                        else:
+                            # Default to first suit if no mask
+                            tile_id = tile_ids[0]
+                        
+                        tile_set.append(tile_id)
+                
+                # Add the tile set to this hand
+                self.add_tile_set(tile_set)

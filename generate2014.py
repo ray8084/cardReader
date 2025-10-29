@@ -56,7 +56,7 @@ class Card2014:
         p0 = self.add_hand(0, "NNNN EW SSSS 2014", "0000 00 0000 0000", "1111 00 1111 0000", "Any 1 Suit", "2014", False, 25)
         p0.generateTileSetStatic()
         
-        p1 = self.add_hand(1, "222 000 1111 4444", "ggg ggg 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
+        p1 = self.add_hand(1, "222 000 1111 4444", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
         p1.generateTileSetsMixedSuit()
         
         p2 = self.add_hand(2, "FFFF 2222 0000 14", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "2014", False, 30)
