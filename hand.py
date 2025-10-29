@@ -72,7 +72,7 @@ class Hand:
         """
         return f"{self.family} {self.text} {self.note}"
     
-    def addTileSets(self):
+    def addTileSets(self, hand_text=None):
         """
         Generate tile sets with mixed suits for this hand.
         
@@ -80,12 +80,18 @@ class Hand:
         - 'g' (green): outer loop determines suit
         - 'r' (red): inner loop determines suit  
         - '0' (black): uses first suit (index 0)
+        
+        Args:
+            hand_text (str, optional): Custom hand text to use instead of self.text
         """
         from tile import TILE_MAPPINGS
         
+        # Use provided hand text or default to self.text
+        text_to_use = hand_text if hand_text is not None else self.text
+        
         # Parse the hand text into individual characters (tiles)
         tiles = []
-        for group in self.text.split():
+        for group in text_to_use.split():
             if group not in ['+', '=']:  # Skip special characters
                 tiles.extend(list(group))  # Add each individual tile
         
@@ -155,33 +161,23 @@ class Hand:
         
         self.tile_sets = unique_tile_sets
     
-    def addTileSets_LikeNumbers(self):
+    def addTileSets_LikeNumbers(self, hand_text=None):
         """
         Generate tile sets for Like Numbers hands.
         
         This method creates tile sets where all tiles have the same number
         across different suits (like 1-1-1, 2-2-2, etc.)
+        
+        Args:
+            hand_text (str, optional): Custom hand text to use instead of self.text
         """
-        from tile import TILE_MAPPINGS
+        # Use provided hand text or default to self.text
+        text_to_use = hand_text if hand_text is not None else self.text
         
-        # Parse the hand text into individual characters (tiles)
-        tiles = []
-        for group in self.text.split():
-            if group not in ['+', '=']:  # Skip special characters
-                tiles.extend(list(group))  # Add each individual tile
-        
-        # Generate tile sets with like numbers
-        # For each suit combination, create a tile set
-        for suit_index in range(3):
-            tile_set = []
+        # Run for numbers 1 through 9
+        for number in range(1, 10):
+            # Replace the number in the hand text
+            modified_text = text_to_use.replace('1', str(number))
             
-            # Process each individual tile
-            for tile in tiles:
-                if tile in TILE_MAPPINGS:
-                    tile_ids = TILE_MAPPINGS[tile]
-                    # Use the tile ID at the current suit index for like numbers
-                    tile_id = tile_ids[suit_index]
-                    tile_set.append(tile_id)
-            
-            # Add the tile set to this hand
-            self.add_tile_set(tile_set)
+            # Call the main addTileSets method with the modified hand text
+            self.addTileSets(modified_text)

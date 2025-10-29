@@ -89,7 +89,7 @@ class Card2014:
         p5.addTileSets()
 
     def addLikeNumbers(self):
-        p0 = self.add_hand(0, "FFFF 1111 11 1111", "0000 0000 00 0000", "1111 1111 00 1111", "Any Like No.", "Like Numbers", False, 25)
+        p0 = self.add_hand(0, "FFFF 1111 11 1111", "0000 gggg rr 0000", "1111 1111 00 1111", "Any Like No.", "Like Numbers", False, 25)
         p0.addTileSets_LikeNumbers()
         
 
