@@ -141,7 +141,8 @@ class Card{year}:
             joker_mask = re.sub(r' +', ' ', joker_mask)
             
             # Replace pairs of 1s with 0s since jokers cannot be used in pairs
-            # Handle pairs at the end of the string and pairs surrounded by spaces
+            # Handle pairs at the beginning, middle, and end of the string
+            joker_mask = re.sub(r'^11 ', '00 ', joker_mask)    # pairs at start
             joker_mask = re.sub(r' 11 ', ' 00 ', joker_mask)  # pairs in middle
             joker_mask = re.sub(r' 11$', ' 00', joker_mask)   # pairs at end
             
