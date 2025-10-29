@@ -64,7 +64,7 @@ class Card2014:
         p3 = self.add_hand(3, "FF 2014 1111 4444", "00 gggg rrrr 0000", "00 0000 1111 1111", "Any 3 Suits", "2014", False, 25)
         p3.generateTileSetsMixedSuit()
         
-        p4 = self.add_hand(4, "FFFF DDD 2014 DDD", "0000 000 rrrr rrr", "1111 111 0000 111", "Any 2 Dragons, 2 or 3 Suits", "2014", True, 35)
+        p4 = self.add_hand(4, "FFFF DDD 2014 DDD", "0000 ggg rrrr 000", "1111 111 0000 111", "Any 2 Dragons, 2 or 3 Suits", "2014", True, 35)
         p4.generateTileSetsMixedSuit()
 
     def generate2468(self):

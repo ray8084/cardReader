@@ -161,3 +161,26 @@ class Hand:
                     
                     # Add the tile set to this hand
                     self.add_tile_set(tile_set)
+        
+        # Post-processing: remove duplicates
+        self.removeDuplicates()
+    
+    def removeDuplicates(self):
+        """
+        Remove duplicate tile sets from this hand.
+        Tile sets are considered duplicates if they contain the same tiles regardless of order.
+        """
+        unique_tile_sets = []
+        for tile_set in self.tile_sets:
+            # Check if this tile set (sorted) already exists
+            sorted_tile_set = sorted(tile_set)
+            is_duplicate = False
+            for existing_set in unique_tile_sets:
+                if sorted(existing_set) == sorted_tile_set:
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                unique_tile_sets.append(tile_set)
+        
+        self.tile_sets = unique_tile_sets
