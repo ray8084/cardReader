@@ -55,13 +55,13 @@ class Card2014:
 
     def generate2014(self):
         p0 = self.add_hand(0, "NNNN EW SSSS 2014", "0000 00 0000 0000", "1111 00 1111 0000", "Any 1 Suit", "2014", False, 25)
-        p0.generateTileSetStatic()
+        p0.generateTileSetsMixedSuit()
         
         p1 = self.add_hand(1, "222 000 1111 4444", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
         p1.generateTileSetsMixedSuit()
     
         p2 = self.add_hand(2, "FFFF 2222 0000 14", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "2014", False, 30)
-        p2.generateTileSetStatic()
+        p2.generateTileSetsMixedSuit()
         
         p3 = self.add_hand(3, "FF 2014 1111 4444", "00 gggg rrrr 0000", "00 0000 1111 1111", "Any 3 Suits", "2014", False, 25)
         p3.generateTileSetsMixedSuit()
@@ -71,7 +71,7 @@ class Card2014:
 
     def generate2468(self):
         p0 = self.add_hand(0, "22 44 666 888 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "", "2468", False, 25)
-        p0.generateTileSetStatic()
+        p0.generateTileSetsMixedSuit()
 
         p1 = self.add_hand(1, "2222 44 6666 88 88", "gggg gg gggg rr 00", "1111 00 1111 00 00", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
         p1.generateTileSetsMixedSuit()
