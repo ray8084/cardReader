@@ -137,6 +137,24 @@ class Card{year}:
             import re
             joker_mask = re.sub(r'\b11\b', '00', joker_mask)
             
+            # Analyze tile groups and modify joker mask for non-matching tiles
+            # Split by spaces to get individual tile groups
+            tile_groups = text.split()
+            joker_mask_parts = joker_mask.split()
+            
+            for i, group in enumerate(tile_groups):
+                if len(group) >= 3:  # Only check groups of 3 or more tiles
+                    # Check if all characters in the group are the same
+                    if len(set(group)) == 1:  # All tiles are the same (like FFFF, 2222, DDDD)
+                        # Keep as 1s - can use jokers for same tiles
+                        joker_mask_parts[i] = '1' * len(group)
+                    else:  # Different tiles (like 2014, NEWS, 2468)
+                        # Replace with 0s - cannot use jokers for different tiles
+                        joker_mask_parts[i] = '0' * len(group)
+            
+            # Reconstruct the joker mask
+            joker_mask = ' '.join(joker_mask_parts)
+            
             script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
         
 '''

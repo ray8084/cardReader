@@ -49,15 +49,15 @@ class Card2014:
         return hand
 
     def generate2014(self):
-        p0 = self.add_hand(0, "NNNN EW SSSS 2014", "0000 00 0000 0000", "1111 00 1111 1111", "Any 1 Suit", "2014", False, 25)
+        p0 = self.add_hand(0, "NNNN EW SSSS 2014", "0000 00 0000 0000", "1111 00 1111 0000", "Any 1 Suit", "2014", False, 25)
         
         p1 = self.add_hand(1, "222 000 1111 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
         
         p2 = self.add_hand(2, "FFFF 2222 0000 14", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "2014", False, 30)
         
-        p3 = self.add_hand(3, "FF 2014 1111 4444", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "2014", False, 25)
+        p3 = self.add_hand(3, "FF 2014 1111 4444", "00 0000 0000 0000", "00 0000 1111 1111", "Any 3 Suits", "2014", False, 25)
         
-        p4 = self.add_hand(4, "FFFF DDD 2014 DDD", "0000 000 0000 000", "1111 111 1111 111", "Any 2 Dragons, 2 or 3 Suits", "2014", True, 35)
+        p4 = self.add_hand(4, "FFFF DDD 2014 DDD", "0000 000 0000 000", "1111 111 0000 111", "Any 2 Dragons, 2 or 3 Suits", "2014", True, 35)
         
 
     def generate2468(self):
@@ -181,9 +181,9 @@ class Card2014:
         
         p4 = self.add_hand(4, "FF 11 22 11 22 11 22", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Consec. Nos. in 3 Suits", "Singles and Pairs", True, 50)
         
-        p5 = self.add_hand(5, "336 33669 3366999", "000 00000 0000000", "111 11111 1111111", "Any 3 Suits (INVALID: 15 tiles)", "Singles and Pairs", True, 50)
+        p5 = self.add_hand(5, "336 33669 3366999", "000 00000 0000000", "000 00000 0000000", "Any 3 Suits (INVALID: 15 tiles)", "Singles and Pairs", True, 50)
         
-        p6 = self.add_hand(6, "FF 2014 2014 2014", "00 0000 0000 0000", "00 1111 1111 1111", "3 Suits", "Singles and Pairs", True, 75)
+        p6 = self.add_hand(6, "FF 2014 2014 2014", "00 0000 0000 0000", "00 0000 0000 0000", "3 Suits", "Singles and Pairs", True, 75)
         
 
 if __name__ == "__main__":
