@@ -23,16 +23,16 @@ WIND_MAPPINGS = {
 
 # Number tile mappings (0-9 across 3 suits)
 NUMBER_MAPPINGS = {
-    0: [0, 10, 20],   # 0 across all 3 suits
-    1: [1, 11, 21],   # 1 across all 3 suits
-    2: [2, 12, 22],   # 2 across all 3 suits
-    3: [3, 13, 23],   # 3 across all 3 suits
-    4: [4, 14, 24],   # 4 across all 3 suits
-    5: [5, 15, 25],   # 5 across all 3 suits
-    6: [6, 16, 26],   # 6 across all 3 suits
-    7: [7, 17, 27],   # 7 across all 3 suits
-    8: [8, 18, 28],   # 8 across all 3 suits
-    9: [9, 19, 29]    # 9 across all 3 suits
+    0: [10, 10, 10],   # 0 (soap tile) across all 3 suits
+    1: [1, 11, 21],    # 1 across all 3 suits
+    2: [2, 12, 22],    # 2 across all 3 suits
+    3: [3, 13, 23],    # 3 across all 3 suits
+    4: [4, 14, 24],    # 4 across all 3 suits
+    5: [5, 15, 25],    # 5 across all 3 suits
+    6: [6, 16, 26],    # 6 across all 3 suits
+    7: [7, 17, 27],    # 7 across all 3 suits
+    8: [8, 18, 28],    # 8 across all 3 suits
+    9: [9, 19, 29]     # 9 across all 3 suits
 }
 
 # Dragon tile mappings
