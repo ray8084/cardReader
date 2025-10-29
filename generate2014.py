@@ -7,6 +7,7 @@ Contains methods to build hands in memory with parameters for each hand.
 """
 
 from typing import List, Dict, Any, Optional
+import json
 from hand import Hand
 
 class Card2014:
@@ -58,8 +59,9 @@ class Card2014:
         
         p1 = self.add_hand(1, "222 000 1111 4444", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2014", False, 25)
         p1.generateTileSetsMixedSuit()
-        
+    
         p2 = self.add_hand(2, "FFFF 2222 0000 14", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "2014", False, 30)
+        p2.generateTileSetStatic()
         
         p3 = self.add_hand(3, "FF 2014 1111 4444", "00 gggg rrrr 0000", "00 0000 1111 1111", "Any 3 Suits", "2014", False, 25)
         p3.generateTileSetsMixedSuit()
@@ -191,8 +193,185 @@ class Card2014:
         p5 = self.add_hand(5, "336 33669 3366999", "000 00000 0000000", "000 00000 0000000", "Any 3 Suits (INVALID: 15 tiles)", "Singles and Pairs", True, 50)
         
         p6 = self.add_hand(6, "FF 2014 2014 2014", "00 0000 0000 0000", "00 0000 0000 0000", "3 Suits", "Singles and Pairs", True, 75)
+    
+    def tile_id_to_name(self, tile_id):
+        """Convert tile ID back to readable name"""
+        from tile import TILE_MAPPINGS
+        for tile_name, tile_ids in TILE_MAPPINGS.items():
+            if tile_id in tile_ids:
+                return tile_name
+        return f"T{tile_id}"
+    
+    def condense_tile_set(self, tile_ids):
+        """Convert tile IDs to a more readable format"""
+        # Count occurrences of each tile
+        tile_counts = {}
+        for tile_id in tile_ids:
+            tile_name = self.tile_id_to_name(tile_id)
+            tile_counts[tile_name] = tile_counts.get(tile_name, 0) + 1
         
+        # Create readable format
+        parts = []
+        for tile_name, count in sorted(tile_counts.items()):
+            if count == 1:
+                parts.append(tile_name)
+            elif count == 2:
+                parts.append(f"{tile_name}{tile_name}")
+            elif count == 3:
+                parts.append(f"{tile_name}{tile_name}{tile_name}")
+            elif count == 4:
+                parts.append(f"{tile_name}{tile_name}{tile_name}{tile_name}")
+            else:
+                parts.append(f"{tile_name}x{count}")
+        
+        return " ".join(parts)
+    
+    def export_to_json(self, filename="card2014.json"):
+        """Export the card data to a JSON file with condensed tile sets"""
+        # Build the JSON structure
+        json_data = {
+            "year": "2014",
+            "total_hands": len(self.hand_list),
+            "hands": []
+        }
+        
+        for hand in self.hand_list:
+            hand_data = {
+                "id": hand.id,
+                "hand": hand.text,
+                "colorMask": hand.mask,
+                "jokerMask": hand.joker_mask,
+                "note": hand.note,
+                "family": hand.family,
+                "points": str(hand.points),
+                "concealed": hand.concealed,
+                "valid_tile_sets": len(hand.tile_sets),
+                "tile_sets": []
+            }
+            
+            # Add tile sets if they exist
+            for i, tile_set in enumerate(hand.tile_sets):
+                tile_set_data = {
+                    "set_id": i + 1,
+                    "tile_ids": tile_set,  # Keep as list for now
+                    "tile_count": len(tile_set),
+                    "readable_format": self.condense_tile_set(tile_set)
+                }
+                hand_data["tile_sets"].append(tile_set_data)
+            
+            json_data["hands"].append(hand_data)
+        
+        # Calculate summary statistics
+        valid_hands = sum(1 for hand in self.hand_list if len(hand.tile_sets) > 0)
+        total_tiles = sum(len(hand.tile_sets) * 14 for hand in self.hand_list)
+        
+        json_data["summary"] = {
+            "hands_with_valid_tiles": valid_hands,
+            "hands_without_valid_tiles": len(self.hand_list) - valid_hands,
+            "total_tiles_used": total_tiles,
+            "families": {}
+        }
+        
+        # Count hands by family
+        for hand in self.hand_list:
+            family = hand.family
+            if family not in json_data["summary"]["families"]:
+                json_data["summary"]["families"][family] = {
+                    "total_hands": 0,
+                    "valid_hands": 0,
+                    "invalid_hands": 0
+                }
+            
+            json_data["summary"]["families"][family]["total_hands"] += 1
+            if len(hand.tile_sets) > 0:
+                json_data["summary"]["families"][family]["valid_hands"] += 1
+            else:
+                json_data["summary"]["families"][family]["invalid_hands"] += 1
+        
+        # Write to file with tile_ids on single lines
+        with open(filename, 'w', encoding='utf-8') as f:
+            json_str = json.dumps(json_data, indent=2, ensure_ascii=False, separators=(',', ': '))
+            
+            # Replace tile_ids arrays to be on single lines using simple string replacement
+            lines = json_str.split('\n')
+            result_lines = []
+            i = 0
+            while i < len(lines):
+                line = lines[i]
+                if '"tile_ids": [' in line:
+                    # Found start of tile_ids array - skip the opening bracket line
+                    i += 1
+                    # Collect all the tile ID lines until we find the closing bracket
+                    tile_lines = []
+                    while i < len(lines) and ']' not in lines[i]:
+                        tile_lines.append(lines[i].strip().rstrip(','))
+                        i += 1
+                    # Skip the closing bracket line
+                    if i < len(lines):
+                        i += 1
+                    # Create single line with all tile IDs
+                    tile_ids_str = ', '.join(tile_lines)
+                    result_lines.append(f'          "tile_ids": [{tile_ids_str}],')
+                else:
+                    result_lines.append(line)
+                    i += 1
+            
+            f.write('\n'.join(result_lines))
+        
+        print(f"JSON file '{filename}' exported successfully!")
+        print(f"Total hands: {json_data['total_hands']}")
+        print(f"Hands with valid tile sets: {json_data['summary']['hands_with_valid_tiles']}")
+        print(f"Hands without valid tile sets: {json_data['summary']['hands_without_valid_tiles']}")
+        print(f"Total tiles used: {json_data['summary']['total_tiles_used']}")
+        
+        print("\nFamily breakdown:")
+        for family, stats in json_data["summary"]["families"].items():
+            print(f"  {family}: {stats['valid_hands']}/{stats['total_hands']} valid")
+        
+        return json_data
+    
+    def print_hands_detailed(self):
+        """Print detailed information about all hands"""
+        print("2014 Mahjong Card - All Hands")
+        print("="*60)
+        
+        for hand in self.hand_list:
+            print(f"\n{'='*60}")
+            print(f"Hand #{hand.id + 1}: {hand.text}")
+            print(f"Family: {hand.family}")
+            print(f"Note: {hand.note}")
+            print(f"Points: {hand.points}")
+            print(f"Concealed: {'Yes' if hand.concealed else 'No'}")
+            print(f"Valid tile combinations: {len(hand.tile_sets)}")
+            
+            if len(hand.tile_sets) > 0:
+                print(f"\nTile Sets:")
+                for i, tile_set in enumerate(hand.tile_sets):
+                    print(f"  Set {i+1}: {tile_set}")
+                    # Convert to readable names
+                    readable_tiles = [self.tile_id_to_name(tile_id) for tile_id in tile_set]
+                    print(f"         {readable_tiles}")
+            else:
+                print("  No valid tile combinations found")
+        
+        print(f"\n{'='*60}")
+        print(f"SUMMARY:")
+        print(f"Total hands: {len(self.hand_list)}")
+        
+        # Count hands with valid tile sets
+        valid_hands = sum(1 for hand in self.hand_list if len(hand.tile_sets) > 0)
+        print(f"Hands with valid tile combinations: {valid_hands}")
+        print(f"Hands without valid combinations: {len(self.hand_list) - valid_hands}")
+        
+        # Count total tiles used
+        total_tiles = sum(len(hand.tile_sets) * 14 for hand in self.hand_list)
+        print(f"Total tiles used: {total_tiles}")
+
 
 if __name__ == "__main__":
     card = Card2014()
     print(f"Generated {len(card.hand_list)} hands for {card.get_year()}")
+    
+    # Example usage of new methods:
+    # card.print_hands_detailed()  # Print detailed hand information
+    # card.export_to_json()       # Export to JSON file
