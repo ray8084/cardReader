@@ -152,13 +152,17 @@
     {
       "id": 4,
       "hand": "222 888 DDDD DDDD",
-      "colorMask": "000 000 0000 0000",
+      "colorMask": "ggg ggg rrrr 0000",
       "jokerMask": "111 111 1111 1111",
       "note": "Any 3 Suits",
       "family": "2468",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [12, 12, 12, 18, 18, 18, 30, 30, 30, 30, 10, 10, 10, 10],
+          [22, 22, 22, 28, 28, 28, 20, 20, 20, 20, 10, 10, 10, 10],
+          [2, 2, 2, 8, 8, 8, 30, 30, 30, 30, 20, 20, 20, 20]
+      ]
     },
     {
       "id": 5,
@@ -169,7 +173,11 @@
       "family": "2468",
       "points": "30",
       "concealed": true,
-      "tile_sets": []
+      "tile_sets": [
+          [35, 35, 2, 2, 2, 4, 4, 4, 6, 6, 6, 8, 8, 8],
+          [35, 35, 12, 12, 12, 14, 14, 14, 16, 16, 16, 18, 18, 18],
+          [35, 35, 22, 22, 22, 24, 24, 24, 26, 26, 26, 28, 28, 28]
+      ]
     },
     {
       "id": 0,
@@ -701,9 +709,9 @@
     }
   ],
   "summary": {
-    "hands_with_valid_tiles": 9,
-    "hands_without_valid_tiles": 50,
-    "total_tiles_used": 546,
+    "hands_with_valid_tiles": 11,
+    "hands_without_valid_tiles": 48,
+    "total_tiles_used": 630,
     "families": {
       "2014": {
         "total_hands": 5,
@@ -712,8 +720,8 @@
       },
       "2468": {
         "total_hands": 6,
-        "valid_hands": 4,
-        "invalid_hands": 2
+        "valid_hands": 6,
+        "invalid_hands": 0
       },
       "Like Numbers": {
         "total_hands": 1,

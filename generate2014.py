@@ -82,10 +82,11 @@ class Card2014:
         p3 = self.add_hand(3, "222 444 6666 8888", "ggg ggg rrrr rrrr", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
         p3.generateTileSetsMixedSuit()
 
-        p4 = self.add_hand(4, "222 888 DDDD DDDD", "000 000 0000 0000", "111 111 1111 1111", "Any 3 Suits", "2468", False, 25)
-        
+        p4 = self.add_hand(4, "222 888 DDDD DDDD", "ggg ggg rrrr 0000", "111 111 1111 1111", "Any 3 Suits", "2468", False, 25)
+        p4.generateTileSetsMixedSuit()
+
         p5 = self.add_hand(5, "FF 222 444 666 888", "00 000 000 000 000", "00 111 111 111 111", "", "2468", True, 30)
-        
+        p5.generateTileSetsMixedSuit()
 
     def generateLikeNumbers(self):
         p0 = self.add_hand(0, "FFFF 1111 11 1111", "0000 0000 00 0000", "1111 1111 00 1111", "Any Like No.", "Like Numbers", False, 25)
