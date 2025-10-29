@@ -129,6 +129,14 @@ class Card{year}:
             # Generate mask by replacing all non-space characters with 0s
             mask = ''.join('0' if c != ' ' else ' ' for c in text)
             
+            # Generate joker_mask by replacing all non-space characters with 1s
+            joker_mask = ''.join('1' if c != ' ' else ' ' for c in text)
+            
+            # Replace pairs of 1s with 0s since jokers cannot be used in pairs
+            # Only replace standalone "11" pairs, not within longer sequences like "1111"
+            import re
+            joker_mask = re.sub(r'\b11\b', '00', joker_mask)
+            
             script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
         
 '''
