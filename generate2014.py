@@ -245,7 +245,6 @@ class Card2014:
                 "family": hand.family,
                 "points": str(hand.points),
                 "concealed": hand.concealed,
-                "valid_tile_sets": len(hand.tile_sets),
                 "tile_sets": []
             }
             
@@ -304,7 +303,21 @@ class Card2014:
                         i += 1
                     # Create single line with all tile IDs
                     tile_ids_str = ', '.join(tile_lines)
-                    result_lines.append(f'          [{tile_ids_str}],')
+                    # Check if this is the last tile set in the array by looking ahead
+                    is_last = True
+                    j = i
+                    while j < len(lines):
+                        if lines[j].strip().startswith('[') and not lines[j].strip().startswith('[['):
+                            is_last = False
+                            break
+                        elif lines[j].strip() == ']':
+                            break
+                        j += 1
+                    
+                    if is_last:
+                        result_lines.append(f'          [{tile_ids_str}]')
+                    else:
+                        result_lines.append(f'          [{tile_ids_str}],')
                 else:
                     result_lines.append(line)
                     i += 1
