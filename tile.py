@@ -15,10 +15,10 @@ class Tile:
 
 # Wind tile mappings
 WIND_MAPPINGS = {
-    'N': 32,  # North
-    'S': 32,  # South  
-    'W': 33,  # West
-    'E': 34   # East
+    'N': [31, 31, 31],  # North - triplet
+    'S': [32, 32, 32],  # South - triplet
+    'W': [33, 33, 33],  # West - triplet
+    'E': [34, 34, 34]   # East - triplet
 }
 
 # Number tile mappings (0-9 across 3 suits)
@@ -37,11 +37,11 @@ NUMBER_MAPPINGS = {
 
 # Dragon tile mappings
 DRAGON_MAPPINGS = {
-    'D': [10, 20, 30],  # Dragons across all 3 types
-    '0': [10],          # White dragon (soap tile) used for 0
-    'W': [10],          # White dragon
-    'R': [30],          # Red dragon
-    'G': [20]           # Green dragon
+    'D': [10, 20, 30],     # Dragons across all 3 types
+    '0': [10, 10, 10],     # White dragon (soap tile) - triplet
+    'Wh': [10, 10, 10],    # White dragon - triplet
+    'R': [30, 30, 30],     # Red dragon - triplet
+    'G': [20, 20, 20]      # Green dragon - triplet
 }
 
 # Special tile mappings

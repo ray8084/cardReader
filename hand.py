@@ -72,13 +72,11 @@ class Hand:
         """
         return f"{self.family} {self.text} {self.note}"
     
-    def __repr__(self) -> str:
+    def generateTileSetStatic(self):
         """
-        Detailed string representation for debugging.
+        Generate static tile sets for this hand.
         
-        Returns:
-            Detailed string with all hand properties
+        This method will be implemented to create valid tile combinations
+        based on the hand's text pattern and constraints.
         """
-        return (f"Hand(id={self.id}, text='{self.text}', family='{self.family}', "
-                f"concealed={self.concealed}, points={self.points}, "
-                f"tile_sets={len(self.tile_sets)})")
+        pass
