@@ -127,11 +127,8 @@ class Card{year}:
             joker_mask = joker_mask.replace('"', '\\"')
             family = family.replace('"', '\\"')
             
-            script_content += f'''        # {text}
-        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", 
+            script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", 
                                    "{note}", "{family}", {str(concealed).title()}, {points})
-        # TODO: Add tile sets for this hand
-        # p{hand_id}.add_tile_set([tile1, tile2, ...])
         
 '''
             hand_counter += 1
