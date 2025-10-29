@@ -71,7 +71,8 @@ class Card2014:
 
     def generate2468(self):
         p0 = self.add_hand(0, "22 44 666 888 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "", "2468", False, 25)
-        
+        p0.generateTileSetStatic()
+
         p1 = self.add_hand(1, "2222 44 6666 88 88", "0000 00 0000 00 00", "1111 00 1111 00 00", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
         
         p2 = self.add_hand(2, "22 44 444 666 8888", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits, Kong 8s", "2468", False, 25)
