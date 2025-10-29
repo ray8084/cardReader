@@ -19,16 +19,16 @@ class Card2014:
     
     def _build_all_hands(self):
         """Build all hands by calling section-specific methods."""
-        self.generate13579()
         self.generate2014()
         self.generate2468()
-        self.generate369()
-        self.generateAdditionHands()
-        self.generateConsecutiveRun()
         self.generateLikeNumbers()
+        self.generateAdditionHands()
         self.generateQuints()
-        self.generateSinglesandPairs()
+        self.generateConsecutiveRun()
+        self.generate13579()
         self.generateWindsDragons()
+        self.generate369()
+        self.generateSinglesandPairs()
 
         # Print summary
         total_tiles = 0
@@ -47,69 +47,6 @@ class Card2014:
         hand = Hand(hand_id, text, mask, joker_mask, note, family, concealed, points)
         self.hand_list.append(hand)
         return hand
-
-    def generate13579(self):
-        """Generate hands for 13579 section."""
-        # 11 33 555 777 9999
-        p0 = self.add_hand(0, "11 33 555 777 9999", "", "", 
-                                   "", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p0.add_tile_set([tile1, tile2, ...])
-        
-        # 111 3333 333 5555
-        p1 = self.add_hand(1, "111 3333 333 5555", "", "", 
-                                   "Any 2 Suits", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p1.add_tile_set([tile1, tile2, ...])
-        
-        # 555 7777 777 9999
-        p2 = self.add_hand(2, "555 7777 777 9999", "", "", 
-                                   "Any 2 Suits", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p2.add_tile_set([tile1, tile2, ...])
-        
-        # FFFF 1111 33 5555
-        p3 = self.add_hand(3, "FFFF 1111 33 5555", "", "", 
-                                   "", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p3.add_tile_set([tile1, tile2, ...])
-        
-        # FFFF 5555 77 9999
-        p4 = self.add_hand(4, "FFFF 5555 77 9999", "", "", 
-                                   "", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p4.add_tile_set([tile1, tile2, ...])
-        
-        # 11 33 111 333 5555
-        p5 = self.add_hand(5, "11 33 111 333 5555", "", "", 
-                                   "Any 3 Suits", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p5.add_tile_set([tile1, tile2, ...])
-        
-        # 55 77 555 777 9999
-        p6 = self.add_hand(6, "55 77 555 777 9999", "", "", 
-                                   "Any 3 Suits", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p6.add_tile_set([tile1, tile2, ...])
-        
-        # FF 1111 9999 DDDDD
-        p7 = self.add_hand(7, "FF 1111 9999 DDDDD", "", "", 
-                                   "", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p7.add_tile_set([tile1, tile2, ...])
-        
-        # FF 1111 9999 DDDDD
-        p8 = self.add_hand(8, "FF 1111 9999 DDDDD", "", "", 
-                                   "", "13579", False, 25)
-        # TODO: Add tile sets for this hand
-        # p8.add_tile_set([tile1, tile2, ...])
-        
-        # 111 3 555 555 7 999
-        p9 = self.add_hand(9, "111 3 555 555 7 999", "", "", 
-                                   "Any 2 Suits", "13579", True, 30)
-        # TODO: Add tile sets for this hand
-        # p9.add_tile_set([tile1, tile2, ...])
-        
 
     def generate2014(self):
         """Generate hands for 2014 section."""
@@ -183,43 +120,13 @@ class Card2014:
         # p5.add_tile_set([tile1, tile2, ...])
         
 
-    def generate369(self):
-        """Generate hands for 369 section."""
-        # FF 3333 66 9999 DD
-        p0 = self.add_hand(0, "FF 3333 66 9999 DD", "", "", 
-                                   "", "369", False, 30)
+    def generateLikeNumbers(self):
+        """Generate hands for Like Numbers section."""
+        # FFFF 1111 11 1111
+        p0 = self.add_hand(0, "FFFF 1111 11 1111", "", "", 
+                                   "Any Like No.", "Like Numbers", False, 25)
         # TODO: Add tile sets for this hand
         # p0.add_tile_set([tile1, tile2, ...])
-        
-        # 333 666 6666 9999
-        p1 = self.add_hand(1, "333 666 6666 9999", "", "", 
-                                   "Any 2 Suits", "369", False, 25)
-        # TODO: Add tile sets for this hand
-        # p1.add_tile_set([tile1, tile2, ...])
-        
-        # 33 66 99 3333 3333
-        p2 = self.add_hand(2, "33 66 99 3333 3333", "", "", 
-                                   "Any 3 Suits, Like Kongs 3, 6 or 9", "369", False, 30)
-        # TODO: Add tile sets for this hand
-        # p2.add_tile_set([tile1, tile2, ...])
-        
-        # FF 3333 6666 9999
-        p3 = self.add_hand(3, "FF 3333 6666 9999", "", "", 
-                                   "Any 3 Suits", "369", False, 25)
-        # TODO: Add tile sets for this hand
-        # p3.add_tile_set([tile1, tile2, ...])
-        
-        # 333 66 999 333 333
-        p4 = self.add_hand(4, "333 66 999 333 333", "", "", 
-                                   "Any 2 Suits, Like Pungs 3, 6 or 9", "369", False, 30)
-        # TODO: Add tile sets for this hand
-        # p4.add_tile_set([tile1, tile2, ...])
-        
-        # 333 6 999 333 6 999
-        p5 = self.add_hand(5, "333 6 999 333 6 999", "", "", 
-                                   "Any 2 Suits", "369", True, 30)
-        # TODO: Add tile sets for this hand
-        # p5.add_tile_set([tile1, tile2, ...])
         
 
     def generateAdditionHands(self):
@@ -259,6 +166,33 @@ class Card2014:
                                    "", "Addition Hands", False, 25)
         # TODO: Add tile sets for this hand
         # p5.add_tile_set([tile1, tile2, ...])
+        
+
+    def generateQuints(self):
+        """Generate hands for Quints section."""
+        # 22 333 4444 55555
+        p0 = self.add_hand(0, "22 333 4444 55555", "", "", 
+                                   "These Nos. Only", "Quints", False, 35)
+        # TODO: Add tile sets for this hand
+        # p0.add_tile_set([tile1, tile2, ...])
+        
+        # 11111 2222 33333
+        p1 = self.add_hand(1, "11111 2222 33333", "", "", 
+                                   "Any 3 Suits, Any 3 Consec. Nos. Kong Middle No. Only", "Quints", False, 40)
+        # TODO: Add tile sets for this hand
+        # p1.add_tile_set([tile1, tile2, ...])
+        
+        # FFFF NNNNNN 11111
+        p2 = self.add_hand(2, "FFFF NNNNNN 11111", "", "", 
+                                   "Quint Any Wind & Any No. in Any Suit (INVALID: 15 tiles)", "Quints", False, 40)
+        # TODO: Add tile sets for this hand
+        # p2.add_tile_set([tile1, tile2, ...])
+        
+        # 11111 DDDD 11111
+        p3 = self.add_hand(3, "11111 DDDD 11111", "", "", 
+                                   "Quint Any Like No., Kong Dragon 3rd Suit", "Quints", False, 45)
+        # TODO: Add tile sets for this hand
+        # p3.add_tile_set([tile1, tile2, ...])
         
 
     def generateConsecutiveRun(self):
@@ -312,40 +246,145 @@ class Card2014:
         # p7.add_tile_set([tile1, tile2, ...])
         
 
-    def generateLikeNumbers(self):
-        """Generate hands for Like Numbers section."""
-        # FFFF 1111 11 1111
-        p0 = self.add_hand(0, "FFFF 1111 11 1111", "", "", 
-                                   "Any Like No.", "Like Numbers", False, 25)
+    def generate13579(self):
+        """Generate hands for 13579 section."""
+        # 11 33 555 777 9999
+        p0 = self.add_hand(0, "11 33 555 777 9999", "", "", 
+                                   "", "13579", False, 25)
         # TODO: Add tile sets for this hand
         # p0.add_tile_set([tile1, tile2, ...])
         
-
-    def generateQuints(self):
-        """Generate hands for Quints section."""
-        # 22 333 4444 55555
-        p0 = self.add_hand(0, "22 333 4444 55555", "", "", 
-                                   "These Nos. Only", "Quints", False, 35)
-        # TODO: Add tile sets for this hand
-        # p0.add_tile_set([tile1, tile2, ...])
-        
-        # 11111 2222 33333
-        p1 = self.add_hand(1, "11111 2222 33333", "", "", 
-                                   "Any 3 Suits, Any 3 Consec. Nos. Kong Middle No. Only", "Quints", False, 40)
+        # 111 3333 333 5555
+        p1 = self.add_hand(1, "111 3333 333 5555", "", "", 
+                                   "Any 2 Suits", "13579", False, 25)
         # TODO: Add tile sets for this hand
         # p1.add_tile_set([tile1, tile2, ...])
         
-        # FFFF NNNNNN 11111
-        p2 = self.add_hand(2, "FFFF NNNNNN 11111", "", "", 
-                                   "Quint Any Wind & Any No. in Any Suit (INVALID: 15 tiles)", "Quints", False, 40)
+        # 555 7777 777 9999
+        p2 = self.add_hand(2, "555 7777 777 9999", "", "", 
+                                   "Any 2 Suits", "13579", False, 25)
         # TODO: Add tile sets for this hand
         # p2.add_tile_set([tile1, tile2, ...])
         
-        # 11111 DDDD 11111
-        p3 = self.add_hand(3, "11111 DDDD 11111", "", "", 
-                                   "Quint Any Like No., Kong Dragon 3rd Suit", "Quints", False, 45)
+        # FFFF 1111 33 5555
+        p3 = self.add_hand(3, "FFFF 1111 33 5555", "", "", 
+                                   "", "13579", False, 25)
         # TODO: Add tile sets for this hand
         # p3.add_tile_set([tile1, tile2, ...])
+        
+        # FFFF 5555 77 9999
+        p4 = self.add_hand(4, "FFFF 5555 77 9999", "", "", 
+                                   "", "13579", False, 25)
+        # TODO: Add tile sets for this hand
+        # p4.add_tile_set([tile1, tile2, ...])
+        
+        # 11 33 111 333 5555
+        p5 = self.add_hand(5, "11 33 111 333 5555", "", "", 
+                                   "Any 3 Suits", "13579", False, 25)
+        # TODO: Add tile sets for this hand
+        # p5.add_tile_set([tile1, tile2, ...])
+        
+        # 55 77 555 777 9999
+        p6 = self.add_hand(6, "55 77 555 777 9999", "", "", 
+                                   "Any 3 Suits", "13579", False, 25)
+        # TODO: Add tile sets for this hand
+        # p6.add_tile_set([tile1, tile2, ...])
+        
+        # FF 1111 9999 DDDDD
+        p7 = self.add_hand(7, "FF 1111 9999 DDDDD", "", "", 
+                                   "", "13579", False, 25)
+        # TODO: Add tile sets for this hand
+        # p7.add_tile_set([tile1, tile2, ...])
+        
+        # FF 1111 9999 DDDDD
+        p8 = self.add_hand(8, "FF 1111 9999 DDDDD", "", "", 
+                                   "", "13579", False, 25)
+        # TODO: Add tile sets for this hand
+        # p8.add_tile_set([tile1, tile2, ...])
+        
+        # 111 3 555 555 7 999
+        p9 = self.add_hand(9, "111 3 555 555 7 999", "", "", 
+                                   "Any 2 Suits", "13579", True, 30)
+        # TODO: Add tile sets for this hand
+        # p9.add_tile_set([tile1, tile2, ...])
+        
+
+    def generateWindsDragons(self):
+        """Generate hands for Winds - Dragons section."""
+        # NNNN EEEE WWWWW SS
+        p0 = self.add_hand(0, "NNNN EEEE WWWWW SS", "", "", 
+                                   "(INVALID: 15 tiles)", "Winds - Dragons", False, 25)
+        # TODO: Add tile sets for this hand
+        # p0.add_tile_set([tile1, tile2, ...])
+        
+        # FFFF NNNN RR SSSS
+        p1 = self.add_hand(1, "FFFF NNNN RR SSSS", "", "", 
+                                   "Red Dragon Only", "Winds - Dragons", False, 25)
+        # TODO: Add tile sets for this hand
+        # p1.add_tile_set([tile1, tile2, ...])
+        
+        # FFFF EEEE GG WWWWW
+        p2 = self.add_hand(2, "FFFF EEEE GG WWWWW", "", "", 
+                                   "Green Dragon Only (INVALID: 15 tiles)", "Winds - Dragons", False, 25)
+        # TODO: Add tile sets for this hand
+        # p2.add_tile_set([tile1, tile2, ...])
+        
+        # NN 11 SSS 111 1111
+        p3 = self.add_hand(3, "NN 11 SSS 111 1111", "", "", 
+                                   "Any Like Odd No.", "Winds - Dragons", True, 30)
+        # TODO: Add tile sets for this hand
+        # p3.add_tile_set([tile1, tile2, ...])
+        
+        # EE 22 WWW 222 2222
+        p4 = self.add_hand(4, "EE 22 WWW 222 2222", "", "", 
+                                   "Any Like Even No.", "Winds - Dragons", True, 30)
+        # TODO: Add tile sets for this hand
+        # p4.add_tile_set([tile1, tile2, ...])
+        
+        # FFFF DDDD DD DDDD
+        p5 = self.add_hand(5, "FFFF DDDD DD DDDD", "", "", 
+                                   "Any 3 Suits", "Winds - Dragons", False, 30)
+        # TODO: Add tile sets for this hand
+        # p5.add_tile_set([tile1, tile2, ...])
+        
+
+    def generate369(self):
+        """Generate hands for 369 section."""
+        # FF 3333 66 9999 DD
+        p0 = self.add_hand(0, "FF 3333 66 9999 DD", "", "", 
+                                   "", "369", False, 30)
+        # TODO: Add tile sets for this hand
+        # p0.add_tile_set([tile1, tile2, ...])
+        
+        # 333 666 6666 9999
+        p1 = self.add_hand(1, "333 666 6666 9999", "", "", 
+                                   "Any 2 Suits", "369", False, 25)
+        # TODO: Add tile sets for this hand
+        # p1.add_tile_set([tile1, tile2, ...])
+        
+        # 33 66 99 3333 3333
+        p2 = self.add_hand(2, "33 66 99 3333 3333", "", "", 
+                                   "Any 3 Suits, Like Kongs 3, 6 or 9", "369", False, 30)
+        # TODO: Add tile sets for this hand
+        # p2.add_tile_set([tile1, tile2, ...])
+        
+        # FF 3333 6666 9999
+        p3 = self.add_hand(3, "FF 3333 6666 9999", "", "", 
+                                   "Any 3 Suits", "369", False, 25)
+        # TODO: Add tile sets for this hand
+        # p3.add_tile_set([tile1, tile2, ...])
+        
+        # 333 66 999 333 333
+        p4 = self.add_hand(4, "333 66 999 333 333", "", "", 
+                                   "Any 2 Suits, Like Pungs 3, 6 or 9", "369", False, 30)
+        # TODO: Add tile sets for this hand
+        # p4.add_tile_set([tile1, tile2, ...])
+        
+        # 333 6 999 333 6 999
+        p5 = self.add_hand(5, "333 6 999 333 6 999", "", "", 
+                                   "Any 2 Suits", "369", True, 30)
+        # TODO: Add tile sets for this hand
+        # p5.add_tile_set([tile1, tile2, ...])
         
 
     def generateSinglesandPairs(self):
@@ -391,45 +430,6 @@ class Card2014:
                                    "3 Suits", "Singles and Pairs", True, 75)
         # TODO: Add tile sets for this hand
         # p6.add_tile_set([tile1, tile2, ...])
-        
-
-    def generateWindsDragons(self):
-        """Generate hands for Winds - Dragons section."""
-        # NNNN EEEE WWWWW SS
-        p0 = self.add_hand(0, "NNNN EEEE WWWWW SS", "", "", 
-                                   "(INVALID: 15 tiles)", "Winds - Dragons", False, 25)
-        # TODO: Add tile sets for this hand
-        # p0.add_tile_set([tile1, tile2, ...])
-        
-        # FFFF NNNN RR SSSS
-        p1 = self.add_hand(1, "FFFF NNNN RR SSSS", "", "", 
-                                   "Red Dragon Only", "Winds - Dragons", False, 25)
-        # TODO: Add tile sets for this hand
-        # p1.add_tile_set([tile1, tile2, ...])
-        
-        # FFFF EEEE GG WWWWW
-        p2 = self.add_hand(2, "FFFF EEEE GG WWWWW", "", "", 
-                                   "Green Dragon Only (INVALID: 15 tiles)", "Winds - Dragons", False, 25)
-        # TODO: Add tile sets for this hand
-        # p2.add_tile_set([tile1, tile2, ...])
-        
-        # NN 11 SSS 111 1111
-        p3 = self.add_hand(3, "NN 11 SSS 111 1111", "", "", 
-                                   "Any Like Odd No.", "Winds - Dragons", True, 30)
-        # TODO: Add tile sets for this hand
-        # p3.add_tile_set([tile1, tile2, ...])
-        
-        # EE 22 WWW 222 2222
-        p4 = self.add_hand(4, "EE 22 WWW 222 2222", "", "", 
-                                   "Any Like Even No.", "Winds - Dragons", True, 30)
-        # TODO: Add tile sets for this hand
-        # p4.add_tile_set([tile1, tile2, ...])
-        
-        # FFFF DDDD DD DDDD
-        p5 = self.add_hand(5, "FFFF DDDD DD DDDD", "", "", 
-                                   "Any 3 Suits", "Winds - Dragons", False, 30)
-        # TODO: Add tile sets for this hand
-        # p5.add_tile_set([tile1, tile2, ...])
         
 
 if __name__ == "__main__":

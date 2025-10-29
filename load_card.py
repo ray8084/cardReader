@@ -39,8 +39,17 @@ def generate_python_script(data: Dict[str, Any], output_filename: str = "generat
     hands = data.get('hands', [])
     sections = group_hands_by_section(hands)
     
-    # Get unique sections and sort them
-    section_names = sorted(sections.keys())
+    # Get sections in the order they appear in the JSON metadata
+    metadata_sections = data.get('metadata', {}).get('sections', [])
+    if metadata_sections:
+        # Use the order from metadata, filtering out sections that don't exist in data
+        section_names = [section for section in metadata_sections if section in sections]
+        # Add any remaining sections that weren't in metadata
+        remaining_sections = [section for section in sections.keys() if section not in metadata_sections]
+        section_names.extend(sorted(remaining_sections))
+    else:
+        # Fallback to alphabetical sorting if no metadata
+        section_names = sorted(sections.keys())
     
     script_content = f'''#!/usr/bin/env python3
 """
