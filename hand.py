@@ -125,34 +125,39 @@ class Hand:
             mask_chars.extend(list(group))  # Add each mask character
         
         # Generate tile sets with mixed suits
-        # Outer loop: determines suit for green ('g') tiles
-        for green_suit in range(3):
-            # Inner loop: determines suit for red ('r') tiles
-            for red_suit in range(3):
-                if green_suit == red_suit:  # Skip same suit combinations
-                    continue
+        # Outer loop: determines suit for black ('0') tiles
+        for black_suit in range(3):
+            # Middle loop: determines suit for green ('g') tiles
+            for green_suit in range(3):
+                # Inner loop: determines suit for red ('r') tiles
+                for red_suit in range(3):
+                    # Skip combinations where any two suits are the same
+                    if black_suit == green_suit or black_suit == red_suit or green_suit == red_suit:
+                        continue
+                        
+                    tile_set = []
                     
-                tile_set = []
-                
-                # Process each individual tile
-                for i, tile in enumerate(tiles):
-                    if tile in TILE_MAPPINGS:
-                        tile_ids = TILE_MAPPINGS[tile]
-                        
-                        # Determine which suit to use based on mask
-                        if i < len(mask_chars):
-                            mask_char = mask_chars[i]
-                            if mask_char == 'g':  # Green - use outer loop suit
-                                tile_id = tile_ids[green_suit]
-                            elif mask_char == 'r':  # Red - use inner loop suit
-                                tile_id = tile_ids[red_suit]
-                            else:  # Black ('0') or other - use first suit
+                    # Process each individual tile
+                    for i, tile in enumerate(tiles):
+                        if tile in TILE_MAPPINGS:
+                            tile_ids = TILE_MAPPINGS[tile]
+                            
+                            # Determine which suit to use based on mask
+                            if i < len(mask_chars):
+                                mask_char = mask_chars[i]
+                                if mask_char == '0':  # Black - use outer loop suit
+                                    tile_id = tile_ids[black_suit]
+                                elif mask_char == 'g':  # Green - use middle loop suit
+                                    tile_id = tile_ids[green_suit]
+                                elif mask_char == 'r':  # Red - use inner loop suit
+                                    tile_id = tile_ids[red_suit]
+                                else:  # Default to first suit
+                                    tile_id = tile_ids[0]
+                            else:
+                                # Default to first suit if no mask
                                 tile_id = tile_ids[0]
-                        else:
-                            # Default to first suit if no mask
-                            tile_id = tile_ids[0]
-                        
-                        tile_set.append(tile_id)
-                
-                # Add the tile set to this hand
-                self.add_tile_set(tile_set)
+                            
+                            tile_set.append(tile_id)
+                    
+                    # Add the tile set to this hand
+                    self.add_tile_set(tile_set)
