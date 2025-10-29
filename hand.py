@@ -101,3 +101,12 @@ class Hand:
             
             # Add the tile set to this hand
             self.add_tile_set(tile_set)
+    
+    def generateTileSetsMixedSuit(self):
+        """
+        Generate tile sets with mixed suits for this hand.
+        
+        This method will create tile combinations using different suits
+        for different parts of the hand pattern.
+        """
+        pass
