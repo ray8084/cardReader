@@ -106,7 +106,6 @@ class Card{year}:
         
         script_content += f'''
     def {method_name}(self):
-        """Generate hands for {section} section."""
 '''
         
         hand_counter = 0

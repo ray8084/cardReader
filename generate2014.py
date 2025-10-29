@@ -49,7 +49,6 @@ class Card2014:
         return hand
 
     def generate2014(self):
-        """Generate hands for 2014 section."""
         p0 = self.add_hand(0, "NNNN EW SSSS 2014", "", "", "Any 1 Suit", "2014", False, 25)
         
         p1 = self.add_hand(1, "222 000 1111 4444", "", "", "Any 2 Suits", "2014", False, 25)
@@ -62,7 +61,6 @@ class Card2014:
         
 
     def generate2468(self):
-        """Generate hands for 2468 section."""
         p0 = self.add_hand(0, "22 44 666 888 DDDD", "", "", "", "2468", False, 25)
         
         p1 = self.add_hand(1, "2222 44 6666 88 88", "", "", "Any 3 Suits, Pairs 8s Other 2 Suits", "2468", False, 30)
@@ -77,12 +75,10 @@ class Card2014:
         
 
     def generateLikeNumbers(self):
-        """Generate hands for Like Numbers section."""
         p0 = self.add_hand(0, "FFFF 1111 11 1111", "", "", "Any Like No.", "Like Numbers", False, 25)
         
 
     def generateAdditionHands(self):
-        """Generate hands for Addition Hands section."""
         p0 = self.add_hand(0, "FFFF 4444 + 7777 = 11", "", "", "", "Addition Hands", False, 25)
         
         p1 = self.add_hand(1, "FFFF 4444 + 7777 = 11", "", "", "", "Addition Hands", False, 25)
@@ -97,7 +93,6 @@ class Card2014:
         
 
     def generateQuints(self):
-        """Generate hands for Quints section."""
         p0 = self.add_hand(0, "22 333 4444 55555", "", "", "These Nos. Only", "Quints", False, 35)
         
         p1 = self.add_hand(1, "11111 2222 33333", "", "", "Any 3 Suits, Any 3 Consec. Nos. Kong Middle No. Only", "Quints", False, 40)
@@ -108,7 +103,6 @@ class Card2014:
         
 
     def generateConsecutiveRun(self):
-        """Generate hands for Consecutive Run section."""
         p0 = self.add_hand(0, "11 22 333 444 5555", "", "", "", "Consecutive Run", False, 25)
         
         p1 = self.add_hand(1, "55 66 777 888 9999", "", "", "", "Consecutive Run", False, 25)
@@ -127,7 +121,6 @@ class Card2014:
         
 
     def generate13579(self):
-        """Generate hands for 13579 section."""
         p0 = self.add_hand(0, "11 33 555 777 9999", "", "", "", "13579", False, 25)
         
         p1 = self.add_hand(1, "111 3333 333 5555", "", "", "Any 2 Suits", "13579", False, 25)
@@ -150,7 +143,6 @@ class Card2014:
         
 
     def generateWindsDragons(self):
-        """Generate hands for Winds - Dragons section."""
         p0 = self.add_hand(0, "NNNN EEEE WWWWW SS", "", "", "(INVALID: 15 tiles)", "Winds - Dragons", False, 25)
         
         p1 = self.add_hand(1, "FFFF NNNN RR SSSS", "", "", "Red Dragon Only", "Winds - Dragons", False, 25)
@@ -165,7 +157,6 @@ class Card2014:
         
 
     def generate369(self):
-        """Generate hands for 369 section."""
         p0 = self.add_hand(0, "FF 3333 66 9999 DD", "", "", "", "369", False, 30)
         
         p1 = self.add_hand(1, "333 666 6666 9999", "", "", "Any 2 Suits", "369", False, 25)
@@ -180,7 +171,6 @@ class Card2014:
         
 
     def generateSinglesandPairs(self):
-        """Generate hands for Singles and Pairs section."""
         p0 = self.add_hand(0, "NN EE WW SS 11 11 11", "", "", "Any Like No.", "Singles and Pairs", True, 50)
         
         p1 = self.add_hand(1, "FF 11 22 33 44 55 DD", "", "", "Any 5 Consec. Nos.", "Singles and Pairs", True, 50)
