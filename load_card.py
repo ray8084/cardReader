@@ -135,7 +135,6 @@ class Card{year}:
     
     script_content += f'''
 if __name__ == "__main__":
-    # Create and build the card
     card = Card{year}()
     print(f"Generated {{len(card.hand_list)}} hands for {{card.get_year()}}")
 '''
