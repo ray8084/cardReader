@@ -109,9 +109,9 @@ class Card2014:
         
         p2 = self.add_hand(2, "111 2222 333 4444", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
         
-        p3 = self.add_hand(3, "1111 22 22 22 3333", "0000 00 00 00 0000", "1111 00 11 00 1111", "Any 3 Consec. Nos. Like Pairs Middle No. Only", "Consecutive Run", False, 30)
+        p3 = self.add_hand(3, "1111 22 22 22 3333", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 3 Consec. Nos. Like Pairs Middle No. Only", "Consecutive Run", False, 30)
         
-        p4 = self.add_hand(4, "11 22 33 4444 4444", "00 00 00 0000 0000", "00 00 11 1111 1111", "Any 3 Suits, Any 3 Consec. Prs., Like Kongs Ascending No", "Consecutive Run", False, 30)
+        p4 = self.add_hand(4, "11 22 33 4444 4444", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits, Any 3 Consec. Prs., Like Kongs Ascending No", "Consecutive Run", False, 30)
         
         p5 = self.add_hand(5, "FFFF 1111 2222 DD", "0000 0000 0000 00", "1111 1111 1111 00", "Any 2 Consec. Nos.", "Consecutive Run", False, 25)
         
@@ -161,7 +161,7 @@ class Card2014:
         
         p1 = self.add_hand(1, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "369", False, 25)
         
-        p2 = self.add_hand(2, "33 66 99 3333 3333", "00 00 00 0000 0000", "00 00 11 1111 1111", "Any 3 Suits, Like Kongs 3, 6 or 9", "369", False, 30)
+        p2 = self.add_hand(2, "33 66 99 3333 3333", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits, Like Kongs 3, 6 or 9", "369", False, 30)
         
         p3 = self.add_hand(3, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
         
@@ -171,15 +171,15 @@ class Card2014:
         
 
     def generateSinglesandPairs(self):
-        p0 = self.add_hand(0, "NN EE WW SS 11 11 11", "00 00 00 00 00 00 00", "00 00 11 00 11 00 00", "Any Like No.", "Singles and Pairs", True, 50)
+        p0 = self.add_hand(0, "NN EE WW SS 11 11 11", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any Like No.", "Singles and Pairs", True, 50)
         
-        p1 = self.add_hand(1, "FF 11 22 33 44 55 DD", "00 00 00 00 00 00 00", "00 00 11 00 11 00 00", "Any 5 Consec. Nos.", "Singles and Pairs", True, 50)
+        p1 = self.add_hand(1, "FF 11 22 33 44 55 DD", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 5 Consec. Nos.", "Singles and Pairs", True, 50)
         
-        p2 = self.add_hand(2, "11 33 55 77 99 11 11", "00 00 00 00 00 00 00", "00 00 11 00 11 00 00", "Any Like Odd No. in Other 2 Suits", "Singles and Pairs", True, 50)
+        p2 = self.add_hand(2, "11 33 55 77 99 11 11", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any Like Odd No. in Other 2 Suits", "Singles and Pairs", True, 50)
         
-        p3 = self.add_hand(3, "FF 22 46 88 22 46 88", "00 00 00 00 00 00 00", "00 00 11 00 11 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
+        p3 = self.add_hand(3, "FF 22 46 88 22 46 88", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
         
-        p4 = self.add_hand(4, "FF 11 22 11 22 11 22", "00 00 00 00 00 00 00", "00 00 11 00 11 00 00", "Any 2 Consec. Nos. in 3 Suits", "Singles and Pairs", True, 50)
+        p4 = self.add_hand(4, "FF 11 22 11 22 11 22", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Consec. Nos. in 3 Suits", "Singles and Pairs", True, 50)
         
         p5 = self.add_hand(5, "336 33669 3366999", "000 00000 0000000", "000 00000 0000000", "Any 3 Suits (INVALID: 15 tiles)", "Singles and Pairs", True, 50)
         

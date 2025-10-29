@@ -141,9 +141,11 @@ class Card{year}:
             joker_mask = re.sub(r' +', ' ', joker_mask)
             
             # Replace pairs of 1s with 0s since jokers cannot be used in pairs
-            # Handle pairs at the beginning, middle, and end of the string
+            # Keep replacing until no more pairs are found
+            while ' 11 ' in joker_mask:
+                joker_mask = joker_mask.replace(' 11 ', ' 00 ')
+            # Handle pairs at the beginning and end
             joker_mask = re.sub(r'^11 ', '00 ', joker_mask)    # pairs at start
-            joker_mask = re.sub(r' 11 ', ' 00 ', joker_mask)  # pairs in middle
             joker_mask = re.sub(r' 11$', ' 00', joker_mask)   # pairs at end
             
             # Analyze tile groups and modify joker mask for non-matching tiles
