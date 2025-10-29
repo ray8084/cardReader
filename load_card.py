@@ -127,8 +127,7 @@ class Card{year}:
             joker_mask = joker_mask.replace('"', '\\"')
             family = family.replace('"', '\\"')
             
-            script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", 
-                                   "{note}", "{family}", {str(concealed).title()}, {points})
+            script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
         
 '''
             hand_counter += 1
