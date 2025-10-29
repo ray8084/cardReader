@@ -139,7 +139,7 @@ class Card2014:
         
         p8 = self.add_hand(8, "FF 1111 9999 DDDDD", "00 0000 0000 00000", "00 1111 1111 11111", "", "13579", False, 25)
         
-        p9 = self.add_hand(9, "111 3 555 555 7 999", "000 0 000 000 0 000", "111 1 111 111 1 111", "Any 2 Suits", "13579", True, 30)
+        p9 = self.add_hand(9, "111 3 555 555 7 999", "000 0 000 000 0 000", "111 0 111 111 0 111", "Any 2 Suits", "13579", True, 30)
         
 
     def generateWindsDragons(self):
@@ -167,7 +167,7 @@ class Card2014:
         
         p4 = self.add_hand(4, "333 66 999 333 333", "000 00 000 000 000", "111 00 111 111 111", "Any 2 Suits, Like Pungs 3, 6 or 9", "369", False, 30)
         
-        p5 = self.add_hand(5, "333 6 999 333 6 999", "000 0 000 000 0 000", "111 1 111 111 1 111", "Any 2 Suits", "369", True, 30)
+        p5 = self.add_hand(5, "333 6 999 333 6 999", "000 0 000 000 0 000", "111 0 111 111 0 111", "Any 2 Suits", "369", True, 30)
         
 
     def generateSinglesandPairs(self):

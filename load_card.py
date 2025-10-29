@@ -148,6 +148,11 @@ class Card{year}:
             joker_mask = re.sub(r'^11 ', '00 ', joker_mask)    # pairs at start
             joker_mask = re.sub(r' 11$', ' 00', joker_mask)   # pairs at end
             
+            # Replace single 1s with 0s since jokers cannot be used in singles
+            joker_mask = re.sub(r'^1 ', '0 ', joker_mask)     # singles at start
+            joker_mask = re.sub(r' 1 ', ' 0 ', joker_mask)   # singles in middle
+            joker_mask = re.sub(r' 1$', ' 0', joker_mask)     # singles at end
+            
             # Analyze tile groups and modify joker mask for non-matching tiles
             # Split by spaces to get individual tile groups (filter out special chars)
             tile_groups = [group for group in text.split() if group not in ['+', '=']]
