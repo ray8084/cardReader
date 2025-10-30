@@ -121,6 +121,7 @@ class Card2014:
         p1.addTileSets_Run()
         
         p2 = self.add_hand(2, "FFFF NNNNNN 11111", "0000 000000 00000", "1111 111111 11111", "Quint Any Wind & Any No. in Any Suit (INVALID: 15 tiles)", "Quints", False, 40)
+        p2.addTileSets_AnyWindAnyNumber()
         
         p3 = self.add_hand(3, "11111 DDDD 11111", "00000 0000 00000", "11111 1111 11111", "Quint Any Like No., Kong Dragon 3rd Suit", "Quints", False, 45)
         

@@ -235,3 +235,47 @@ class Hand:
                 modified_text = ''.join(modified_chars)
                 # Call the main addTileSets method with the modified hand text
                 self.addTileSets(modified_text)
+    
+    def addTileSets_AnyWindAnyNumber(self, hand_text=None):
+        """
+        Generate tile sets for hands with any wind and any number.
+        
+        Outer loop: changes N characters through N→S→W→E
+        Inner loop: increments the number 1 through 1→2→3...→9
+        
+        Args:
+            hand_text (str, optional): Custom hand text to use instead of self.text
+        """
+        # Use provided hand text or default to self.text
+        text_to_use = hand_text if hand_text is not None else self.text
+        
+        # Wind sequence: N → S → W → E
+        winds = ['N', 'S', 'W', 'E']
+        
+        # Parse the hand text into individual characters (tiles)
+        tiles = []
+        for group in text_to_use.split():
+            if group not in ['+', '=']:  # Skip special characters
+                tiles.extend(list(group))  # Add each individual tile
+        
+        # Find numbered tiles to determine the max number
+        numbered_tiles = [t for t in tiles if t.isdigit()]
+        if not numbered_tiles:
+            return
+        
+        # Outer loop: change N characters through wind sequence
+        for wind_idx, wind in enumerate(winds):
+            modified_text = text_to_use
+            # Replace all N characters with the current wind
+            modified_text = modified_text.replace('N', wind)
+            
+            # Inner loop: increment the number
+            for num in range(1, 10):  # Numbers 1 through 9
+                # Create a copy for this number iteration
+                text_with_number = modified_text
+                
+                # Replace number 1 with the current number
+                text_with_number = text_with_number.replace('1', str(num))
+                
+                # Call the main addTileSets method with the modified hand text
+                self.addTileSets(text_with_number)
