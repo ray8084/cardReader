@@ -77,9 +77,9 @@ class Hand:
         Generate tile sets with mixed suits for this hand.
         
         Uses the mask to determine which tiles get which suit combinations:
-        - 'r' (red): outer loop determines suit
-        - 'g' (green): middle loop determines suit  
-        - '0' (black): inner loop determines suit
+        - 'g' (green): outer loop determines suit
+        - 'r' (red): inner loop determines suit  
+        - '0' (black): uses first suit (index 0)
         
         Args:
             hand_text (str, optional): Custom hand text to use instead of self.text
@@ -101,12 +101,12 @@ class Hand:
             mask_chars.extend(list(group))  # Add each mask character
         
         # Generate tile sets with mixed suits
-        # Outer loop: determines suit for red ('r') tiles
-        for red_suit in range(3):
+        # Outer loop: determines suit for black ('0') tiles
+        for black_suit in range(3):
             # Middle loop: determines suit for green ('g') tiles
             for green_suit in range(3):
-                # Inner loop: determines suit for black ('0') tiles
-                for black_suit in range(3):
+                # Inner loop: determines suit for red ('r') tiles
+                for red_suit in range(3):
                     # Skip combinations where any two suits are the same
                     if black_suit == green_suit or black_suit == red_suit or green_suit == red_suit:
                         continue
@@ -121,11 +121,11 @@ class Hand:
                             # Determine which suit to use based on mask
                             if i < len(mask_chars):
                                 mask_char = mask_chars[i]
-                                if mask_char == '0':  # Black - use inner loop suit
+                                if mask_char == '0':  # Black - use outer loop suit
                                     tile_id = tile_ids[black_suit]
                                 elif mask_char == 'g':  # Green - use middle loop suit
                                     tile_id = tile_ids[green_suit]
-                                elif mask_char == 'r':  # Red - use outer loop suit
+                                elif mask_char == 'r':  # Red - use inner loop suit
                                     tile_id = tile_ids[red_suit]
                                 else:  # Default to first suit
                                     tile_id = tile_ids[0]
@@ -145,11 +145,10 @@ class Hand:
         """
         Remove duplicate tile sets from this hand.
         Tile sets are considered duplicates if they contain the same tiles regardless of order.
-        Also sorts each tile set so single digits come before teens.
         """
         unique_tile_sets = []
         for tile_set in self.tile_sets:
-            # Sort the tile set so single digits (1-9) come before teens (10-19)
+            # Check if this tile set (sorted) already exists
             sorted_tile_set = sorted(tile_set)
             is_duplicate = False
             for existing_set in unique_tile_sets:
@@ -158,7 +157,7 @@ class Hand:
                     break
             
             if not is_duplicate:
-                unique_tile_sets.append(sorted_tile_set)
+                unique_tile_sets.append(tile_set)
         
         self.tile_sets = unique_tile_sets
     
