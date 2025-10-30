@@ -94,17 +94,23 @@ class Card2014:
         
 
     def addAdditionHands(self):
-        p0 = self.add_hand(0, "FFFF 4444 + 7777 = 11", "0000 0000 0000 00", "1111 1111 1111 00", "", "Addition Hands", False, 25)
+        p0 = self.add_hand(0, "FFFF 4444 + 7777 = 11", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "Addition Hands", False, 25)
+        p0.addTileSets()
         
-        p1 = self.add_hand(1, "FFFF 4444 + 7777 = 11", "0000 0000 0000 00", "1111 1111 1111 00", "", "Addition Hands", False, 25)
+        p1 = self.add_hand(1, "FFFF 4444 + 7777 = 11", "0000 gggg rrrr 00", "1111 1111 1111 00", "Any 3 Suits", "Addition Hands", False, 25)
+        p1.addTileSets()
         
-        p2 = self.add_hand(2, "FFFF 5555 + 7777 = 12", "0000 0000 0000 00", "1111 1111 1111 00", "", "Addition Hands", False, 25)
+        p2 = self.add_hand(2, "FFFF 5555 + 7777 = 12", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "Addition Hands", False, 25)
+        p2.addTileSets()
         
-        p3 = self.add_hand(3, "FFFF 5555 + 7777 = 12", "0000 0000 0000 00", "1111 1111 1111 00", "", "Addition Hands", False, 25)
+        p3 = self.add_hand(3, "FFFF 5555 + 7777 = 12", "0000 gggg rrrr 00", "1111 1111 1111 00", "Any 3 Suits", "Addition Hands", False, 25)
+        p3.addTileSets()
         
-        p4 = self.add_hand(4, "FFFF 6666 + 7777 = 13", "0000 0000 0000 00", "1111 1111 1111 00", "", "Addition Hands", False, 25)
+        p4 = self.add_hand(4, "FFFF 6666 + 7777 = 13", "0000 0000 0000 00", "1111 1111 1111 00", "Any 1 Suit", "Addition Hands", False, 25)
+        p4.addTileSets()
         
-        p5 = self.add_hand(5, "FFFF 6666 + 7777 = 13", "0000 0000 0000 00", "1111 1111 1111 00", "", "Addition Hands", False, 25)
+        p5 = self.add_hand(5, "FFFF 6666 + 7777 = 13", "0000 gggg rrrr 00", "1111 1111 1111 00", "Any 3 Suits", "Addition Hands", False, 25)
+        p5.addTileSets()
         
 
     def addQuints(self):
