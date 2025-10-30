@@ -115,8 +115,10 @@ class Card2014:
 
     def addQuints(self):
         p0 = self.add_hand(0, "22 333 4444 55555", "00 000 0000 00000", "00 111 1111 11111", "These Nos. Only", "Quints", False, 35)
+        p0.addTileSets()
         
-        p1 = self.add_hand(1, "11111 2222 33333", "00000 0000 00000", "11111 1111 11111", "Any 3 Suits, Any 3 Consec. Nos. Kong Middle No. Only", "Quints", False, 40)
+        p1 = self.add_hand(1, "11111 2222 33333", "ggggg rrrr 00000", "11111 1111 11111", "Any 3 Suits, Any 3 Consec. Nos. Kong Middle No. Only", "Quints", False, 40)
+        p1.addTileSets_Run()
         
         p2 = self.add_hand(2, "FFFF NNNNNN 11111", "0000 000000 00000", "1111 111111 11111", "Quint Any Wind & Any No. in Any Suit (INVALID: 15 tiles)", "Quints", False, 40)
         

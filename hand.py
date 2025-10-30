@@ -181,3 +181,57 @@ class Hand:
             
             # Call the main addTileSets method with the modified hand text
             self.addTileSets(modified_text)
+    
+    def addTileSets_Run(self, hand_text=None):
+        """
+        Generate tile sets for consecutive run hands.
+        
+        This method creates tile sets by incrementing consecutive numbers.
+        For example: 123 becomes 123, 234, 345, etc.
+        
+        Args:
+            hand_text (str, optional): Custom hand text to use instead of self.text
+        """
+        # Use provided hand text or default to self.text
+        text_to_use = hand_text if hand_text is not None else self.text
+        
+        # Parse the hand text into individual characters (tiles)
+        tiles = []
+        for group in text_to_use.split():
+            if group not in ['+', '=']:  # Skip special characters
+                tiles.extend(list(group))  # Add each individual tile
+        
+        # Find the minimum and maximum numbered tile in the hand
+        numbered_tiles = [t for t in tiles if t.isdigit()]
+        if not numbered_tiles:
+            return
+        
+        min_tile = int(min(numbered_tiles))
+        max_tile = int(max(numbered_tiles))
+        
+        # Determine loop count based on how far we can increment before hitting 10
+        # We stop before creating a tile numbered 10 or more
+        loop_count = min(10 - max_tile, 10 - min_tile)
+        
+        # Run the loop, incrementing the numbers each time
+        for loop in range(loop_count):
+            # Build modified text character by character
+            modified_chars = []
+            for char in text_to_use:
+                if char.isdigit():
+                    new_digit = int(char) + loop
+                    # Only increment if new_digit is less than 10
+                    if new_digit < 10:
+                        modified_chars.append(str(new_digit))
+                    else:
+                        # If it would become 10 or more, don't create this hand
+                        modified_chars = []  # Reset to skip this iteration
+                        break
+                else:
+                    modified_chars.append(char)
+            
+            # Only process if we didn't skip due to hitting 10
+            if modified_chars:
+                modified_text = ''.join(modified_chars)
+                # Call the main addTileSets method with the modified hand text
+                self.addTileSets(modified_text)
