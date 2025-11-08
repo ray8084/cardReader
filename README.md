@@ -1,90 +1,49 @@
-# Mahjong Card Reader
+# Mahjong Card Builder
 
-A Python script to read mahjong card images from PNG files and extract hand information into JSON format.
+This project generates Mahjong card data (currently focused on the 2014 National Mah Jongg League card) and exports the hands and corresponding tile sets to a JSON file.
 
-## Features
+## Repository Layout
 
-- Reads mahjong card PNG images
-- Detects and recognizes mahjong tiles
-- Extracts hand information
-- Exports results to JSON format
+- `load_card.py` – Utility script that parses a source JSON (for example `nmjl_2014_claude.json`) and scaffolds a `generateYYYY.py` builder.  
+  - **Important:** The `main()` call in `load_card.py` is intentionally commented out so the script will not overwrite the hand-tuned `generate2014.py`. Uncomment the call only if you need to regenerate the builder from scratch and are prepared to merge the generated output back into your custom changes.
+- `generate2014.py` – Hand-edited generator that builds the 2014 card hands in memory, produces tile sets, and exports `card2014.json`.
+- `hand.py`, `tile.py` – Supporting classes and tile mappings used by the generator.
 
 ## Installation
 
-1. Clone this repository:
 ```bash
 git clone <your-repo-url>
 cd cardReader
-```
-
-2. Install dependencies:
-```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
+## (Optional) Regenerating the Builder Skeleton
+
+If you have an updated source JSON and need to recreate the builder script:
+
+1. Place the JSON file (for example `nmjl_2014_claude.json`) in the repository root.
+2. Temporarily uncomment the `main()` invocation at the bottom of `load_card.py`.
+3. Run:
+   ```bash
+   python3 load_card.py
+   ```
+4. Review the regenerated `generate2014.py`, merge any desired changes, then re-comment the `main()` call to avoid future accidental overwrites.
+
+## Generating the 2014 Card JSON
+
+The generator script produces tile sets for every hand and writes the JSON export in the expected inline format.
 
 ```bash
-python card_reader.py <image_path> [output_json_path]
+python3 generate2014.py
 ```
 
-### Examples
-
-```bash
-# Basic usage
-python card_reader.py mahjong_hand.png
-
-# Specify output file
-python card_reader.py mahjong_hand.png output.json
-```
-
-## How It Works
-
-1. **Image Loading**: Loads the PNG image using OpenCV
-2. **Tile Detection**: Uses contour detection to identify potential tile regions
-3. **Tile Recognition**: Recognizes individual tiles (placeholder implementation)
-4. **Hand Parsing**: Groups detected tiles into mahjong hands
-5. **JSON Export**: Saves results to a JSON file
-
-## Extending the Code
-
-### Implementing Tile Recognition
-
-The current implementation uses a placeholder for tile recognition. To implement actual recognition, you can:
-
-1. **Template Matching**: Create reference images for each tile and use `cv2.matchTemplate()`
-2. **Deep Learning**: Train a CNN model to classify tiles
-3. **Feature Detection**: Use SIFT/ORB features for matching
-4. **OCR**: Extract numbers and characters using Tesseract OCR
-
-### Example: Template Matching
-
-```python
-def recognize_tile(self, tile_region: np.ndarray) -> str:
-    best_match = None
-    best_score = 0
-    
-    for tile_name, template in self.template_images.items():
-        result = cv2.matchTemplate(tile_region, template, cv2.TM_CCOEFF_NORMED)
-        score = np.max(result)
-        if score > best_score:
-            best_score = score
-            best_match = tile_name
-    
-    return best_match if best_score > 0.7 else "unknown"
-```
-
-## Output Format
-
-The JSON output includes:
-- `image_path`: Path to the source image
-- `tiles_detected`: Number of tiles detected
-- `hands`: Information about detected hands
-- `raw_tiles`: Raw tile detection data
+Running the script prints a summary of every hand, the total number of tiles produced, and writes `card2014.json` at the repository root.
 
 ## Contributing
 
-Contributions are welcome! Feel free to submit issues or pull requests.
+Contributions and refinements are welcome. Please open an issue or submit a pull request.
 
 ## License
 

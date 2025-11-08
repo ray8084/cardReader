@@ -139,35 +139,48 @@ class Card2014:
         p3 = self.add_hand(3, "1111 22 22 22 3333", "gggg rr gg 00 gggg", "1111 00 00 00 1111", "Any 3 Consec. Nos. Like Pairs Middle No. Only", "Consecutive Run", False, 30)
         p3.addTileSets_Run()
         
-        p4 = self.add_hand(4, "11 22 33 4444 4444", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits, Any 3 Consec. Prs., Like Kongs Ascending No", "Consecutive Run", False, 30)
-        
+        p4 = self.add_hand(4, "11 22 33 4444 4444", "gg gg gg rrrr 0000", "00 00 00 1111 1111", "Any 3 Suits, Any 3 Consec. Prs., Like Kongs Ascending No", "Consecutive Run", False, 30)
+        p4.addTileSets_Run()
+
         p5 = self.add_hand(5, "FFFF 1111 2222 DD", "0000 0000 0000 00", "1111 1111 1111 00", "Any 2 Consec. Nos.", "Consecutive Run", False, 25)
-        
-        p6 = self.add_hand(6, "11 22 111 222 3333", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", False, 25)
-        
-        p7 = self.add_hand(7, "111 22 333 DDD DDD", "000 00 000 000 000", "111 00 111 111 111", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", True, 30)
-        
+        p5.addTileSets_Run()
+
+        p6 = self.add_hand(6, "11 22 111 222 3333", "gg gg rrr rrr 0000", "00 00 111 111 1111", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", False, 25)
+        p6.addTileSets_Run()
+
+        p7 = self.add_hand(7, "111 22 333 DDD DDD", "ggg gg ggg rrr 000", "111 00 111 111 111", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", True, 30)
+        p7.addTileSets_Run()
 
     def add13579(self):
         p0 = self.add_hand(0, "11 33 555 777 9999", "00 00 000 000 0000", "00 00 111 111 1111", "", "13579", False, 25)
-        
-        p1 = self.add_hand(1, "111 3333 333 5555", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
+        p0.addTileSets()
+
+        p1 = self.add_hand(1, "111 3333 333 5555", "ggg gggg 000 0000", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
+        p1.addTileSets()
         
         p2 = self.add_hand(2, "555 7777 777 9999", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
+        p2.addTileSets()
         
         p3 = self.add_hand(3, "FFFF 1111 33 5555", "0000 0000 00 0000", "1111 1111 00 1111", "", "13579", False, 25)
+        p3.addTileSets()
         
         p4 = self.add_hand(4, "FFFF 5555 77 9999", "0000 0000 00 0000", "1111 1111 00 1111", "", "13579", False, 25)
+        p4.addTileSets()
         
         p5 = self.add_hand(5, "11 33 111 333 5555", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
+        p5.addTileSets()
         
         p6 = self.add_hand(6, "55 77 555 777 9999", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
+        p6.addTileSets()
         
         p7 = self.add_hand(7, "FF 1111 9999 DDDDD", "00 0000 0000 00000", "00 1111 1111 11111", "", "13579", False, 25)
+        p7.addTileSets()
         
         p8 = self.add_hand(8, "FF 1111 9999 DDDDD", "00 0000 0000 00000", "00 1111 1111 11111", "", "13579", False, 25)
+        p8.addTileSets()
         
         p9 = self.add_hand(9, "111 3 555 555 7 999", "000 0 000 000 0 000", "111 0 111 111 0 111", "Any 2 Suits", "13579", True, 30)
+        p9.addTileSets()
         
 
     def addWindsDragons(self):
