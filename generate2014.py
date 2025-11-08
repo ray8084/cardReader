@@ -136,7 +136,8 @@ class Card2014:
         p2 = self.add_hand(2, "111 2222 333 4444", "ggg gggg rrr rrrr", "111 1111 111 1111", "Any 2 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
         p2.addTileSets_Run()
         
-        p3 = self.add_hand(3, "1111 22 22 22 3333", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 3 Consec. Nos. Like Pairs Middle No. Only", "Consecutive Run", False, 30)
+        p3 = self.add_hand(3, "1111 22 22 22 3333", "gggg rr gg 00 gggg", "1111 00 00 00 1111", "Any 3 Consec. Nos. Like Pairs Middle No. Only", "Consecutive Run", False, 30)
+        p3.addTileSets_Run()
         
         p4 = self.add_hand(4, "11 22 33 4444 4444", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits, Any 3 Consec. Prs., Like Kongs Ascending No", "Consecutive Run", False, 30)
         
