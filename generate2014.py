@@ -226,20 +226,31 @@ class Card2014:
         p5.addTileSets()
 
     def addSinglesAndPairs(self):
-        p0 = self.add_hand(0, "NN EE WW SS 11 11 11", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any Like No.", "Singles and Pairs", True, 50)
-        
+        p0 = self.add_hand(0, "NN EE WW SS 11 11 11", "00 00 00 00 gg rr 00", "00 00 00 00 00 00 00", "Any Like No.", "Singles and Pairs", True, 50)
+        p0.addTileSets_LikeNumbers()
+
         p1 = self.add_hand(1, "FF 11 22 33 44 55 DD", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 5 Consec. Nos.", "Singles and Pairs", True, 50)
+        p1.addTileSets_Run()
+
+        p2 = self.add_hand(2, "11 33 55 77 99 11 11", "gg gg gg gg gg rr 00", "00 00 00 00 00 00 00", "Any Like Odd No. in Other 2 Suits", "Singles and Pairs", True, 50)
+        p2.addTileSets("11 33 55 77 99 11 11")
+        p2.addTileSets("11 33 55 77 99 33 33")
+        p2.addTileSets("11 33 55 77 99 55 55")
+        p2.addTileSets("11 33 55 77 99 77 77")
+        p2.addTileSets("11 33 55 77 99 99 99")
+
+        p3 = self.add_hand(3, "FF 22 46 88 22 46 88", "00 gg gg gg rr rr rr", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
+        p3.addTileSets()
         
-        p2 = self.add_hand(2, "11 33 55 77 99 11 11", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any Like Odd No. in Other 2 Suits", "Singles and Pairs", True, 50)
+        p4 = self.add_hand(4, "FF 11 22 11 22 11 22", "00 gg gg rr rr 00 00", "00 00 00 00 00 00 00", "Any 2 Consec. Nos. in 3 Suits", "Singles and Pairs", True, 50)
+        p4.addTileSets_Run()
+
+        p5 = self.add_hand(5, "336 33669 336699", "ggg rrrrr 000000", "000 00000 000000", "Any 3 Suits", "Singles and Pairs", True, 50)
+        p5.addTileSets()
         
-        p3 = self.add_hand(3, "FF 22 46 88 22 46 88", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
-        
-        p4 = self.add_hand(4, "FF 11 22 11 22 11 22", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Consec. Nos. in 3 Suits", "Singles and Pairs", True, 50)
-        
-        p5 = self.add_hand(5, "336 33669 3366999", "000 00000 0000000", "000 00000 0000000", "Any 3 Suits (INVALID: 15 tiles)", "Singles and Pairs", True, 50)
-        
-        p6 = self.add_hand(6, "FF 2014 2014 2014", "00 0000 0000 0000", "00 0000 0000 0000", "3 Suits", "Singles and Pairs", True, 75)
-    
+        p6 = self.add_hand(6, "FF 2014 2014 2014", "00 gggg rrrr 0000", "00 0000 0000 0000", "3 Suits", "Singles and Pairs", True, 75)
+        p6.addTileSets()
+
     def tile_id_to_name(self, tile_id):
         """Convert tile ID back to readable name"""
         from tile import TILE_MAPPINGS
