@@ -214,12 +214,16 @@ class Card2014:
         p2.addTileSets("33 66 99 6666 6666")
         p2.addTileSets("33 66 99 9999 9999")
 
-        p3 = self.add_hand(3, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
-        
-        p4 = self.add_hand(4, "333 66 999 333 333", "000 00 000 000 000", "111 00 111 111 111", "Any 2 Suits, Like Pungs 3, 6 or 9", "369", False, 30)
-        
-        p5 = self.add_hand(5, "333 6 999 333 6 999", "000 0 000 000 0 000", "111 0 111 111 0 111", "Any 2 Suits", "369", True, 30)
-        
+        p3 = self.add_hand(3, "FF 3333 6666 9999", "00 gggg rrrr 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
+        p3.addTileSets()
+
+        p4 = self.add_hand(4, "333 66 999 333 333", "ggg gg ggg rrr rrr", "111 00 111 111 111", "Any 2 Suits, Like Pungs 3, 6 or 9", "369", False, 30)
+        p4.addTileSets("333 66 999 333 333")
+        p4.addTileSets("333 66 999 666 666")
+        p4.addTileSets("333 66 999 999 999")
+
+        p5 = self.add_hand(5, "333 6 999 333 6 999", "ggg g ggg rrr r rrr", "111 0 111 111 0 111", "Any 2 Suits", "369", True, 30)
+        p5.addTileSets()
 
     def addSinglesAndPairs(self):
         p0 = self.add_hand(0, "NN EE WW SS 11 11 11", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any Like No.", "Singles and Pairs", True, 50)
