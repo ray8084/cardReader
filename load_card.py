@@ -175,20 +175,15 @@ if __name__ == "__main__":
     
     print(f"Generated {output_filename} with {len(hands)} hands across {len(sections)} sections")
 
-def main():
+def main(source_file: str):
     """Main function to load JSON and generate Python script."""
-    # Look for JSON files in current directory
-    json_files = [f for f in os.listdir('.') if f.endswith('.json') and 'claude' in f.lower()]
-    
-    if not json_files:
-        print("No JSON files with 'claude' in the name found.")
+    if not os.path.exists(source_file):
+        print(f"JSON source '{source_file}' not found.")
         return
-    
-    # Use the first found file
-    json_file = json_files[0]
-    print(f"Loading data from: {json_file}")
-    
-    data = load_json_file(json_file)
+
+    print(f"Loading data from: {source_file}")
+
+    data = load_json_file(source_file)
     if not data:
         return
     
@@ -197,5 +192,5 @@ def main():
 
 if __name__ == "__main__":
     # COMMENTED OUT - We are now hand-editing generate2014.py
-    # main()
+    # main("nmjl_2014_claude.json")
     print("load_card.py is disabled to prevent overwriting hand-edited generate2014.py")
