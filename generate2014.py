@@ -155,10 +155,10 @@ class Card2014:
         p0 = self.add_hand(0, "11 33 555 777 9999", "00 00 000 000 0000", "00 00 111 111 1111", "", "13579", False, 25)
         p0.addTileSets()
 
-        p1 = self.add_hand(1, "111 3333 333 5555", "ggg gggg 000 0000", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
+        p1 = self.add_hand(1, "111 3333 333 5555", "ggg gggg rrr rrrr", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
         p1.addTileSets()
         
-        p2 = self.add_hand(2, "555 7777 777 9999", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
+        p2 = self.add_hand(2, "555 7777 777 9999", "ggg gggg rrr rrrr", "111 1111 111 1111", "Any 2 Suits", "13579", False, 25)
         p2.addTileSets()
         
         p3 = self.add_hand(3, "FFFF 1111 33 5555", "0000 0000 00 0000", "1111 1111 00 1111", "", "13579", False, 25)
@@ -167,19 +167,19 @@ class Card2014:
         p4 = self.add_hand(4, "FFFF 5555 77 9999", "0000 0000 00 0000", "1111 1111 00 1111", "", "13579", False, 25)
         p4.addTileSets()
         
-        p5 = self.add_hand(5, "11 33 111 333 5555", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
+        p5 = self.add_hand(5, "11 33 111 333 5555", "gg gg rrr rrr 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
         p5.addTileSets()
         
-        p6 = self.add_hand(6, "55 77 555 777 9999", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
+        p6 = self.add_hand(6, "55 77 555 777 9999", "gg gg rrr rrr 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
         p6.addTileSets()
         
-        p7 = self.add_hand(7, "FF 1111 9999 DDDDD", "00 0000 0000 00000", "00 1111 1111 11111", "", "13579", False, 25)
+        p7 = self.add_hand(7, "FF 1111 9999 DDDDD", "00 0000 0000 00000", "00 1111 1111 11111", "Any 1 Suit", "13579", False, 25)
         p7.addTileSets()
         
-        p8 = self.add_hand(8, "FF 1111 9999 DDDDD", "00 0000 0000 00000", "00 1111 1111 11111", "", "13579", False, 25)
+        p8 = self.add_hand(8, "FF 1111 9999 DDDDD", "00 gggg rrrr 00000", "00 1111 1111 11111", "Any 3 Suits", "13579", False, 25)
         p8.addTileSets()
         
-        p9 = self.add_hand(9, "111 3 555 555 7 999", "000 0 000 000 0 000", "111 0 111 111 0 111", "Any 2 Suits", "13579", True, 30)
+        p9 = self.add_hand(9, "111 3 555 555 7 999", "ggg g ggg rrr r rrr", "111 0 111 111 0 111", "Any 2 Suits", "13579", True, 30)
         p9.addTileSets()
         
 
