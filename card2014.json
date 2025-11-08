@@ -554,7 +554,11 @@
       "family": "Consecutive Run",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [21, 21, 22, 22, 23, 23, 23, 24, 24, 24, 25, 25, 25, 25],
+          [11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 15],
+          [1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5]
+      ]
     },
     {
       "id": 1,
@@ -565,7 +569,11 @@
       "family": "Consecutive Run",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [25, 25, 26, 26, 27, 27, 27, 28, 28, 28, 29, 29, 29, 29],
+          [15, 15, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19, 19],
+          [5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 9]
+      ]
     },
     {
       "id": 2,
@@ -954,9 +962,9 @@
     }
   ],
   "summary": {
-    "hands_with_valid_tiles": 22,
-    "hands_without_valid_tiles": 37,
-    "total_tiles_used": 3906,
+    "hands_with_valid_tiles": 24,
+    "hands_without_valid_tiles": 35,
+    "total_tiles_used": 3990,
     "families": {
       "2014": {
         "total_hands": 5,
@@ -985,8 +993,8 @@
       },
       "Consecutive Run": {
         "total_hands": 8,
-        "valid_hands": 0,
-        "invalid_hands": 8
+        "valid_hands": 2,
+        "invalid_hands": 6
       },
       "13579": {
         "total_hands": 10,

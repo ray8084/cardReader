@@ -128,8 +128,10 @@ class Card2014:
 
     def addConsecutiveRun(self):
         p0 = self.add_hand(0, "11 22 333 444 5555", "00 00 000 000 0000", "00 00 111 111 1111", "", "Consecutive Run", False, 25)
+        p0.addTileSets()
         
         p1 = self.add_hand(1, "55 66 777 888 9999", "00 00 000 000 0000", "00 00 111 111 1111", "", "Consecutive Run", False, 25)
+        p1.addTileSets()
         
         p2 = self.add_hand(2, "111 2222 333 4444", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
         
