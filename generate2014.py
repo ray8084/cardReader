@@ -123,8 +123,8 @@ class Card2014:
         p2 = self.add_hand(2, "FFFF NNNNNN 11111", "0000 000000 rrrrr", "1111 111111 11111", "Quint Any Wind & Any No. in Any Suit (INVALID: 15 tiles)", "Quints", False, 40)
         p2.addTileSets_AnyWindAnyNumber()
         
-        p3 = self.add_hand(3, "11111 DDDD 11111", "00000 0000 00000", "11111 1111 11111", "Quint Any Like No., Kong Dragon 3rd Suit", "Quints", False, 45)
-        
+        p3 = self.add_hand(3, "11111 DDDD 11111", "ggggg rrrr 00000", "11111 1111 11111", "Quint Any Like No., Kong Dragon 3rd Suit", "Quints", False, 45)
+        p3.addTileSets_LikeNumbers()
 
     def addConsecutiveRun(self):
         p0 = self.add_hand(0, "11 22 333 444 5555", "00 00 000 000 0000", "00 00 111 111 1111", "", "Consecutive Run", False, 25)
