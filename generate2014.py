@@ -193,10 +193,11 @@ class Card2014:
         p2 = self.add_hand(2, "FFFF EEEE GG WWWWW", "0000 0000 gg 00000", "1111 1111 00 11111", "Green Dragon Only (INVALID: 15 tiles)", "Winds - Dragons", False, 25)
         p2.addTileSets()
 
-        p3 = self.add_hand(3, "NN 11 SSS 111 1111", "00 00 000 000 0000", "00 00 111 111 1111", "Any Like Odd No.", "Winds - Dragons", True, 30)
+        p3 = self.add_hand(3, "NN 11 SSS 111 1111", "00 gg 000 rrr 0000", "00 00 111 111 1111", "Any Like Odd No.", "Winds - Dragons", True, 30)
         p3.addTileSets_LikeNumbersOdd()
         
-        p4 = self.add_hand(4, "EE 22 WWW 222 2222", "00 00 000 000 0000", "00 00 111 111 1111", "Any Like Even No.", "Winds - Dragons", True, 30)
+        p4 = self.add_hand(4, "EE 22 WWW 222 2222", "00 gg 000 rrr 0000", "00 00 111 111 1111", "Any Like Even No.", "Winds - Dragons", True, 30)
+        p4.addTileSets_LikeNumbersEven()
         
         p5 = self.add_hand(5, "FFFF DDDD DD DDDD", "0000 0000 00 0000", "1111 1111 00 1111", "Any 3 Suits", "Winds - Dragons", False, 30)
         

@@ -197,6 +197,22 @@ class Hand:
         for number in range(1, 10, 2):
             modified_text = text_to_use.replace('1', str(number))
             self.addTileSets(modified_text)
+
+    def addTileSets_LikeNumbersEven(self, hand_text=None):
+        """
+        Generate tile sets for Like Numbers hands using only even numbers.
+        
+        This method creates tile sets for numbers 2, 4, 6, and 8 by replacing
+        the placeholder '1' in the hand text and delegating to addTileSets for each.
+        
+        Args:
+            hand_text (str, optional): Custom hand text to use instead of self.text
+        """
+        text_to_use = hand_text if hand_text is not None else self.text
+        
+        for number in range(2, 10, 2):
+            modified_text = text_to_use.replace('1', str(number))
+            self.addTileSets(modified_text)
     
     def addTileSets_Run(self, hand_text=None):
         """
