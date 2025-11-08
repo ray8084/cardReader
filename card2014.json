@@ -1079,13 +1079,17 @@
     {
       "id": 5,
       "hand": "FFFF DDDD DD DDDD",
-      "colorMask": "0000 0000 00 0000",
+      "colorMask": "0000 gggg rr 0000",
       "jokerMask": "1111 1111 00 1111",
       "note": "Any 3 Suits",
       "family": "Winds - Dragons",
       "points": "30",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [35, 35, 35, 35, 10, 10, 10, 10, 20, 20, 30, 30, 30, 30],
+          [35, 35, 35, 35, 10, 10, 10, 10, 30, 30, 20, 20, 20, 20],
+          [35, 35, 35, 35, 20, 20, 20, 20, 10, 10, 30, 30, 30, 30]
+      ]
     },
     {
       "id": 0,
@@ -1232,9 +1236,9 @@
     }
   ],
   "summary": {
-    "hands_with_valid_tiles": 45,
-    "hands_without_valid_tiles": 14,
-    "total_tiles_used": 7476,
+    "hands_with_valid_tiles": 46,
+    "hands_without_valid_tiles": 13,
+    "total_tiles_used": 7518,
     "families": {
       "2014": {
         "total_hands": 5,
@@ -1273,8 +1277,8 @@
       },
       "Winds - Dragons": {
         "total_hands": 6,
-        "valid_hands": 5,
-        "invalid_hands": 1
+        "valid_hands": 6,
+        "invalid_hands": 0
       },
       "369": {
         "total_hands": 6,

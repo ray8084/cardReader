@@ -199,8 +199,8 @@ class Card2014:
         p4 = self.add_hand(4, "EE 22 WWW 222 2222", "00 gg 000 rrr 0000", "00 00 111 111 1111", "Any Like Even No.", "Winds - Dragons", True, 30)
         p4.addTileSets_LikeNumbersEven()
         
-        p5 = self.add_hand(5, "FFFF DDDD DD DDDD", "0000 0000 00 0000", "1111 1111 00 1111", "Any 3 Suits", "Winds - Dragons", False, 30)
-        
+        p5 = self.add_hand(5, "FFFF DDDD DD DDDD", "0000 gggg rr 0000", "1111 1111 00 1111", "Any 3 Suits", "Winds - Dragons", False, 30)
+        p5.addTileSets()
 
     def add369(self):
         p0 = self.add_hand(0, "FF 3333 66 9999 DD", "00 0000 00 0000 00", "00 1111 00 1111 00", "", "369", False, 30)
