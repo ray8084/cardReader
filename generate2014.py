@@ -204,11 +204,16 @@ class Card2014:
 
     def add369(self):
         p0 = self.add_hand(0, "FF 3333 66 9999 DD", "00 0000 00 0000 00", "00 1111 00 1111 00", "", "369", False, 30)
-        
-        p1 = self.add_hand(1, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "369", False, 25)
-        
-        p2 = self.add_hand(2, "33 66 99 3333 3333", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits, Like Kongs 3, 6 or 9", "369", False, 30)
-        
+        p0.addTileSets()
+
+        p1 = self.add_hand(1, "333 666 6666 9999", "ggg ggg 0000 0000", "111 111 1111 1111", "Any 2 Suits", "369", False, 25)
+        p1.addTileSets()
+
+        p2 = self.add_hand(2, "33 66 99 3333 3333", "gg gg gg rrrr 0000", "00 00 00 1111 1111", "Any 3 Suits, Like Kongs 3, 6 or 9", "369", False, 30)
+        p2.addTileSets("33 66 99 3333 3333")
+        p2.addTileSets("33 66 99 6666 6666")
+        p2.addTileSets("33 66 99 9999 9999")
+
         p3 = self.add_hand(3, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
         
         p4 = self.add_hand(4, "333 66 999 333 333", "000 00 000 000 000", "111 00 111 111 111", "Any 2 Suits, Like Pungs 3, 6 or 9", "369", False, 30)
