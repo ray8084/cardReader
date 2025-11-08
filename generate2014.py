@@ -194,6 +194,7 @@ class Card2014:
         p2.addTileSets()
 
         p3 = self.add_hand(3, "NN 11 SSS 111 1111", "00 00 000 000 0000", "00 00 111 111 1111", "Any Like Odd No.", "Winds - Dragons", True, 30)
+        p3.addTileSets_LikeNumbersOdd()
         
         p4 = self.add_hand(4, "EE 22 WWW 222 2222", "00 00 000 000 0000", "00 00 111 111 1111", "Any Like Even No.", "Winds - Dragons", True, 30)
         
