@@ -101,7 +101,7 @@ class Card2014(CardGeneratorBase):
         p1 = self.add_hand(1, "11111 2222 33333", "ggggg rrrr 00000", "11111 1111 11111", "Any 3 Suits, Any 3 Consec. Nos. Kong Middle No. Only", "Quints", False, 40)
         p1.addTileSets_Run()
         
-        p2 = self.add_hand(2, "FFFF NNNNNN 11111", "0000 000000 rrrrr", "1111 111111 11111", "Quint Any Wind & Any No. in Any Suit (INVALID: 15 tiles)", "Quints", False, 40)
+        p2 = self.add_hand(2, "FFFF NNNNN 11111", "0000 00000 rrrrr", "1111 11111 11111", "Quint Any Wind & Any No. in Any Suit", "Quints", False, 40)
         p2.addTileSets_AnyWindAnyNumber()
         
         p3 = self.add_hand(3, "11111 DDDD 11111", "ggggg rrrr 00000", "11111 1111 11111", "Quint Any Like No., Kong Dragon 3rd Suit", "Quints", False, 45)
@@ -171,7 +171,7 @@ class Card2014(CardGeneratorBase):
         p1 = self.add_hand(1, "FFFF NNNN RR SSSS", "0000 0000 rr 0000", "1111 1111 00 1111", "Red Dragon Only", "Winds - Dragons", False, 25)
         p1.addTileSets()
 
-        p2 = self.add_hand(2, "FFFF EEEE GG WWWWW", "0000 0000 gg 00000", "1111 1111 00 11111", "Green Dragon Only (INVALID: 15 tiles)", "Winds - Dragons", False, 25)
+        p2 = self.add_hand(2, "FFFF EEEE GG WWWW", "0000 0000 gg 0000", "1111 1111 00 1111", "Green Dragon Only", "Winds - Dragons", False, 25)
         p2.addTileSets()
 
         p3 = self.add_hand(3, "NN 11 SSS 111 1111", "00 gg 000 rrr 0000", "00 00 111 111 1111", "Any Like Odd No.", "Winds - Dragons", True, 30)
