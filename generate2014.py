@@ -184,12 +184,15 @@ class Card2014:
         
 
     def addWindsDragons(self):
-        p0 = self.add_hand(0, "NNNN EEEE WWWWW SS", "0000 0000 00000 00", "1111 1111 11111 00", "(INVALID: 15 tiles)", "Winds - Dragons", False, 25)
-        
-        p1 = self.add_hand(1, "FFFF NNNN RR SSSS", "0000 0000 00 0000", "1111 1111 00 1111", "Red Dragon Only", "Winds - Dragons", False, 25)
-        
-        p2 = self.add_hand(2, "FFFF EEEE GG WWWWW", "0000 0000 00 00000", "1111 1111 00 11111", "Green Dragon Only (INVALID: 15 tiles)", "Winds - Dragons", False, 25)
-        
+        p0 = self.add_hand(0, "NNNN EEEE WWWW SS", "0000 0000 0000 00", "1111 1111 1111 00", "", "Winds - Dragons", False, 25)
+        p0.addTileSets()
+
+        p1 = self.add_hand(1, "FFFF NNNN RR SSSS", "0000 0000 rr 0000", "1111 1111 00 1111", "Red Dragon Only", "Winds - Dragons", False, 25)
+        p1.addTileSets()
+
+        p2 = self.add_hand(2, "FFFF EEEE GG WWWWW", "0000 0000 gg 00000", "1111 1111 00 11111", "Green Dragon Only (INVALID: 15 tiles)", "Winds - Dragons", False, 25)
+        p2.addTileSets()
+
         p3 = self.add_hand(3, "NN 11 SSS 111 1111", "00 00 000 000 0000", "00 00 111 111 1111", "Any Like Odd No.", "Winds - Dragons", True, 30)
         
         p4 = self.add_hand(4, "EE 22 WWW 222 2222", "00 00 000 000 0000", "00 00 111 111 1111", "Any Like Even No.", "Winds - Dragons", True, 30)

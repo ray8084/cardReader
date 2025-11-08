@@ -979,36 +979,42 @@
     },
     {
       "id": 0,
-      "hand": "NNNN EEEE WWWWW SS",
-      "colorMask": "0000 0000 00000 00",
-      "jokerMask": "1111 1111 11111 00",
-      "note": "(INVALID: 15 tiles)",
+      "hand": "NNNN EEEE WWWW SS",
+      "colorMask": "0000 0000 0000 00",
+      "jokerMask": "1111 1111 1111 00",
+      "note": "",
       "family": "Winds - Dragons",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [31, 31, 31, 31, 34, 34, 34, 34, 33, 33, 33, 33, 32, 32]
+      ]
     },
     {
       "id": 1,
       "hand": "FFFF NNNN RR SSSS",
-      "colorMask": "0000 0000 00 0000",
+      "colorMask": "0000 0000 rr 0000",
       "jokerMask": "1111 1111 00 1111",
       "note": "Red Dragon Only",
       "family": "Winds - Dragons",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [35, 35, 35, 35, 31, 31, 31, 31, 30, 30, 32, 32, 32, 32]
+      ]
     },
     {
       "id": 2,
       "hand": "FFFF EEEE GG WWWWW",
-      "colorMask": "0000 0000 00 00000",
+      "colorMask": "0000 0000 gg 00000",
       "jokerMask": "1111 1111 00 11111",
       "note": "Green Dragon Only (INVALID: 15 tiles)",
       "family": "Winds - Dragons",
       "points": "25",
       "concealed": false,
-      "tile_sets": []
+      "tile_sets": [
+          [35, 35, 35, 35, 34, 34, 34, 34, 20, 20, 33, 33, 33, 33, 33]
+      ]
     },
     {
       "id": 3,
@@ -1188,9 +1194,9 @@
     }
   ],
   "summary": {
-    "hands_with_valid_tiles": 40,
-    "hands_without_valid_tiles": 19,
-    "total_tiles_used": 6930,
+    "hands_with_valid_tiles": 43,
+    "hands_without_valid_tiles": 16,
+    "total_tiles_used": 6972,
     "families": {
       "2014": {
         "total_hands": 5,
@@ -1229,8 +1235,8 @@
       },
       "Winds - Dragons": {
         "total_hands": 6,
-        "valid_hands": 0,
-        "invalid_hands": 6
+        "valid_hands": 3,
+        "invalid_hands": 3
       },
       "369": {
         "total_hands": 6,
