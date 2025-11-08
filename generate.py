@@ -70,109 +70,114 @@ class CardGeneratorBase:
                 parts.append(f"{tile_name}x{count}")
         return " ".join(parts)
 
-    def export_to_json(self, filename: Optional[str] = None) -> Dict[str, Any]:
-        """Export the card data to a JSON file with condensed tile sets."""
+    def export_to_json(self, filename: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Export the card data to a JSON file matching legacy card format."""
         target_file = filename or f"card{self.year}.json"
 
-        json_data: Dict[str, Any] = {
-            "year": self.get_year(),
-            "total_hands": len(self.hand_list),
-            "hands": [],
+        json_hands: List[Dict[str, Any]] = []
+
+        family_mapping = {
+            "Consecutive Run": "Runs",
+            "Winds - Dragons": "Winds",
+            "Singles and Pairs": "Singles & Pairs",
         }
 
-        for hand in self.hand_list:
+        for index, hand in enumerate(self.hand_list):
             hand_data: Dict[str, Any] = {
-                "id": hand.id,
-                "hand": hand.text,
-                "colorMask": hand.mask,
+                "id": index,
+                "text": hand.text,
+                "mask": hand.mask,
                 "jokerMask": hand.joker_mask,
                 "note": hand.note,
-                "family": hand.family,
-                "points": str(hand.points),
+                "family": family_mapping.get(hand.family, hand.family),
                 "concealed": hand.concealed,
-                "tile_sets": [],
+                "points": hand.points,
+                "tileSets": [],
             }
 
             print(f"DEBUG: Hand {hand.id} ({hand.text}) has {len(hand.tile_sets)} tile sets")
             for i, tile_set in enumerate(hand.tile_sets):
                 print(f"DEBUG: Adding tile set {i}: {tile_set}")
-                hand_data["tile_sets"].append(tile_set)
+                hand_data["tileSets"].append(tile_set)
 
-            json_data["hands"].append(hand_data)
+            json_hands.append(hand_data)
 
         valid_hands = sum(1 for hand in self.hand_list if hand.tile_sets)
         total_tiles = sum(len(hand.tile_sets) * 14 for hand in self.hand_list)
 
-        json_data["summary"] = {
-            "hands_with_valid_tiles": valid_hands,
-            "hands_without_valid_tiles": len(self.hand_list) - valid_hands,
-            "total_tiles_used": total_tiles,
-            "families": {},
-        }
-
-        for hand in self.hand_list:
-            family = hand.family
-            family_stats = json_data["summary"]["families"].setdefault(
-                family,
-                {"total_hands": 0, "valid_hands": 0, "invalid_hands": 0},
-            )
-            family_stats["total_hands"] += 1
-            if hand.tile_sets:
-                family_stats["valid_hands"] += 1
-            else:
-                family_stats["invalid_hands"] += 1
-
         with open(target_file, "w", encoding="utf-8") as fh:
-            json_str = json.dumps(json_data, indent=2, ensure_ascii=False, separators=(",", ": "))
+            json_str = json.dumps(json_hands, indent=2, ensure_ascii=False, separators=(",", ": "))
 
             lines = json_str.split("\n")
             result_lines: List[str] = []
             i = 0
+            in_tile_sets = False
             while i < len(lines):
                 line = lines[i]
                 stripped = line.strip()
-                if stripped.startswith("[") and not stripped.startswith("[["):
-                    tile_lines: List[str] = []
-                    i += 1
-                    while i < len(lines) and "]" not in lines[i]:
-                        tile_lines.append(lines[i].strip().rstrip(","))
-                        i += 1
-                    if i < len(lines):
-                        i += 1  # skip closing bracket
 
-                    tile_ids_str = ", ".join(tile_lines)
-                    is_last = True
-                    j = i
-                    while j < len(lines):
-                        lookahead = lines[j].strip()
-                        if lookahead.startswith("[") and not lookahead.startswith("[["):
-                            is_last = False
-                            break
-                        if lookahead == "]":
-                            break
-                        j += 1
-
-                    if is_last:
-                        result_lines.append(f"          [{tile_ids_str}]")
-                    else:
-                        result_lines.append(f"          [{tile_ids_str}],")
-                else:
+                if '"tileSets": []' in line:
                     result_lines.append(line)
                     i += 1
+                    continue
+
+                if '"tileSets": [' in line:
+                    in_tile_sets = True
+                    result_lines.append(line)
+                    i += 1
+                    continue
+
+                if in_tile_sets and stripped.startswith("["):
+                    indent = line[: line.index("[")]
+                    values: List[str] = []
+                    trailing_comma = ""
+                    i += 1
+                    while i < len(lines):
+                        inner = lines[i].strip()
+                        if inner.startswith("]"):
+                            trailing_comma = "," if inner.endswith(",") else ""
+                            i += 1
+                            break
+                        value = inner.rstrip(",")
+                        if value:
+                            values.append(value)
+                        i += 1
+                    joined = ", ".join(values)
+                    result_lines.append(f"{indent}[{joined}]{trailing_comma}")
+                    continue
+
+                if in_tile_sets and stripped.startswith("]"):
+                    in_tile_sets = False
+                    result_lines.append(line)
+                    i += 1
+                    continue
+
+                result_lines.append(line)
+                i += 1
 
             fh.write("\n".join(result_lines))
 
         print(f"JSON file '{target_file}' exported successfully!")
-        print(f"Total hands: {json_data['total_hands']}")
-        print(f"Hands with valid tile sets: {json_data['summary']['hands_with_valid_tiles']}")
-        print(f"Hands without valid tile sets: {json_data['summary']['hands_without_valid_tiles']}")
-        print(f"Total tiles used: {json_data['summary']['total_tiles_used']}")
+        print(f"Total hands: {len(self.hand_list)}")
+        print(f"Hands with valid tile sets: {valid_hands}")
+        print(f"Hands without valid tile sets: {len(self.hand_list) - valid_hands}")
+        print(f"Total tiles used: {total_tiles}")
 
         print("\nFamily breakdown:")
-        for family, stats in json_data["summary"]["families"].items():
+        family_counts: Dict[str, Dict[str, int]] = {}
+        for hand in self.hand_list:
+            stats = family_counts.setdefault(
+                hand.family, {"total_hands": 0, "valid_hands": 0, "invalid_hands": 0}
+            )
+            stats["total_hands"] += 1
+            if hand.tile_sets:
+                stats["valid_hands"] += 1
+            else:
+                stats["invalid_hands"] += 1
+        for family, stats in family_counts.items():
             print(f"  {family}: {stats['valid_hands']}/{stats['total_hands']} valid")
 
-        return json_data
+        return json_hands
 
     def print_hands_detailed(self) -> None:
         """Print detailed information about all hands."""
