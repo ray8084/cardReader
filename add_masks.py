@@ -65,8 +65,11 @@ def process_file(filename: Path) -> None:
     updated_hands = [insert_mask(hand) for hand in hands]
     data["hands"] = updated_hands
 
+    json_content = json.dumps(data, indent=2, ensure_ascii=False)
+    json_content = json_content.replace('"text": "', '"text":      "')
+
     with filename.open("w", encoding="utf-8") as fh:
-        json.dump(data, fh, indent=2, ensure_ascii=False)
+        fh.write(json_content)
         fh.write("\n")
 
     print(f"Updated {len(updated_hands)} hands in '{filename}' with mask fields.")
