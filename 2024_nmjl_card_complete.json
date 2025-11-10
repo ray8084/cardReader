@@ -141,7 +141,7 @@
       "concealed": false
     },
     {
-      "text": "1111 NNNN 88888",
+      "text": "11111 NNNN 88888",
       "note": "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind",
       "section": "Quints",
       "value": 40,
@@ -282,7 +282,7 @@
       "concealed": false
     },
     {
-      "text": "FFFF 5555 7777 9999",
+      "text": "11 33 55 7777 9999",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 30,
@@ -290,7 +290,7 @@
       "validation": "// invalid: 16 tiles (4+4+4+4)"
     },
     {
-      "text": "FFFF 3333 x 5 = 15",
+      "text": "FFFF 3333 x 5555 = 15",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 25,
@@ -306,7 +306,7 @@
       "validation": "// equation hand - verify tile interpretation"
     },
     {
-      "text": "1 33 333 555 DDDD",
+      "text": "11 33 333 555 DDDD",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 25,
@@ -348,7 +348,7 @@
       "concealed": false
     },
     {
-      "text": "FFFF DDD DDD DDD",
+      "text": "FFFF DDD DDDD DDD",
       "note": "Any 3 Dragons",
       "section": "Winds - Dragons",
       "value": 25,
@@ -356,7 +356,7 @@
       "validation": "// invalid: only 13 tiles (4+3+3+3)"
     },
     {
-      "text": "NNN DDDD 2222",
+      "text": "NNN SSS 1111 2222",
       "note": "Any 2 Suits, Any 2 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -385,7 +385,7 @@
       "concealed": false
     },
     {
-      "text": "EEEE 11 22 33 WWWWW",
+      "text": "EEEE 11 22 33 WWWW",
       "note": "Any 1 Suit, Any 4 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -414,7 +414,7 @@
       "concealed": false
     },
     {
-      "text": "333 666 3333 6666 9999",
+      "text": "333 666 6666 9999",
       "note": "Any 2 or 3 Suits",
       "section": "369",
       "value": 25,
@@ -422,7 +422,7 @@
       "validation": "// invalid: 18 tiles (3+3+4+4+4)"
     },
     {
-      "text": "FF 3 66 + 33 66 = 99",
+      "text": "FF 3 66 999 333 333",
       "note": "Any 3 Suits, Like Pungs 3, 6 or 9",
       "section": "369",
       "value": 25,
