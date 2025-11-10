@@ -8,6 +8,7 @@ that builds hands in memory with parameters for each hand.
 
 import json
 import os
+import re
 from typing import Dict, List, Any
 
 def load_json_file(filename: str) -> Dict[str, Any]:
@@ -32,9 +33,14 @@ def group_hands_by_section(hands: List[Dict[str, Any]]) -> Dict[str, List[Dict[s
         sections[section].append(hand)
     return sections
 
-def generate_python_script(data: Dict[str, Any], output_filename: str = "generate2014.py"):
+def generate_python_script(data: Dict[str, Any], output_filename: str) -> bool:
     """Generate the Python script for building hands."""
-    
+
+    if os.path.exists(output_filename):
+        print(f"Refusing to overwrite existing file: {output_filename}")
+        print("Please delete the file manually before regenerating.")
+        return False
+
     year = data.get('year', 2024)
     hands = data.get('hands', [])
     sections = group_hands_by_section(hands)
@@ -44,12 +50,14 @@ def generate_python_script(data: Dict[str, Any], output_filename: str = "generat
     if metadata_sections:
         # Use the order from metadata, filtering out sections that don't exist in data
         section_names = [section for section in metadata_sections if section in sections]
-        # Add any remaining sections that weren't in metadata
-        remaining_sections = [section for section in sections.keys() if section not in metadata_sections]
-        section_names.extend(sorted(remaining_sections))
+        # Add any remaining sections that weren't in metadata, preserving original order from data
+        remaining_sections = [
+            section for section in sections.keys() if section not in section_names
+        ]
+        section_names.extend(remaining_sections)
     else:
-        # Fallback to alphabetical sorting if no metadata
-        section_names = sorted(sections.keys())
+        # Fallback to the order the sections appeared in the JSON data
+        section_names = list(sections.keys())
     
     script_content = f'''#!/usr/bin/env python3
 """
@@ -74,7 +82,10 @@ class Card{year}(CardGeneratorBase):
     
     # Add method calls for each section
     for section in section_names:
-        method_name = f"generate{section.replace(' ', '').replace('-', '')}"
+        method_suffix = re.sub(r'[^0-9A-Za-z]', '', section)
+        if not method_suffix:
+            method_suffix = "Section"
+        method_name = f"generate{method_suffix}"
         script_content += f"        self.{method_name}()\n"
     
     script_content += '''
@@ -88,7 +99,10 @@ class Card{year}(CardGeneratorBase):
     
     # Generate helper methods for each section
     for section in section_names:
-        method_name = f"generate{section.replace(' ', '').replace('-', '')}"
+        method_suffix = re.sub(r'[^0-9A-Za-z]', '', section)
+        if not method_suffix:
+            method_suffix = "Section"
+        method_name = f"generate{method_suffix}"
         section_hands = sections[section]
         
         script_content += f'''
@@ -117,14 +131,12 @@ class Card{year}(CardGeneratorBase):
             mask = ''.join('0' if c not in ' +=' else ' ' for c in text)
             
             # Clean up multiple consecutive spaces
-            import re
             mask = re.sub(r' +', ' ', mask)
             
             # Generate joker_mask by replacing only tile characters with 1s, ignore special chars
             joker_mask = ''.join('1' if c not in ' +=' else ' ' for c in text)
             
             # Clean up multiple consecutive spaces
-            import re
             joker_mask = re.sub(r' +', ' ', joker_mask)
             
             # Replace pairs of 1s with 0s since jokers cannot be used in pairs
@@ -174,8 +186,9 @@ if __name__ == "__main__":
         file.write(script_content)
     
     print(f"Generated {output_filename} with {len(hands)} hands across {len(sections)} sections")
+    return True
 
-def main(source_file: str):
+def main(source_file: str, output_filename: str):
     """Main function to load JSON and generate Python script."""
     if not os.path.exists(source_file):
         print(f"JSON source '{source_file}' not found.")
@@ -188,9 +201,11 @@ def main(source_file: str):
         return
     
     # Generate the Python script
-    generate_python_script(data)
+    generated = generate_python_script(data, output_filename)
+    if generated:
+        print("Generation complete.")
 
 if __name__ == "__main__":
-    # COMMENTED OUT - We are now hand-editing generate2014.py
-    # main("nmjl_2014_claude.json")
-    print("load_card.py is disabled to prevent overwriting hand-edited generate2014.py")
+    # COMMENTED OUT - We are now hand-editing generator files to avoid overwrites
+    # main("2024_nmjl_card_complete.json", "generate2024.py")
+    print("load_card.py is disabled to prevent overwriting hand-edited generator files")

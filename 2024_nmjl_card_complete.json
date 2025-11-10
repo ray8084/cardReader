@@ -1,0 +1,524 @@
+{
+  "hands": [
+    {
+      "text": "222 000 2222 4444",
+      "note": "Any 2 Suits",
+      "section": "2024",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FFFF 2222 0000 24",
+      "note": "Any 2 Suits",
+      "section": "2024",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 2024 2222 2222",
+      "note": "Any 3 Suits, Like Kongs 2s or 4s",
+      "section": "2024",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "NN EEE 2024 WWW SS",
+      "note": "2024 Any 1 Suit",
+      "section": "2024",
+      "value": 30,
+      "concealed": true
+    },
+    {
+      "text": "222 444 6666 8888",
+      "note": "Any 1 or 2 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "222 444 6666 8888",
+      "note": "Any 1 or 2 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "22 444 44 666 8888",
+      "note": "Any 3 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "22 44 666 888 DDDD",
+      "note": "Any 1 Suit w Matching Dragons",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FFFF 4444 x 6666 = 24",
+      "note": "Any 3 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FFFF 6666 x 8888 = 48",
+      "note": "Any 3 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 2222 44 66 8888",
+      "note": "Any 1 or 2 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 2222 44 66 8888",
+      "note": "Any 1 or 2 Suits",
+      "section": "2468",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 222 44 666 88 88",
+      "note": "Any 3 Suits",
+      "section": "2468",
+      "value": 35,
+      "concealed": true
+    },
+    {
+      "text": "FFFF 111 1111 111",
+      "note": "Any 3 Suits",
+      "section": "Any Like Numbers",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "11 DDD 11 DDD 1111",
+      "note": "Any 3 Suits, Pairs and Dragons Match",
+      "section": "Any Like Numbers",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 1111 NEWS 1111",
+      "note": "Any 2 Suits",
+      "section": "Any Like Numbers",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 1111 + 6666 = 7777",
+      "note": "Any 1 Suit",
+      "section": "Addition Hands (Lucky Sevens)",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 2222 + 5555 = 7777",
+      "note": "Any 1 Suit",
+      "section": "Addition Hands (Lucky Sevens)",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 3333 + 4444 = 7777",
+      "note": "Any 1 Suit",
+      "section": "Addition Hands (Lucky Sevens)",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 11111 22 33333",
+      "note": "Any 1 Suit, Any 3 Consec. Nos.",
+      "section": "Quints",
+      "value": 40,
+      "concealed": false
+    },
+    {
+      "text": "1111 NNNN 88888",
+      "note": "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind",
+      "section": "Quints",
+      "value": 40,
+      "concealed": false,
+      "validation": "// invalid: only 13 tiles (4+4+5)"
+    },
+    {
+      "text": "11 22222 11 22222",
+      "note": "Any 2 Suits, Any 2 Consec. Nos.",
+      "section": "Quints",
+      "value": 45,
+      "concealed": false
+    },
+    {
+      "text": "FFFFF DDDD 11111",
+      "note": "Any 2 Suits, Quint Any No.",
+      "section": "Quints",
+      "value": 40,
+      "concealed": false
+    },
+    {
+      "text": "111 22 3333 44 555",
+      "note": "These Nos. Only",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "555 66 7777 88 999",
+      "note": "These Nos. Only",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "11 222 DDDD 333 44",
+      "note": "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 1111 2222 3333",
+      "note": "Any 1 or 3 Suits, Any 3 Consec. Nos",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 1111 2222 3333",
+      "note": "Any 1 or 3 Suits, Any 3 Consec. Nos",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "1 22 3333 1 22 3333",
+      "note": "Any 2 Suits, Any 3 Consec. Nos.",
+      "section": "Consecutive Run",
+      "value": 30,
+      "concealed": false
+    },
+    {
+      "text": "11 22 333 444 DDDD",
+      "note": "Any 1 Suit, Any 4 Consec. Nos. w Matching Dragons",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FFFFF 123 444 444",
+      "note": "Any 3 Suits, Any 4 Consec. Nos.",
+      "section": "Consecutive Run",
+      "value": 30,
+      "concealed": false
+    },
+    {
+      "text": "111 222 3333 4444",
+      "note": "Any 1 or 2 Suits, Any 4 Consec. Nos.",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "111 222 3333 4444",
+      "note": "Any 1 or 2 Suits, Any 4 Consec. Nos.",
+      "section": "Consecutive Run",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "111 222 111 222 33",
+      "note": "Any 3 Suits, Any 3 Consec. Nos.",
+      "section": "Consecutive Run",
+      "value": 30,
+      "concealed": true
+    },
+    {
+      "text": "111 33 5555 77 999",
+      "note": "Any 1 or 3 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "111 33 5555 77 999",
+      "note": "Any 1 or 3 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "111 333 3333 5555",
+      "note": "Any 2 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "555 777 7777 9999",
+      "note": "Any 2 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 11 333 5555 DDD",
+      "note": "Any 1 Suit w Matching Dragons",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 55 777 9999 DDD",
+      "note": "Any 1 Suit w Matching Dragons",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FFFF 5555 7777 9999",
+      "note": "Any 3 Suits",
+      "section": "13579",
+      "value": 30,
+      "concealed": false,
+      "validation": "// invalid: 16 tiles (4+4+4+4)"
+    },
+    {
+      "text": "FFFF 3333 x 5 = 15",
+      "note": "Any 3 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false,
+      "validation": "// equation hand - verify tile interpretation"
+    },
+    {
+      "text": "FFFF 5555 x 7777 = 35",
+      "note": "Any 3 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false,
+      "validation": "// equation hand - verify tile interpretation"
+    },
+    {
+      "text": "1 33 333 555 DDDD",
+      "note": "Any 3 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "55 77 777 999 DDDD",
+      "note": "Any 3 Suits",
+      "section": "13579",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "111 33 555 333 333",
+      "note": "Any 3 Suits, These Nos. Only",
+      "section": "13579",
+      "value": 35,
+      "concealed": true
+    },
+    {
+      "text": "555 77 999 777 777",
+      "note": "Any 3 Suits, These Nos. Only",
+      "section": "13579",
+      "value": 35,
+      "concealed": true
+    },
+    {
+      "text": "NNNN EEE WWW SSSS",
+      "note": "",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "NNN EEE WWWW SSS",
+      "note": "",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FFFF DDD DDD DDD",
+      "note": "Any 3 Dragons",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false,
+      "validation": "// invalid: only 13 tiles (4+3+3+3)"
+    },
+    {
+      "text": "NNN DDDD 2222",
+      "note": "Any 2 Suits, Any 2 Consec. Nos.",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false,
+      "validation": "// invalid: only 12 tiles (3+4+4)"
+    },
+    {
+      "text": "EEE WWWW 1111 2222",
+      "note": "Any 2 Suits, Any 2 Consec. Nos.",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF NNN EEE WWW SSSS",
+      "note": "Any 1 Suit, Any 4 Consec. Nos.",
+      "section": "Winds - Dragons",
+      "value": 30,
+      "concealed": false
+    },
+    {
+      "text": "NNNN 11 22 33 SSSS",
+      "note": "Any 1 Suit, Any 4 Consec. Nos.",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "EEEE 11 22 33 WWWWW",
+      "note": "Any 1 Suit, Any 4 Consec. Nos.",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false,
+      "validation": "// invalid: 15 tiles (4+2+2+2+5)"
+    },
+    {
+      "text": "FF DDDD NEWS DDDD",
+      "note": "Any 2 Dragons",
+      "section": "Winds - Dragons",
+      "value": 30,
+      "concealed": true
+    },
+    {
+      "text": "NNN EW SSS 111 111",
+      "note": "Any 2 Suits, Any Like Nos.",
+      "section": "Winds - Dragons",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "333 666 6666 9999",
+      "note": "Any 2 or 3 Suits",
+      "section": "369",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "333 666 3333 6666 9999",
+      "note": "Any 2 or 3 Suits",
+      "section": "369",
+      "value": 25,
+      "concealed": false,
+      "validation": "// invalid: 18 tiles (3+3+4+4+4)"
+    },
+    {
+      "text": "FF 3 66 + 33 66 = 99",
+      "note": "Any 3 Suits, Like Pungs 3, 6 or 9",
+      "section": "369",
+      "value": 25,
+      "concealed": false,
+      "validation": "// equation hand - verify tile interpretation"
+    },
+    {
+      "text": "FF 3333 6666 9999",
+      "note": "Any 1 or 3 Suits",
+      "section": "369",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "FF 3333 6666 9999",
+      "note": "Any 1 or 3 Suits",
+      "section": "369",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "333 DDDD 333 DDDD",
+      "note": "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons",
+      "section": "369",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "3333 66 66 66 9999",
+      "note": "Any 3 Suits, 3s and 9s Match",
+      "section": "369",
+      "value": 30,
+      "concealed": false
+    },
+    {
+      "text": "FFFF 33 66 999 DDD",
+      "note": "These Nos. Any 1 Suit, Any Opp. Dragon",
+      "section": "369",
+      "value": 25,
+      "concealed": false
+    },
+    {
+      "text": "333 666 333 666 99",
+      "note": "Any 3 Suits",
+      "section": "369",
+      "value": 30,
+      "concealed": true
+    },
+    {
+      "text": "FF 22 46 88 22 46 88",
+      "note": "Any 2 Suits",
+      "section": "Singles and Pairs",
+      "value": 50,
+      "concealed": true
+    },
+    {
+      "text": "FF 11 33 55 55 77 99",
+      "note": "Any 2 Suits",
+      "section": "Singles and Pairs",
+      "value": 50,
+      "concealed": true
+    },
+    {
+      "text": "11 11223 112233",
+      "note": "Any 3 Suits, These Nos. Only",
+      "section": "Singles and Pairs",
+      "value": 50,
+      "concealed": true
+    },
+    {
+      "text": "998 99887 998877",
+      "note": "Any 3 Suits, These Nos. Only",
+      "section": "Singles and Pairs",
+      "value": 50,
+      "concealed": true
+    },
+    {
+      "text": "FF 33 66 99 369 369",
+      "note": "Any 3 Suits",
+      "section": "Singles and Pairs",
+      "value": 50,
+      "concealed": true
+    },
+    {
+      "text": "11 22 33 44 55 DD DD",
+      "note": "Any 5 Consec. Nos. w Opp. Dragons",
+      "section": "Singles and Pairs",
+      "value": 50,
+      "concealed": true
+    },
+    {
+      "text": "2024 NN EW SS 2024",
+      "note": "Any 2 Suits",
+      "section": "Singles and Pairs",
+      "value": 75,
+      "concealed": true
+    }
+  ]
+}
