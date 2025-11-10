@@ -37,169 +37,242 @@ class Card2024(CardGeneratorBase):
 
     def generate2024(self):
         p0 = self.add_hand(0, "222 000 2222 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2024", False, 25)
-        
+        p0.addTileSets()
+
         p1 = self.add_hand(1, "FFFF 2222 0000 24", "0000 0000 0000 00", "1111 1111 1111 00", "Any 2 Suits", "2024", False, 25)
-        
+        p1.addTileSets()
+
         p2 = self.add_hand(2, "FF 2024 2222 2222", "00 0000 0000 0000", "00 0000 1111 1111", "Any 3 Suits, Like Kongs 2s or 4s", "2024", False, 25)
-        
+        p2.addTileSets()
+
         p3 = self.add_hand(3, "NN EEE 2024 WWW SS", "00 000 0000 000 00", "00 111 0000 111 00", "2024 Any 1 Suit", "2024", True, 30)
-        
+        p3.addTileSets()
+
 
     def generate2468(self):
-        p0 = self.add_hand(0, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 1 Suit", "2468", False, 25)
-        
-        p1 = self.add_hand(1, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
-        
-        p2 = self.add_hand(2, "22 444 44 666 8888", "00 000 00 000 0000", "00 111 00 111 1111", "Any 3 Suits", "2468", False, 25)
-        
-        p3 = self.add_hand(3, "22 44 666 888 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 1 Suit w Matching Dragons", "2468", False, 25)
-        
-        p4 = self.add_hand(4, "FFFF 4444 x 6666 = 24", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "2468", False, 25)
-        
-        p5 = self.add_hand(5, "FFFF 6666 x 8888 = 48", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "2468", False, 25)
-        
-        p6 = self.add_hand(6, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 1 Suit", "2468", False, 25)
-        
-        p7 = self.add_hand(7, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 2 Suits", "2468", False, 25)
-        
-        p8 = self.add_hand(8, "FF 222 44 666 88 88", "00 000 00 000 00 00", "00 111 00 111 00 00", "Any 3 Suits", "2468", True, 35)
-        
+        p4 = self.add_hand(4, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 1 Suit", "2468", False, 25)
+        p4.addTileSets()
+
+        p5 = self.add_hand(5, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
+        p5.addTileSets()
+
+        p6 = self.add_hand(6, "22 444 44 666 8888", "00 000 00 000 0000", "00 111 00 111 1111", "Any 3 Suits", "2468", False, 25)
+        p6.addTileSets()
+
+        p7 = self.add_hand(7, "22 44 666 888 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 1 Suit w Matching Dragons", "2468", False, 25)
+        p7.addTileSets()
+
+        p8 = self.add_hand(8, "FFFF 4444 x 6666 = 24", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "2468", False, 25)
+        p8.addTileSets()
+
+        p9 = self.add_hand(9, "FFFF 6666 x 8888 = 48", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "2468", False, 25)
+        p9.addTileSets()
+
+        p10 = self.add_hand(10, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 1 Suit", "2468", False, 25)
+        p10.addTileSets()
+
+        p11 = self.add_hand(11, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 2 Suits", "2468", False, 25)
+        p11.addTileSets()
+
+        p12 = self.add_hand(12, "FF 222 44 666 88 88", "00 000 00 000 00 00", "00 111 00 111 00 00", "Any 3 Suits", "2468", True, 35)
+        p12.addTileSets()
+
 
     def generateAnyLikeNumbers(self):
-        p0 = self.add_hand(0, "FFFF 111 1111 111", "0000 000 0000 000", "1111 111 1111 111", "Any 3 Suits", "Any Like Numbers", False, 25)
-        
-        p1 = self.add_hand(1, "11 DDD 11 DDD 1111", "00 000 00 000 0000", "00 111 00 111 1111", "Any 3 Suits, Pairs and Dragons Match", "Any Like Numbers", False, 25)
-        
-        p2 = self.add_hand(2, "FF 1111 NEWS 1111", "00 0000 0000 0000", "00 1111 0000 1111", "Any 2 Suits", "Any Like Numbers", False, 25)
-        
+        p13 = self.add_hand(13, "FFFF 111 1111 111", "0000 000 0000 000", "1111 111 1111 111", "Any 3 Suits", "Any Like Numbers", False, 25)
+        p13.addTileSets_LikeNumbers()
+
+        p14 = self.add_hand(14, "11 DDD 11 DDD 1111", "00 000 00 000 0000", "00 111 00 111 1111", "Any 3 Suits, Pairs and Dragons Match", "Any Like Numbers", False, 25)
+        p14.addTileSets_LikeNumbers()
+
+        p15 = self.add_hand(15, "FF 1111 NEWS 1111", "00 0000 0000 0000", "00 1111 0000 1111", "Any 2 Suits", "Any Like Numbers", False, 25)
+        p15.addTileSets_LikeNumbers()
+
 
     def generateAdditionHandsLuckySevens(self):
-        p0 = self.add_hand(0, "FF 1111 + 6666 = 7777", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "Addition Hands (Lucky Sevens)", False, 25)
-        
-        p1 = self.add_hand(1, "FF 2222 + 5555 = 7777", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "Addition Hands (Lucky Sevens)", False, 25)
-        
-        p2 = self.add_hand(2, "FF 3333 + 4444 = 7777", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "Addition Hands (Lucky Sevens)", False, 25)
-        
+        p16 = self.add_hand(16, "FF 1111 + 6666 = 7777", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "Addition Hands (Lucky Sevens)", False, 25)
+        p16.addTileSets()
+
+        p17 = self.add_hand(17, "FF 2222 + 5555 = 7777", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "Addition Hands (Lucky Sevens)", False, 25)
+        p17.addTileSets()
+
+        p18 = self.add_hand(18, "FF 3333 + 4444 = 7777", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "Addition Hands (Lucky Sevens)", False, 25)
+        p18.addTileSets()
+
 
     def generateQuints(self):
-        p0 = self.add_hand(0, "FF 11111 22 33333", "00 00000 00 00000", "00 11111 00 11111", "Any 1 Suit, Any 3 Consec. Nos.", "Quints", False, 40)
-        
-        p1 = self.add_hand(1, "11111 NNNN 88888", "00000 0000 00000", "11111 1111 11111", "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind", "Quints", False, 40)
-        
-        p2 = self.add_hand(2, "11 22222 11 22222", "00 00000 00 00000", "00 11111 00 11111", "Any 2 Suits, Any 2 Consec. Nos.", "Quints", False, 45)
-        
-        p3 = self.add_hand(3, "FFFFF DDDD 11111", "00000 0000 00000", "11111 1111 11111", "Any 2 Suits, Quint Any No.", "Quints", False, 40)
-        
+        p19 = self.add_hand(19, "FF 11111 22 33333", "00 00000 00 00000", "00 11111 00 11111", "Any 1 Suit, Any 3 Consec. Nos.", "Quints", False, 40)
+        p19.addTileSets()
+
+        p20 = self.add_hand(20, "11111 NNNN 88888", "00000 0000 00000", "11111 1111 11111", "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind", "Quints", False, 40)
+        p20.addTileSets()
+
+        p21 = self.add_hand(21, "11 22222 11 22222", "00 00000 00 00000", "00 11111 00 11111", "Any 2 Suits, Any 2 Consec. Nos.", "Quints", False, 45)
+        p21.addTileSets()
+
+        p22 = self.add_hand(22, "FFFFF DDDD 11111", "00000 0000 00000", "11111 1111 11111", "Any 2 Suits, Quint Any No.", "Quints", False, 40)
+        p22.addTileSets()
+
 
     def generateConsecutiveRun(self):
-        p0 = self.add_hand(0, "111 22 3333 44 555", "000 00 0000 00 000", "111 00 1111 00 111", "These Nos. Only", "Consecutive Run", False, 25)
-        
-        p1 = self.add_hand(1, "555 66 7777 88 999", "000 00 0000 00 000", "111 00 1111 00 111", "These Nos. Only", "Consecutive Run", False, 25)
-        
-        p2 = self.add_hand(2, "11 222 DDDD 333 44", "00 000 0000 000 00", "00 111 1111 111 00", "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons", "Consecutive Run", False, 25)
-        
-        p3 = self.add_hand(3, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit, Any 3 Consec. Nos", "Consecutive Run", False, 25)
-        
-        p4 = self.add_hand(4, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits, Any 3 Consec. Nos", "Consecutive Run", False, 25)
-        
-        p5 = self.add_hand(5, "1 22 3333 1 22 3333", "0 00 0000 0 00 0000", "0 00 1111 0 00 1111", "Any 2 Suits, Any 3 Consec. Nos.", "Consecutive Run", False, 30)
-        
-        p6 = self.add_hand(6, "11 22 333 444 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 1 Suit, Any 4 Consec. Nos. w Matching Dragons", "Consecutive Run", False, 25)
-        
-        p7 = self.add_hand(7, "FFFFF 123 444 444", "00000 000 000 000", "11111 000 111 111", "Any 3 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 30)
-        
-        p8 = self.add_hand(8, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
-        
-        p9 = self.add_hand(9, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suit, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
-        
-        p10 = self.add_hand(10, "111 222 111 222 33", "000 000 000 000 00", "111 111 111 111 00", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", True, 30)
-        
+        p23 = self.add_hand(23, "111 22 3333 44 555", "000 00 0000 00 000", "111 00 1111 00 111", "These Nos. Only", "Consecutive Run", False, 25)
+        p23.addTileSets_Run()
+
+        p24 = self.add_hand(24, "555 66 7777 88 999", "000 00 0000 00 000", "111 00 1111 00 111", "These Nos. Only", "Consecutive Run", False, 25)
+        p24.addTileSets_Run()
+
+        p25 = self.add_hand(25, "11 222 DDDD 333 44", "00 000 0000 000 00", "00 111 1111 111 00", "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons", "Consecutive Run", False, 25)
+        p25.addTileSets_Run()
+
+        p26 = self.add_hand(26, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit, Any 3 Consec. Nos", "Consecutive Run", False, 25)
+        p26.addTileSets_Run()
+
+        p27 = self.add_hand(27, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits, Any 3 Consec. Nos", "Consecutive Run", False, 25)
+        p27.addTileSets_Run()
+
+        p28 = self.add_hand(28, "1 22 3333 1 22 3333", "0 00 0000 0 00 0000", "0 00 1111 0 00 1111", "Any 2 Suits, Any 3 Consec. Nos.", "Consecutive Run", False, 30)
+        p28.addTileSets_Run()
+
+        p29 = self.add_hand(29, "11 22 333 444 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 1 Suit, Any 4 Consec. Nos. w Matching Dragons", "Consecutive Run", False, 25)
+        p29.addTileSets_Run()
+
+        p30 = self.add_hand(30, "FFFFF 123 444 444", "00000 000 000 000", "11111 000 111 111", "Any 3 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 30)
+        p30.addTileSets_Run()
+
+        p31 = self.add_hand(31, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
+        p31.addTileSets_Run()
+
+        p32 = self.add_hand(32, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suit, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
+        p32.addTileSets_Run()
+
+        p33 = self.add_hand(33, "111 222 111 222 33", "000 000 000 000 00", "111 111 111 111 00", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", True, 30)
+        p33.addTileSets_Run()
+
 
     def generate13579(self):
-        p0 = self.add_hand(0, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 1 Suit", "13579", False, 25)
-        
-        p1 = self.add_hand(1, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 3 Suits", "13579", False, 25)
-        
-        p2 = self.add_hand(2, "111 333 3333 5555", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "13579", False, 25)
-        
-        p3 = self.add_hand(3, "555 777 7777 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "13579", False, 25)
-        
-        p4 = self.add_hand(4, "FF 11 333 5555 DDD", "00 00 000 0000 000", "00 00 111 1111 111", "Any 1 Suit w Matching Dragons", "13579", False, 25)
-        
-        p5 = self.add_hand(5, "FF 55 777 9999 DDD", "00 00 000 0000 000", "00 00 111 1111 111", "Any 1 Suit w Matching Dragons", "13579", False, 25)
-        
-        p6 = self.add_hand(6, "11 33 55 7777 9999", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits", "13579", False, 30)
-        
-        p7 = self.add_hand(7, "FFFF 3333 x 5555 = 15", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "13579", False, 25)
-        
-        p8 = self.add_hand(8, "FFFF 5555 x 7777 = 35", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "13579", False, 25)
-        
-        p9 = self.add_hand(9, "11 33 333 555 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
-        
-        p10 = self.add_hand(10, "55 77 777 999 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
-        
-        p11 = self.add_hand(11, "111 33 555 333 333", "000 00 000 000 000", "111 00 111 111 111", "Any 3 Suits, These Nos. Only", "13579", True, 35)
-        
-        p12 = self.add_hand(12, "555 77 999 777 777", "000 00 000 000 000", "111 00 111 111 111", "Any 3 Suits, These Nos. Only", "13579", True, 35)
-        
+        p34 = self.add_hand(34, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 1 Suit", "13579", False, 25)
+        p34.addTileSets()
+
+        p35 = self.add_hand(35, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 3 Suits", "13579", False, 25)
+        p35.addTileSets()
+
+        p36 = self.add_hand(36, "111 333 3333 5555", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "13579", False, 25)
+        p36.addTileSets()
+
+        p37 = self.add_hand(37, "555 777 7777 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "13579", False, 25)
+        p37.addTileSets()
+
+        p38 = self.add_hand(38, "FF 11 333 5555 DDD", "00 00 000 0000 000", "00 00 111 1111 111", "Any 1 Suit w Matching Dragons", "13579", False, 25)
+        p38.addTileSets()
+
+        p39 = self.add_hand(39, "FF 55 777 9999 DDD", "00 00 000 0000 000", "00 00 111 1111 111", "Any 1 Suit w Matching Dragons", "13579", False, 25)
+        p39.addTileSets()
+
+        p40 = self.add_hand(40, "11 33 55 7777 9999", "00 00 00 0000 0000", "00 00 00 1111 1111", "Any 3 Suits", "13579", False, 30)
+        p40.addTileSets()
+
+        p41 = self.add_hand(41, "FFFF 3333 x 5555 = 15", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "13579", False, 25)
+        p41.addTileSets()
+
+        p42 = self.add_hand(42, "FFFF 5555 x 7777 = 35", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "13579", False, 25)
+        p42.addTileSets()
+
+        p43 = self.add_hand(43, "11 33 333 555 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
+        p43.addTileSets()
+
+        p44 = self.add_hand(44, "55 77 777 999 DDDD", "00 00 000 000 0000", "00 00 111 111 1111", "Any 3 Suits", "13579", False, 25)
+        p44.addTileSets()
+
+        p45 = self.add_hand(45, "111 33 555 333 333", "000 00 000 000 000", "111 00 111 111 111", "Any 3 Suits, These Nos. Only", "13579", True, 35)
+        p45.addTileSets()
+
+        p46 = self.add_hand(46, "555 77 999 777 777", "000 00 000 000 000", "111 00 111 111 111", "Any 3 Suits, These Nos. Only", "13579", True, 35)
+        p46.addTileSets()
+
 
     def generateWindsDragons(self):
-        p0 = self.add_hand(0, "NNNN EEE WWW SSSS", "0000 000 000 0000", "1111 111 111 1111", "", "Winds - Dragons", False, 25)
-        
-        p1 = self.add_hand(1, "NNN EEE WWWW SSS", "000 000 0000 000", "111 111 1111 111", "", "Winds - Dragons", False, 25)
-        
-        p2 = self.add_hand(2, "FFFF DDD DDDD DDD", "0000 000 0000 000", "1111 111 1111 111", "Any 3 Dragons", "Winds - Dragons", False, 25)
-        
-        p3 = self.add_hand(3, "NNN SSS 1111 2222", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits, Any 2 Consec. Nos.", "Winds - Dragons", False, 25)
-        
-        p4 = self.add_hand(4, "EEE WWWW 1111 2222", "000 0000 0000 0000", "111 1111 1111 1111", "Any 2 Suits, Any 2 Consec. Nos.", "Winds - Dragons", False, 25)
-        
-        p5 = self.add_hand(5, "FF NNN EEE WWW SSSS", "00 000 000 000 0000", "00 111 111 111 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 30)
-        
-        p6 = self.add_hand(6, "NNNN 11 22 33 SSSS", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 25)
-        
-        p7 = self.add_hand(7, "EEEE 11 22 33 WWWW", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 25)
-        
-        p8 = self.add_hand(8, "FF DDDD NEWS DDDD", "00 0000 0000 0000", "00 1111 0000 1111", "Any 2 Dragons", "Winds - Dragons", True, 30)
-        
-        p9 = self.add_hand(9, "NNN EW SSS 111 111", "000 00 000 000 000", "111 00 111 111 111", "Any 2 Suits, Any Like Nos.", "Winds - Dragons", False, 25)
-        
+        p47 = self.add_hand(47, "NNNN EEE WWW SSSS", "0000 000 000 0000", "1111 111 111 1111", "", "Winds - Dragons", False, 25)
+        p47.addTileSets()
+
+        p48 = self.add_hand(48, "NNN EEE WWWW SSS", "000 000 0000 000", "111 111 1111 111", "", "Winds - Dragons", False, 25)
+        p48.addTileSets()
+
+        p49 = self.add_hand(49, "FFFF DDD DDDD DDD", "0000 000 0000 000", "1111 111 1111 111", "Any 3 Dragons", "Winds - Dragons", False, 25)
+        p49.addTileSets()
+
+        p50 = self.add_hand(50, "NNN SSS 1111 2222", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits, Any 2 Consec. Nos.", "Winds - Dragons", False, 25)
+        p50.addTileSets()
+
+        p51 = self.add_hand(51, "EEE WWWW 1111 2222", "000 0000 0000 0000", "111 1111 1111 1111", "Any 2 Suits, Any 2 Consec. Nos.", "Winds - Dragons", False, 25)
+        p51.addTileSets()
+
+        p52 = self.add_hand(52, "FF NNN EEE WWW SSSS", "00 000 000 000 0000", "00 111 111 111 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 30)
+        p52.addTileSets()
+
+        p53 = self.add_hand(53, "NNNN 11 22 33 SSSS", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 25)
+        p53.addTileSets()
+
+        p54 = self.add_hand(54, "EEEE 11 22 33 WWWW", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 25)
+        p54.addTileSets()
+
+        p55 = self.add_hand(55, "FF DDDD NEWS DDDD", "00 0000 0000 0000", "00 1111 0000 1111", "Any 2 Dragons", "Winds - Dragons", True, 30)
+        p55.addTileSets()
+
+        p56 = self.add_hand(56, "NNN EW SSS 111 111", "000 00 000 000 000", "111 00 111 111 111", "Any 2 Suits, Any Like Nos.", "Winds - Dragons", False, 25)
+        p56.addTileSets()
+
 
     def generate369(self):
-        p0 = self.add_hand(0, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "369", False, 25)
-        
-        p1 = self.add_hand(1, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 3 Suits", "369", False, 25)
-        
-        p2 = self.add_hand(2, "FF 3 66 999 333 333", "00 0 00 000 000 000", "00 0 00 111 111 111", "Any 3 Suits, Like Pungs 3, 6 or 9", "369", False, 25)
-        
-        p3 = self.add_hand(3, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "369", False, 25)
-        
-        p4 = self.add_hand(4, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
-        
-        p5 = self.add_hand(5, "333 DDDD 333 DDDD", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons", "369", False, 25)
-        
-        p6 = self.add_hand(6, "3333 66 66 66 9999", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 3 Suits, 3s and 9s Match", "369", False, 30)
-        
-        p7 = self.add_hand(7, "FFFF 33 66 999 DDD", "0000 00 00 000 000", "1111 00 00 111 111", "These Nos. Any 1 Suit, Any Opp. Dragon", "369", False, 25)
-        
-        p8 = self.add_hand(8, "333 666 333 666 99", "000 000 000 000 00", "111 111 111 111 00", "Any 3 Suits", "369", True, 30)
-        
+        p57 = self.add_hand(57, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "369", False, 25)
+        p57.addTileSets()
+
+        p58 = self.add_hand(58, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 3 Suits", "369", False, 25)
+        p58.addTileSets()
+
+        p59 = self.add_hand(59, "FF 3 66 999 333 333", "00 0 00 000 000 000", "00 0 00 111 111 111", "Any 3 Suits, Like Pungs 3, 6 or 9", "369", False, 25)
+        p59.addTileSets()
+
+        p60 = self.add_hand(60, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "369", False, 25)
+        p60.addTileSets()
+
+        p61 = self.add_hand(61, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
+        p61.addTileSets()
+
+        p62 = self.add_hand(62, "333 DDDD 333 DDDD", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons", "369", False, 25)
+        p62.addTileSets()
+
+        p63 = self.add_hand(63, "3333 66 66 66 9999", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 3 Suits, 3s and 9s Match", "369", False, 30)
+        p63.addTileSets()
+
+        p64 = self.add_hand(64, "FFFF 33 66 999 DDD", "0000 00 00 000 000", "1111 00 00 111 111", "These Nos. Any 1 Suit, Any Opp. Dragon", "369", False, 25)
+        p64.addTileSets()
+
+        p65 = self.add_hand(65, "333 666 333 666 99", "000 000 000 000 00", "111 111 111 111 00", "Any 3 Suits", "369", True, 30)
+        p65.addTileSets()
+
 
     def generateSinglesandPairs(self):
-        p0 = self.add_hand(0, "FF 22 46 88 22 46 88", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
-        
-        p1 = self.add_hand(1, "FF 11 33 55 55 77 99", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
-        
-        p2 = self.add_hand(2, "11 11223 112233", "00 00000 000000", "00 00000 000000", "Any 3 Suits, These Nos. Only", "Singles and Pairs", True, 50)
-        
-        p3 = self.add_hand(3, "998 99887 998877", "000 00000 000000", "000 00000 000000", "Any 3 Suits, These Nos. Only", "Singles and Pairs", True, 50)
-        
-        p4 = self.add_hand(4, "FF 33 66 99 369 369", "00 00 00 00 000 000", "00 00 00 00 000 000", "Any 3 Suits", "Singles and Pairs", True, 50)
-        
-        p5 = self.add_hand(5, "11 22 33 44 55 DD DD", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 5 Consec. Nos. w Opp. Dragons", "Singles and Pairs", True, 50)
-        
-        p6 = self.add_hand(6, "2024 NN EW SS 2024", "0000 00 00 00 0000", "0000 00 00 00 0000", "Any 2 Suits", "Singles and Pairs", True, 75)
-        
+        p66 = self.add_hand(66, "FF 22 46 88 22 46 88", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
+        p66.addTileSets()
+
+        p67 = self.add_hand(67, "FF 11 33 55 55 77 99", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 2 Suits", "Singles and Pairs", True, 50)
+        p67.addTileSets()
+
+        p68 = self.add_hand(68, "11 11223 112233", "00 00000 000000", "00 00000 000000", "Any 3 Suits, These Nos. Only", "Singles and Pairs", True, 50)
+        p68.addTileSets()
+
+        p69 = self.add_hand(69, "998 99887 998877", "000 00000 000000", "000 00000 000000", "Any 3 Suits, These Nos. Only", "Singles and Pairs", True, 50)
+        p69.addTileSets()
+
+        p70 = self.add_hand(70, "FF 33 66 99 369 369", "00 00 00 00 000 000", "00 00 00 00 000 000", "Any 3 Suits", "Singles and Pairs", True, 50)
+        p70.addTileSets()
+
+        p71 = self.add_hand(71, "11 22 33 44 55 DD DD", "00 00 00 00 00 00 00", "00 00 00 00 00 00 00", "Any 5 Consec. Nos. w Opp. Dragons", "Singles and Pairs", True, 50)
+        p71.addTileSets()
+
+        p72 = self.add_hand(72, "2024 NN EW SS 2024", "0000 00 00 00 0000", "0000 00 00 00 0000", "Any 2 Suits", "Singles and Pairs", True, 75)
+        p72.addTileSets()
+
 
 if __name__ == "__main__":
     card = Card2024()

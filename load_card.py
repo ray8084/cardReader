@@ -98,6 +98,7 @@ class Card{year}(CardGeneratorBase):
 '''
     
     # Generate helper methods for each section
+    global_hand_counter = 0
     for section in section_names:
         method_suffix = re.sub(r'[^0-9A-Za-z]', '', section)
         if not method_suffix:
@@ -108,10 +109,9 @@ class Card{year}(CardGeneratorBase):
         script_content += f'''
     def {method_name}(self):
 '''
-        
-        hand_counter = 0
+
         for hand in section_hands:
-            hand_id = hand.get('id', hand_counter)
+            hand_id = hand.get('id', global_hand_counter)
             text = hand.get('text', hand.get('hand', ''))
             mask = hand.get('colorMask', hand.get('mask', ''))
             joker_mask = hand.get('jokerMask', '')
@@ -170,10 +170,18 @@ class Card{year}(CardGeneratorBase):
             # Reconstruct the joker mask
             joker_mask = ' '.join(joker_mask_parts)
             
-            script_content += f'''        p{hand_id} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
-        
+            tile_set_method = "addTileSets"
+            family_lower = family.lower()
+            if "like" in family_lower and "number" in family_lower:
+                tile_set_method = "addTileSets_LikeNumbers"
+            elif "run" in family_lower:
+                tile_set_method = "addTileSets_Run"
+
+            script_content += f'''        p{global_hand_counter} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
+        p{global_hand_counter}.{tile_set_method}()
+
 '''
-            hand_counter += 1
+            global_hand_counter += 1
     
     script_content += f'''
 if __name__ == "__main__":
