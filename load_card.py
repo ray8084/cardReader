@@ -112,63 +112,60 @@ class Card{year}(CardGeneratorBase):
 
         for hand in section_hands:
             hand_id = hand.get('id', global_hand_counter)
-            text = hand.get('text', hand.get('hand', ''))
-            mask = hand.get('colorMask', hand.get('mask', ''))
-            joker_mask = hand.get('jokerMask', '')
+            raw_text = hand.get('text', hand.get('hand', ''))
+            mask_source = hand.get('colorMask', hand.get('mask', ''))
+            joker_mask_source = hand.get('jokerMask', '')
             note = hand.get('note', '')
             family = hand.get('family', hand.get('section', section))
             concealed = hand.get('concealed', False)
             points = hand.get('points', hand.get('value', 25))
             
             # Clean up the strings for Python
-            text = text.replace('"', '\\"')
+            text = raw_text.replace('"', '\\"')
             note = note.replace('"', '\\"')
-            mask = mask.replace('"', '\\"')
-            joker_mask = joker_mask.replace('"', '\\"')
             family = family.replace('"', '\\"')
             
-            # Generate mask by replacing only tile characters with 0s, ignore special chars
-            mask = ''.join('0' if c not in ' +=xX' else ' ' for c in text)
-            
-            # Clean up multiple consecutive spaces
-            mask = re.sub(r' +', ' ', mask)
-            
-            # Generate joker_mask by replacing only tile characters with 1s, ignore special chars
-            joker_mask = ''.join('1' if c not in ' +=' else ' ' for c in text)
-            
-            # Clean up multiple consecutive spaces
-            joker_mask = re.sub(r' +', ' ', joker_mask)
-            
-            # Replace pairs of 1s with 0s since jokers cannot be used in pairs
-            # Keep replacing until no more pairs are found
-            while ' 11 ' in joker_mask:
-                joker_mask = joker_mask.replace(' 11 ', ' 00 ')
-            # Handle pairs at the beginning and end
-            joker_mask = re.sub(r'^11 ', '00 ', joker_mask)    # pairs at start
-            joker_mask = re.sub(r' 11$', ' 00', joker_mask)   # pairs at end
-            
-            # Replace single 1s with 0s since jokers cannot be used in singles
-            joker_mask = re.sub(r'^1 ', '0 ', joker_mask)     # singles at start
-            joker_mask = re.sub(r' 1 ', ' 0 ', joker_mask)   # singles in middle
-            joker_mask = re.sub(r' 1$', ' 0', joker_mask)     # singles at end
-            
-            # Analyze tile groups and modify joker mask for non-matching tiles
-            # Split by spaces to get individual tile groups (filter out special chars)
-            tile_groups = [group for group in text.split() if group not in ['+', '=', 'x', 'X']]
-            joker_mask_parts = joker_mask.split()
-            
-            for i, group in enumerate(tile_groups):
-                if len(group) >= 3:  # Only check groups of 3 or more tiles
-                    # Check if all characters in the group are the same
-                    if len(set(group)) == 1:  # All tiles are the same (like FFFF, 2222, DDDD)
-                        # Keep as 1s - can use jokers for same tiles
-                        joker_mask_parts[i] = '1' * len(group)
-                    else:  # Different tiles (like 2014, NEWS, 2468)
-                        # Replace with 0s - cannot use jokers for different tiles
-                        joker_mask_parts[i] = '0' * len(group)
-            
-            # Reconstruct the joker mask
-            joker_mask = ' '.join(joker_mask_parts)
+            # Determine color mask to use (Prefer provided mask)
+            if mask_source and mask_source.strip():
+                mask = mask_source
+            else:
+                mask = ''.join('0' if c not in ' +=xX' else ' ' for c in raw_text)
+                mask = re.sub(r' +', ' ', mask)
+            mask = mask.replace('"', '\\"')
+
+            # Determine joker mask (fallback to generation if missing)
+            generate_joker_mask = not (joker_mask_source and joker_mask_source.strip())
+            if generate_joker_mask:
+                joker_mask = ''.join('1' if c not in ' +=' else ' ' for c in raw_text)
+                joker_mask = re.sub(r' +', ' ', joker_mask)
+                
+                # Replace pairs of 1s with 0s since jokers cannot be used in pairs
+                while ' 11 ' in joker_mask:
+                    joker_mask = joker_mask.replace(' 11 ', ' 00 ')
+                joker_mask = re.sub(r'^11 ', '00 ', joker_mask)    # pairs at start
+                joker_mask = re.sub(r' 11$', ' 00', joker_mask)   # pairs at end
+                
+                # Replace single 1s with 0s since jokers cannot be used in singles
+                joker_mask = re.sub(r'^1 ', '0 ', joker_mask)     # singles at start
+                joker_mask = re.sub(r' 1 ', ' 0 ', joker_mask)   # singles in middle
+                joker_mask = re.sub(r' 1$', ' 0', joker_mask)     # singles at end
+                
+                # Analyze tile groups and modify joker mask for non-matching tiles
+                tile_groups = [group for group in raw_text.split() if group not in ['+', '=', 'x', 'X']]
+                joker_mask_parts = joker_mask.split()
+                
+                for i, group in enumerate(tile_groups):
+                    if len(group) >= 3:  # Only check groups of 3 or more tiles
+                        if len(set(group)) == 1:  # All tiles are the same (like FFFF, 2222, DDDD)
+                            joker_mask_parts[i] = '1' * len(group)
+                        else:  # Different tiles (like 2014, NEWS, 2468)
+                            joker_mask_parts[i] = '0' * len(group)
+                
+                joker_mask = ' '.join(joker_mask_parts)
+            else:
+                joker_mask = joker_mask_source
+
+            joker_mask = joker_mask.replace('"', '\\"')
             
             tile_set_method = "addTileSets"
             family_lower = family.lower()
