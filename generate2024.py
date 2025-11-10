@@ -46,9 +46,9 @@ class Card2024(CardGeneratorBase):
         
 
     def generate2468(self):
-        p0 = self.add_hand(0, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 1 or 2 Suits", "2468", False, 25)
+        p0 = self.add_hand(0, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 1 Suit", "2468", False, 25)
         
-        p1 = self.add_hand(1, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 1 or 2 Suits", "2468", False, 25)
+        p1 = self.add_hand(1, "222 444 6666 8888", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "2468", False, 25)
         
         p2 = self.add_hand(2, "22 444 44 666 8888", "00 000 00 000 0000", "00 111 00 111 1111", "Any 3 Suits", "2468", False, 25)
         
@@ -58,9 +58,9 @@ class Card2024(CardGeneratorBase):
         
         p5 = self.add_hand(5, "FFFF 6666 x 8888 = 48", "0000 0000 0000 00", "1111 1111 1111 1111 00", "Any 3 Suits", "2468", False, 25)
         
-        p6 = self.add_hand(6, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 1 or 2 Suits", "2468", False, 25)
+        p6 = self.add_hand(6, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 1 Suit", "2468", False, 25)
         
-        p7 = self.add_hand(7, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 1 or 2 Suits", "2468", False, 25)
+        p7 = self.add_hand(7, "FF 2222 44 66 8888", "00 0000 00 00 0000", "00 1111 00 00 1111", "Any 2 Suits", "2468", False, 25)
         
         p8 = self.add_hand(8, "FF 222 44 666 88 88", "00 000 00 000 00 00", "00 111 00 111 00 00", "Any 3 Suits", "2468", True, 35)
         
@@ -98,9 +98,9 @@ class Card2024(CardGeneratorBase):
         
         p2 = self.add_hand(2, "11 222 DDDD 333 44", "00 000 0000 000 00", "00 111 1111 111 00", "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons", "Consecutive Run", False, 25)
         
-        p3 = self.add_hand(3, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 or 3 Suits, Any 3 Consec. Nos", "Consecutive Run", False, 25)
+        p3 = self.add_hand(3, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit, Any 3 Consec. Nos", "Consecutive Run", False, 25)
         
-        p4 = self.add_hand(4, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 or 3 Suits, Any 3 Consec. Nos", "Consecutive Run", False, 25)
+        p4 = self.add_hand(4, "FF 1111 2222 3333", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits, Any 3 Consec. Nos", "Consecutive Run", False, 25)
         
         p5 = self.add_hand(5, "1 22 3333 1 22 3333", "0 00 0000 0 00 0000", "0 00 1111 0 00 1111", "Any 2 Suits, Any 3 Consec. Nos.", "Consecutive Run", False, 30)
         
@@ -108,17 +108,17 @@ class Card2024(CardGeneratorBase):
         
         p7 = self.add_hand(7, "FFFFF 123 444 444", "00000 000 000 000", "11111 000 111 111", "Any 3 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 30)
         
-        p8 = self.add_hand(8, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 1 or 2 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
+        p8 = self.add_hand(8, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
         
-        p9 = self.add_hand(9, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 1 or 2 Suits, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
+        p9 = self.add_hand(9, "111 222 3333 4444", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suit, Any 4 Consec. Nos.", "Consecutive Run", False, 25)
         
         p10 = self.add_hand(10, "111 222 111 222 33", "000 000 000 000 00", "111 111 111 111 00", "Any 3 Suits, Any 3 Consec. Nos.", "Consecutive Run", True, 30)
         
 
     def generate13579(self):
-        p0 = self.add_hand(0, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 1 or 3 Suits", "13579", False, 25)
+        p0 = self.add_hand(0, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 1 Suit", "13579", False, 25)
         
-        p1 = self.add_hand(1, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 1 or 3 Suits", "13579", False, 25)
+        p1 = self.add_hand(1, "111 33 5555 77 999", "000 00 0000 00 000", "111 00 1111 00 111", "Any 3 Suits", "13579", False, 25)
         
         p2 = self.add_hand(2, "111 333 3333 5555", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "13579", False, 25)
         
@@ -166,15 +166,15 @@ class Card2024(CardGeneratorBase):
         
 
     def generate369(self):
-        p0 = self.add_hand(0, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 or 3 Suits", "369", False, 25)
+        p0 = self.add_hand(0, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 Suits", "369", False, 25)
         
-        p1 = self.add_hand(1, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 2 or 3 Suits", "369", False, 25)
+        p1 = self.add_hand(1, "333 666 6666 9999", "000 000 0000 0000", "111 111 1111 1111", "Any 3 Suits", "369", False, 25)
         
         p2 = self.add_hand(2, "FF 3 66 999 333 333", "00 0 00 000 000 000", "00 0 00 111 111 111", "Any 3 Suits, Like Pungs 3, 6 or 9", "369", False, 25)
         
-        p3 = self.add_hand(3, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 or 3 Suits", "369", False, 25)
+        p3 = self.add_hand(3, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "369", False, 25)
         
-        p4 = self.add_hand(4, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 or 3 Suits", "369", False, 25)
+        p4 = self.add_hand(4, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 3 Suits", "369", False, 25)
         
         p5 = self.add_hand(5, "333 DDDD 333 DDDD", "000 0000 000 0000", "111 1111 111 1111", "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons", "369", False, 25)
         
