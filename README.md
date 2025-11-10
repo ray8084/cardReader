@@ -19,6 +19,21 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Preparing Raw Card JSON
+
+When working from the NMJL raw transcription you can auto-populate the mask
+fields and fill in the default joker masks before hand-tuning them:
+
+1. Place the source JSON (for example `2024_nmjl_card_complete.json`) in the repo
+   root.
+2. Run the helper script to inject `colorMask`/`jokerMask` placeholders:
+   ```bash
+   python3 add_masks.py 2024_nmjl_card_complete.json
+   ```
+3. Manually review and adjust the generated `colorMask` / `jokerMask` entries
+   where needed. The script leaves the `+`, `=`, `x`, and `X` separators blank so
+   you can fill in the color mapping you want to keep.
+
 ## (Optional) Regenerating the Builder Skeleton
 
 If you have an updated source JSON and need to recreate the builder script:

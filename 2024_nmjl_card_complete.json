@@ -2,6 +2,8 @@
   "hands": [
     {
       "text": "222 000 2222 4444",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 2 Suits",
       "section": "2024",
       "value": 25,
@@ -9,6 +11,8 @@
     },
     {
       "text": "FFFF 2222 0000 24",
+      "colorMask": "0000 0000 0000 00",
+      "jokerMask": "1111 1111 1111 11",
       "note": "Any 2 Suits",
       "section": "2024",
       "value": 25,
@@ -16,6 +20,8 @@
     },
     {
       "text": "FF 2024 2222 2222",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 3 Suits, Like Kongs 2s or 4s",
       "section": "2024",
       "value": 25,
@@ -23,6 +29,8 @@
     },
     {
       "text": "NN EEE 2024 WWW SS",
+      "colorMask": "00 000 0000 000 00",
+      "jokerMask": "11 111 1111 111 11",
       "note": "2024 Any 1 Suit",
       "section": "2024",
       "value": 30,
@@ -30,6 +38,8 @@
     },
     {
       "text": "222 444 6666 8888",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 1 or 2 Suits",
       "section": "2468",
       "value": 25,
@@ -37,6 +47,8 @@
     },
     {
       "text": "222 444 6666 8888",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 1 or 2 Suits",
       "section": "2468",
       "value": 25,
@@ -44,6 +56,8 @@
     },
     {
       "text": "22 444 44 666 8888",
+      "colorMask": "00 000 00 000 0000",
+      "jokerMask": "11 111 11 111 1111",
       "note": "Any 3 Suits",
       "section": "2468",
       "value": 25,
@@ -51,6 +65,8 @@
     },
     {
       "text": "22 44 666 888 DDDD",
+      "colorMask": "00 00 000 000 0000",
+      "jokerMask": "11 11 111 111 1111",
       "note": "Any 1 Suit w Matching Dragons",
       "section": "2468",
       "value": 25,
@@ -58,6 +74,8 @@
     },
     {
       "text": "FFFF 4444 x 6666 = 24",
+      "colorMask": "0000 0000   0000   00",
+      "jokerMask": "1111 1111   1111   11",
       "note": "Any 3 Suits",
       "section": "2468",
       "value": 25,
@@ -65,6 +83,8 @@
     },
     {
       "text": "FFFF 6666 x 8888 = 48",
+      "colorMask": "0000 0000   0000   00",
+      "jokerMask": "1111 1111   1111   11",
       "note": "Any 3 Suits",
       "section": "2468",
       "value": 25,
@@ -72,6 +92,8 @@
     },
     {
       "text": "FF 2222 44 66 8888",
+      "colorMask": "00 0000 00 00 0000",
+      "jokerMask": "11 1111 11 11 1111",
       "note": "Any 1 or 2 Suits",
       "section": "2468",
       "value": 25,
@@ -79,6 +101,8 @@
     },
     {
       "text": "FF 2222 44 66 8888",
+      "colorMask": "00 0000 00 00 0000",
+      "jokerMask": "11 1111 11 11 1111",
       "note": "Any 1 or 2 Suits",
       "section": "2468",
       "value": 25,
@@ -86,6 +110,8 @@
     },
     {
       "text": "FF 222 44 666 88 88",
+      "colorMask": "00 000 00 000 00 00",
+      "jokerMask": "11 111 11 111 11 11",
       "note": "Any 3 Suits",
       "section": "2468",
       "value": 35,
@@ -93,6 +119,8 @@
     },
     {
       "text": "FFFF 111 1111 111",
+      "colorMask": "0000 000 0000 000",
+      "jokerMask": "1111 111 1111 111",
       "note": "Any 3 Suits",
       "section": "Any Like Numbers",
       "value": 25,
@@ -100,6 +128,8 @@
     },
     {
       "text": "11 DDD 11 DDD 1111",
+      "colorMask": "00 000 00 000 0000",
+      "jokerMask": "11 111 11 111 1111",
       "note": "Any 3 Suits, Pairs and Dragons Match",
       "section": "Any Like Numbers",
       "value": 25,
@@ -107,6 +137,8 @@
     },
     {
       "text": "FF 1111 NEWS 1111",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 2 Suits",
       "section": "Any Like Numbers",
       "value": 25,
@@ -114,6 +146,8 @@
     },
     {
       "text": "FF 1111 + 6666 = 7777",
+      "colorMask": "00 0000   0000   0000",
+      "jokerMask": "11 1111   1111   1111",
       "note": "Any 1 Suit",
       "section": "Addition Hands (Lucky Sevens)",
       "value": 25,
@@ -121,6 +155,8 @@
     },
     {
       "text": "FF 2222 + 5555 = 7777",
+      "colorMask": "00 0000   0000   0000",
+      "jokerMask": "11 1111   1111   1111",
       "note": "Any 1 Suit",
       "section": "Addition Hands (Lucky Sevens)",
       "value": 25,
@@ -128,6 +164,8 @@
     },
     {
       "text": "FF 3333 + 4444 = 7777",
+      "colorMask": "00 0000   0000   0000",
+      "jokerMask": "11 1111   1111   1111",
       "note": "Any 1 Suit",
       "section": "Addition Hands (Lucky Sevens)",
       "value": 25,
@@ -135,6 +173,8 @@
     },
     {
       "text": "FF 11111 22 33333",
+      "colorMask": "00 00000 00 00000",
+      "jokerMask": "11 11111 11 11111",
       "note": "Any 1 Suit, Any 3 Consec. Nos.",
       "section": "Quints",
       "value": 40,
@@ -142,6 +182,8 @@
     },
     {
       "text": "11111 NNNN 88888",
+      "colorMask": "00000 0000 00000",
+      "jokerMask": "11111 1111 11111",
       "note": "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind",
       "section": "Quints",
       "value": 40,
@@ -150,6 +192,8 @@
     },
     {
       "text": "11 22222 11 22222",
+      "colorMask": "00 00000 00 00000",
+      "jokerMask": "11 11111 11 11111",
       "note": "Any 2 Suits, Any 2 Consec. Nos.",
       "section": "Quints",
       "value": 45,
@@ -157,6 +201,8 @@
     },
     {
       "text": "FFFFF DDDD 11111",
+      "colorMask": "00000 0000 00000",
+      "jokerMask": "11111 1111 11111",
       "note": "Any 2 Suits, Quint Any No.",
       "section": "Quints",
       "value": 40,
@@ -164,6 +210,8 @@
     },
     {
       "text": "111 22 3333 44 555",
+      "colorMask": "000 00 0000 00 000",
+      "jokerMask": "111 11 1111 11 111",
       "note": "These Nos. Only",
       "section": "Consecutive Run",
       "value": 25,
@@ -171,6 +219,8 @@
     },
     {
       "text": "555 66 7777 88 999",
+      "colorMask": "000 00 0000 00 000",
+      "jokerMask": "111 11 1111 11 111",
       "note": "These Nos. Only",
       "section": "Consecutive Run",
       "value": 25,
@@ -178,6 +228,8 @@
     },
     {
       "text": "11 222 DDDD 333 44",
+      "colorMask": "00 000 0000 000 00",
+      "jokerMask": "11 111 1111 111 11",
       "note": "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons",
       "section": "Consecutive Run",
       "value": 25,
@@ -185,6 +237,8 @@
     },
     {
       "text": "FF 1111 2222 3333",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 1 or 3 Suits, Any 3 Consec. Nos",
       "section": "Consecutive Run",
       "value": 25,
@@ -192,6 +246,8 @@
     },
     {
       "text": "FF 1111 2222 3333",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 1 or 3 Suits, Any 3 Consec. Nos",
       "section": "Consecutive Run",
       "value": 25,
@@ -199,6 +255,8 @@
     },
     {
       "text": "1 22 3333 1 22 3333",
+      "colorMask": "0 00 0000 0 00 0000",
+      "jokerMask": "1 11 1111 1 11 1111",
       "note": "Any 2 Suits, Any 3 Consec. Nos.",
       "section": "Consecutive Run",
       "value": 30,
@@ -206,6 +264,8 @@
     },
     {
       "text": "11 22 333 444 DDDD",
+      "colorMask": "00 00 000 000 0000",
+      "jokerMask": "11 11 111 111 1111",
       "note": "Any 1 Suit, Any 4 Consec. Nos. w Matching Dragons",
       "section": "Consecutive Run",
       "value": 25,
@@ -213,6 +273,8 @@
     },
     {
       "text": "FFFFF 123 444 444",
+      "colorMask": "00000 000 000 000",
+      "jokerMask": "11111 111 111 111",
       "note": "Any 3 Suits, Any 4 Consec. Nos.",
       "section": "Consecutive Run",
       "value": 30,
@@ -220,6 +282,8 @@
     },
     {
       "text": "111 222 3333 4444",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 1 or 2 Suits, Any 4 Consec. Nos.",
       "section": "Consecutive Run",
       "value": 25,
@@ -227,6 +291,8 @@
     },
     {
       "text": "111 222 3333 4444",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 1 or 2 Suits, Any 4 Consec. Nos.",
       "section": "Consecutive Run",
       "value": 25,
@@ -234,6 +300,8 @@
     },
     {
       "text": "111 222 111 222 33",
+      "colorMask": "000 000 000 000 00",
+      "jokerMask": "111 111 111 111 11",
       "note": "Any 3 Suits, Any 3 Consec. Nos.",
       "section": "Consecutive Run",
       "value": 30,
@@ -241,6 +309,8 @@
     },
     {
       "text": "111 33 5555 77 999",
+      "colorMask": "000 00 0000 00 000",
+      "jokerMask": "111 11 1111 11 111",
       "note": "Any 1 or 3 Suits",
       "section": "13579",
       "value": 25,
@@ -248,6 +318,8 @@
     },
     {
       "text": "111 33 5555 77 999",
+      "colorMask": "000 00 0000 00 000",
+      "jokerMask": "111 11 1111 11 111",
       "note": "Any 1 or 3 Suits",
       "section": "13579",
       "value": 25,
@@ -255,6 +327,8 @@
     },
     {
       "text": "111 333 3333 5555",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 2 Suits",
       "section": "13579",
       "value": 25,
@@ -262,6 +336,8 @@
     },
     {
       "text": "555 777 7777 9999",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 2 Suits",
       "section": "13579",
       "value": 25,
@@ -269,6 +345,8 @@
     },
     {
       "text": "FF 11 333 5555 DDD",
+      "colorMask": "00 00 000 0000 000",
+      "jokerMask": "11 11 111 1111 111",
       "note": "Any 1 Suit w Matching Dragons",
       "section": "13579",
       "value": 25,
@@ -276,6 +354,8 @@
     },
     {
       "text": "FF 55 777 9999 DDD",
+      "colorMask": "00 00 000 0000 000",
+      "jokerMask": "11 11 111 1111 111",
       "note": "Any 1 Suit w Matching Dragons",
       "section": "13579",
       "value": 25,
@@ -283,6 +363,8 @@
     },
     {
       "text": "11 33 55 7777 9999",
+      "colorMask": "00 00 00 0000 0000",
+      "jokerMask": "11 11 11 1111 1111",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 30,
@@ -291,6 +373,8 @@
     },
     {
       "text": "FFFF 3333 x 5555 = 15",
+      "colorMask": "0000 0000   0000   00",
+      "jokerMask": "1111 1111   1111   11",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 25,
@@ -299,6 +383,8 @@
     },
     {
       "text": "FFFF 5555 x 7777 = 35",
+      "colorMask": "0000 0000   0000   00",
+      "jokerMask": "1111 1111   1111   11",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 25,
@@ -307,6 +393,8 @@
     },
     {
       "text": "11 33 333 555 DDDD",
+      "colorMask": "00 00 000 000 0000",
+      "jokerMask": "11 11 111 111 1111",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 25,
@@ -314,6 +402,8 @@
     },
     {
       "text": "55 77 777 999 DDDD",
+      "colorMask": "00 00 000 000 0000",
+      "jokerMask": "11 11 111 111 1111",
       "note": "Any 3 Suits",
       "section": "13579",
       "value": 25,
@@ -321,6 +411,8 @@
     },
     {
       "text": "111 33 555 333 333",
+      "colorMask": "000 00 000 000 000",
+      "jokerMask": "111 11 111 111 111",
       "note": "Any 3 Suits, These Nos. Only",
       "section": "13579",
       "value": 35,
@@ -328,6 +420,8 @@
     },
     {
       "text": "555 77 999 777 777",
+      "colorMask": "000 00 000 000 000",
+      "jokerMask": "111 11 111 111 111",
       "note": "Any 3 Suits, These Nos. Only",
       "section": "13579",
       "value": 35,
@@ -335,6 +429,8 @@
     },
     {
       "text": "NNNN EEE WWW SSSS",
+      "colorMask": "0000 000 000 0000",
+      "jokerMask": "1111 111 111 1111",
       "note": "",
       "section": "Winds - Dragons",
       "value": 25,
@@ -342,6 +438,8 @@
     },
     {
       "text": "NNN EEE WWWW SSS",
+      "colorMask": "000 000 0000 000",
+      "jokerMask": "111 111 1111 111",
       "note": "",
       "section": "Winds - Dragons",
       "value": 25,
@@ -349,6 +447,8 @@
     },
     {
       "text": "FFFF DDD DDDD DDD",
+      "colorMask": "0000 000 0000 000",
+      "jokerMask": "1111 111 1111 111",
       "note": "Any 3 Dragons",
       "section": "Winds - Dragons",
       "value": 25,
@@ -357,6 +457,8 @@
     },
     {
       "text": "NNN SSS 1111 2222",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 2 Suits, Any 2 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -365,6 +467,8 @@
     },
     {
       "text": "EEE WWWW 1111 2222",
+      "colorMask": "000 0000 0000 0000",
+      "jokerMask": "111 1111 1111 1111",
       "note": "Any 2 Suits, Any 2 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -372,6 +476,8 @@
     },
     {
       "text": "FF NNN EEE WWW SSSS",
+      "colorMask": "00 000 000 000 0000",
+      "jokerMask": "11 111 111 111 1111",
       "note": "Any 1 Suit, Any 4 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 30,
@@ -379,6 +485,8 @@
     },
     {
       "text": "NNNN 11 22 33 SSSS",
+      "colorMask": "0000 00 00 00 0000",
+      "jokerMask": "1111 11 11 11 1111",
       "note": "Any 1 Suit, Any 4 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -386,6 +494,8 @@
     },
     {
       "text": "EEEE 11 22 33 WWWW",
+      "colorMask": "0000 00 00 00 0000",
+      "jokerMask": "1111 11 11 11 1111",
       "note": "Any 1 Suit, Any 4 Consec. Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -394,6 +504,8 @@
     },
     {
       "text": "FF DDDD NEWS DDDD",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 2 Dragons",
       "section": "Winds - Dragons",
       "value": 30,
@@ -401,6 +513,8 @@
     },
     {
       "text": "NNN EW SSS 111 111",
+      "colorMask": "000 00 000 000 000",
+      "jokerMask": "111 11 111 111 111",
       "note": "Any 2 Suits, Any Like Nos.",
       "section": "Winds - Dragons",
       "value": 25,
@@ -408,6 +522,8 @@
     },
     {
       "text": "333 666 6666 9999",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 2 or 3 Suits",
       "section": "369",
       "value": 25,
@@ -415,6 +531,8 @@
     },
     {
       "text": "333 666 6666 9999",
+      "colorMask": "000 000 0000 0000",
+      "jokerMask": "111 111 1111 1111",
       "note": "Any 2 or 3 Suits",
       "section": "369",
       "value": 25,
@@ -423,6 +541,8 @@
     },
     {
       "text": "FF 3 66 999 333 333",
+      "colorMask": "00 0 00 000 000 000",
+      "jokerMask": "11 1 11 111 111 111",
       "note": "Any 3 Suits, Like Pungs 3, 6 or 9",
       "section": "369",
       "value": 25,
@@ -431,6 +551,8 @@
     },
     {
       "text": "FF 3333 6666 9999",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 1 or 3 Suits",
       "section": "369",
       "value": 25,
@@ -438,6 +560,8 @@
     },
     {
       "text": "FF 3333 6666 9999",
+      "colorMask": "00 0000 0000 0000",
+      "jokerMask": "11 1111 1111 1111",
       "note": "Any 1 or 3 Suits",
       "section": "369",
       "value": 25,
@@ -445,6 +569,8 @@
     },
     {
       "text": "333 DDDD 333 DDDD",
+      "colorMask": "000 0000 000 0000",
+      "jokerMask": "111 1111 111 1111",
       "note": "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons",
       "section": "369",
       "value": 25,
@@ -452,6 +578,8 @@
     },
     {
       "text": "3333 66 66 66 9999",
+      "colorMask": "0000 00 00 00 0000",
+      "jokerMask": "1111 11 11 11 1111",
       "note": "Any 3 Suits, 3s and 9s Match",
       "section": "369",
       "value": 30,
@@ -459,6 +587,8 @@
     },
     {
       "text": "FFFF 33 66 999 DDD",
+      "colorMask": "0000 00 00 000 000",
+      "jokerMask": "1111 11 11 111 111",
       "note": "These Nos. Any 1 Suit, Any Opp. Dragon",
       "section": "369",
       "value": 25,
@@ -466,6 +596,8 @@
     },
     {
       "text": "333 666 333 666 99",
+      "colorMask": "000 000 000 000 00",
+      "jokerMask": "111 111 111 111 11",
       "note": "Any 3 Suits",
       "section": "369",
       "value": 30,
@@ -473,6 +605,8 @@
     },
     {
       "text": "FF 22 46 88 22 46 88",
+      "colorMask": "00 00 00 00 00 00 00",
+      "jokerMask": "11 11 11 11 11 11 11",
       "note": "Any 2 Suits",
       "section": "Singles and Pairs",
       "value": 50,
@@ -480,6 +614,8 @@
     },
     {
       "text": "FF 11 33 55 55 77 99",
+      "colorMask": "00 00 00 00 00 00 00",
+      "jokerMask": "11 11 11 11 11 11 11",
       "note": "Any 2 Suits",
       "section": "Singles and Pairs",
       "value": 50,
@@ -487,6 +623,8 @@
     },
     {
       "text": "11 11223 112233",
+      "colorMask": "00 00000 000000",
+      "jokerMask": "11 11111 111111",
       "note": "Any 3 Suits, These Nos. Only",
       "section": "Singles and Pairs",
       "value": 50,
@@ -494,6 +632,8 @@
     },
     {
       "text": "998 99887 998877",
+      "colorMask": "000 00000 000000",
+      "jokerMask": "111 11111 111111",
       "note": "Any 3 Suits, These Nos. Only",
       "section": "Singles and Pairs",
       "value": 50,
@@ -501,6 +641,8 @@
     },
     {
       "text": "FF 33 66 99 369 369",
+      "colorMask": "00 00 00 00 000 000",
+      "jokerMask": "11 11 11 11 111 111",
       "note": "Any 3 Suits",
       "section": "Singles and Pairs",
       "value": 50,
@@ -508,6 +650,8 @@
     },
     {
       "text": "11 22 33 44 55 DD DD",
+      "colorMask": "00 00 00 00 00 00 00",
+      "jokerMask": "11 11 11 11 11 11 11",
       "note": "Any 5 Consec. Nos. w Opp. Dragons",
       "section": "Singles and Pairs",
       "value": 50,
@@ -515,6 +659,8 @@
     },
     {
       "text": "2024 NN EW SS 2024",
+      "colorMask": "0000 00 00 00 0000",
+      "jokerMask": "1111 11 11 11 1111",
       "note": "Any 2 Suits",
       "section": "Singles and Pairs",
       "value": 75,
