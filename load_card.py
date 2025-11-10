@@ -128,7 +128,7 @@ class Card{year}(CardGeneratorBase):
             family = family.replace('"', '\\"')
             
             # Generate mask by replacing only tile characters with 0s, ignore special chars
-            mask = ''.join('0' if c not in ' +=' else ' ' for c in text)
+            mask = ''.join('0' if c not in ' +=xX' else ' ' for c in text)
             
             # Clean up multiple consecutive spaces
             mask = re.sub(r' +', ' ', mask)
@@ -154,7 +154,7 @@ class Card{year}(CardGeneratorBase):
             
             # Analyze tile groups and modify joker mask for non-matching tiles
             # Split by spaces to get individual tile groups (filter out special chars)
-            tile_groups = [group for group in text.split() if group not in ['+', '=']]
+            tile_groups = [group for group in text.split() if group not in ['+', '=', 'x', 'X']]
             joker_mask_parts = joker_mask.split()
             
             for i, group in enumerate(tile_groups):
