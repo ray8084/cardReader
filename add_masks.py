@@ -25,13 +25,6 @@ def build_mask(text: str) -> str:
     )
 
 
-def build_joker_mask(text: str) -> str:
-    """Return a joker mask string aligned with the given text."""
-    return "".join(
-        " " if ch == " " or ch in SEPARATOR_CHARS else "1" for ch in text
-    )
-
-
 def insert_mask(hand: Dict[str, Any]) -> Dict[str, Any]:
     """
     Return a new hand dict with the mask key inserted directly beneath text.
@@ -48,11 +41,9 @@ def insert_mask(hand: Dict[str, Any]) -> Dict[str, Any]:
         if key == "text":
             mask_text = str(value)
             new_hand["colorMask"] = build_mask(mask_text)
-            new_hand["jokerMask"] = build_joker_mask(mask_text)
     if "text" not in hand:
         # If no text field existed, just leave the dict untouched.
         new_hand.setdefault("colorMask", "")
-        new_hand.setdefault("jokerMask", "")
     return new_hand
 
 
