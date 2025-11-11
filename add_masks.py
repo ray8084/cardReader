@@ -33,7 +33,7 @@ def insert_mask(hand: Dict[str, Any]) -> Dict[str, Any]:
     """
     new_hand: Dict[str, Any] = {}
     for key, value in hand.items():
-        if key in {"mask", "colorMask", "jokerMask"}:
+        if key in {"mask", "colorMask", "jokerMask", "algorithm"}:
             # Skip existing mask-style keys; we'll regenerate them.
             continue
 
@@ -44,6 +44,13 @@ def insert_mask(hand: Dict[str, Any]) -> Dict[str, Any]:
     if "text" not in hand:
         # If no text field existed, just leave the dict untouched.
         new_hand.setdefault("colorMask", "")
+    algorithm = "default"
+    section_name = str(hand.get("section", hand.get("family", ""))).lower()
+    if "like" in section_name and "number" in section_name:
+        algorithm = "like numbers"
+    elif "run" in section_name:
+        algorithm = "runs"
+    new_hand["algorithm"] = algorithm
     return new_hand
 
 

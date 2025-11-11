@@ -1,0 +1,440 @@
+[
+  {
+    "index": 0,
+    "text": "222 000 2222 4444",
+    "colorMask": "ggg 000 rrrr rrrr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 1,
+    "text": "FFFF 2222 0000 24",
+    "colorMask": "0000 gggg 0000 rr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 2,
+    "text": "FF 2024 2222 2222",
+    "colorMask": "00 gggg rrrr 0000",
+    "note": "Any 3 Suits, Like Kongs 2s or 4s"
+  },
+  {
+    "index": 3,
+    "text": "NN EEE 2024 WWW SS",
+    "colorMask": "00 000 0000 000 00",
+    "note": "2024 Any 1 Suit"
+  },
+  {
+    "index": 4,
+    "text": "222 444 6666 8888",
+    "colorMask": "000 000 0000 0000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 5,
+    "text": "222 444 6666 8888",
+    "colorMask": "ggg ggg rrrr rrrr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 6,
+    "text": "22 444 44 666 8888",
+    "colorMask": "gg ggg rr rrr 0000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 7,
+    "text": "22 44 666 888 DDDD",
+    "colorMask": "00 00 000 000 0000",
+    "note": "Any 1 Suit w Matching Dragons"
+  },
+  {
+    "index": 8,
+    "text": "FFFF 4444 x 6666 = 24",
+    "colorMask": "0000 gggg   rrrr   00",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 9,
+    "text": "FFFF 6666 x 8888 = 48",
+    "colorMask": "0000 gggg   rrrr   00",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 10,
+    "text": "FF 2222 44 66 8888",
+    "colorMask": "00 0000 00 00 0000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 11,
+    "text": "FF 2222 44 66 8888",
+    "colorMask": "00 gggg rr rr gggg",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 12,
+    "text": "FF 222 44 666 88 88",
+    "colorMask": "00 ggg gg ggg rr 00",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 13,
+    "text": "FFFF 111 1111 111",
+    "colorMask": "0000 ggg rrrr 000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 14,
+    "text": "11 DDD 11 DDD 1111",
+    "colorMask": "gg ggg rr rrr 0000",
+    "note": "Any 3 Suits, Pairs and Dragons Match"
+  },
+  {
+    "index": 15,
+    "text": "FF 1111 NEWS 1111",
+    "colorMask": "00 gggg 0000 rrrr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 16,
+    "text": "FF 1111 + 6666 = 7777",
+    "colorMask": "00 0000   0000   0000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 17,
+    "text": "FF 2222 + 5555 = 7777",
+    "colorMask": "00 0000   0000   0000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 18,
+    "text": "FF 3333 + 4444 = 7777",
+    "colorMask": "00 0000   0000   0000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 19,
+    "text": "FF 11111 22 33333",
+    "colorMask": "00 00000 00 00000",
+    "note": "Any 1 Suit, Any 3 Consec. Nos."
+  },
+  {
+    "index": 20,
+    "text": "11111 NNNN 88888",
+    "colorMask": "ggggg 0000 rrrrr",
+    "note": "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind"
+  },
+  {
+    "index": 21,
+    "text": "11 22222 11 22222",
+    "colorMask": "gg ggggg rr rrrrr",
+    "note": "Any 2 Suits, Any 2 Consec. Nos."
+  },
+  {
+    "index": 22,
+    "text": "FFFFF DDDD 11111",
+    "colorMask": "00000 gggg rrrrr",
+    "note": "Any 2 Suits, Quint Any No."
+  },
+  {
+    "index": 23,
+    "text": "111 22 3333 44 555",
+    "colorMask": "000 00 0000 00 000",
+    "note": "These Nos. Only"
+  },
+  {
+    "index": 24,
+    "text": "555 66 7777 88 999",
+    "colorMask": "000 00 0000 00 000",
+    "note": "These Nos. Only"
+  },
+  {
+    "index": 25,
+    "text": "11 222 DDDD 333 44",
+    "colorMask": "gg ggg rrrr ggg gg",
+    "note": "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons"
+  },
+  {
+    "index": 26,
+    "text": "FF 1111 2222 3333",
+    "colorMask": "00 0000 0000 0000",
+    "note": "Any 1 Suit, Any 3 Consec. Nos"
+  },
+  {
+    "index": 27,
+    "text": "FF 1111 2222 3333",
+    "colorMask": "00 gggg rrrr 0000",
+    "note": "Any 3 Suits, Any 3 Consec. Nos"
+  },
+  {
+    "index": 28,
+    "text": "1 22 3333 1 22 3333",
+    "colorMask": "g gg gggg r rr rrrr",
+    "note": "Any 2 Suits, Any 3 Consec. Nos."
+  },
+  {
+    "index": 29,
+    "text": "11 22 333 444 DDDD",
+    "colorMask": "00 00 000 000 0000",
+    "note": "Any 1 Suit, Any 4 Consec. Nos. w Matching Dragons"
+  },
+  {
+    "index": 30,
+    "text": "FFFFF 123 444 444",
+    "colorMask": "00000 ggg rrr 000",
+    "note": "Any 3 Suits, Any 4 Consec. Nos."
+  },
+  {
+    "index": 31,
+    "text": "111 222 3333 4444",
+    "colorMask": "000 000 0000 0000",
+    "note": "Any 1 Suit, Any 4 Consec. Nos."
+  },
+  {
+    "index": 32,
+    "text": "111 222 3333 4444",
+    "colorMask": "ggg ggg rrrr rrrr",
+    "note": "Any 2 Suit, Any 4 Consec. Nos."
+  },
+  {
+    "index": 33,
+    "text": "111 222 111 222 33",
+    "colorMask": "ggg ggg rrr rrr 00",
+    "note": "Any 3 Suits, Any 3 Consec. Nos."
+  },
+  {
+    "index": 34,
+    "text": "111 33 5555 77 999",
+    "colorMask": "000 00 0000 00 000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 35,
+    "text": "111 33 5555 77 999",
+    "colorMask": "ggg gg rrrr 00 000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 36,
+    "text": "111 333 3333 5555",
+    "colorMask": "ggg ggg rrrr rrrr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 37,
+    "text": "555 777 7777 9999",
+    "colorMask": "ggg ggg rrrr rrrr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 38,
+    "text": "FF 11 333 5555 DDD",
+    "colorMask": "00 00 000 0000 000",
+    "note": "Any 1 Suit w Matching Dragons"
+  },
+  {
+    "index": 39,
+    "text": "FF 55 777 9999 DDD",
+    "colorMask": "00 00 000 0000 000",
+    "note": "Any 1 Suit w Matching Dragons"
+  },
+  {
+    "index": 40,
+    "text": "11 33 55 7777 9999",
+    "colorMask": "gg gg gg rrrr 0000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 41,
+    "text": "FFFF 3333 x 5555 = 15",
+    "colorMask": "0000 gggg   rrrr   00",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 42,
+    "text": "FFFF 5555 x 7777 = 35",
+    "colorMask": "0000 gggg   rrrr   00",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 43,
+    "text": "11 33 333 555 DDDD",
+    "colorMask": "gg gg rrr rrr 0000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 44,
+    "text": "55 77 777 999 DDDD",
+    "colorMask": "gg gg rrr rrr 0000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 45,
+    "text": "111 33 555 333 333",
+    "colorMask": "ggg gg ggg rrr 000",
+    "note": "Any 3 Suits, These Nos. Only"
+  },
+  {
+    "index": 46,
+    "text": "555 77 999 777 777",
+    "colorMask": "ggg gg ggg rrr 000",
+    "note": "Any 3 Suits, These Nos. Only"
+  },
+  {
+    "index": 47,
+    "text": "NNNN EEE WWW SSSS",
+    "colorMask": "0000 000 000 0000",
+    "note": ""
+  },
+  {
+    "index": 48,
+    "text": "NNN EEE WWWW SSS",
+    "colorMask": "000 000 0000 000",
+    "note": ""
+  },
+  {
+    "index": 49,
+    "text": "FFFF DDD DDDD DDD",
+    "colorMask": "0000 ggg rrrr 000",
+    "note": "Any 3 Dragons"
+  },
+  {
+    "index": 50,
+    "text": "NNN SSS 1111 2222",
+    "colorMask": "000 000 gggg rrrr",
+    "note": "Any 2 Suits, Any 2 Consec. Nos."
+  },
+  {
+    "index": 51,
+    "text": "EEE WWWW 1111 2222",
+    "colorMask": "000 0000 gggg rrrr",
+    "note": "Any 2 Suits, Any 2 Consec. Nos."
+  },
+  {
+    "index": 52,
+    "text": "FF NNN EEE WWW SSSS",
+    "colorMask": "00 000 000 000 0000",
+    "note": "Any 1 Suit, Any 4 Consec. Nos."
+  },
+  {
+    "index": 53,
+    "text": "NNNN 11 22 33 SSSS",
+    "colorMask": "0000 00 00 00 0000",
+    "note": "Any 1 Suit, Any 4 Consec. Nos."
+  },
+  {
+    "index": 54,
+    "text": "EEEE 11 22 33 WWWW",
+    "colorMask": "0000 00 00 00 0000",
+    "note": "Any 1 Suit, Any 4 Consec. Nos."
+  },
+  {
+    "index": 55,
+    "text": "FF DDDD NEWS DDDD",
+    "colorMask": "00 gggg 0000 rrrr",
+    "note": "Any 2 Dragons"
+  },
+  {
+    "index": 56,
+    "text": "NNN EW SSS 111 111",
+    "colorMask": "000 00 000 ggg rrr",
+    "note": "Any 2 Suits, Any Like Nos."
+  },
+  {
+    "index": 57,
+    "text": "333 666 6666 9999",
+    "colorMask": "ggg ggg rrrr rrrr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 58,
+    "text": "333 666 6666 9999",
+    "colorMask": "ggg ggg rrrr 0000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 59,
+    "text": "FF 3 66 999 333 333",
+    "colorMask": "00 0 00 000 000 000",
+    "note": "Any 3 Suits, Like Pungs 3, 6 or 9"
+  },
+  {
+    "index": 60,
+    "text": "FF 3333 6666 9999",
+    "colorMask": "00 0000 0000 0000",
+    "note": "Any 1 Suit"
+  },
+  {
+    "index": 61,
+    "text": "FF 3333 6666 9999",
+    "colorMask": "00 gggg rrrr 0000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 62,
+    "text": "333 DDDD 333 DDDD",
+    "colorMask": "ggg gggg rrr rrrr",
+    "note": "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons"
+  },
+  {
+    "index": 63,
+    "text": "3333 66 66 66 9999",
+    "colorMask": "gggg rr gg 00 gggg",
+    "note": "Any 3 Suits, 3s and 9s Match"
+  },
+  {
+    "index": 64,
+    "text": "FFFF 33 66 999 DDD",
+    "colorMask": "0000 gg gg ggg rrr",
+    "note": "These Nos. Any 1 Suit, Any Opp. Dragon"
+  },
+  {
+    "index": 65,
+    "text": "333 666 333 666 99",
+    "colorMask": "ggg ggg rrr rrr 00",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 66,
+    "text": "FF 22 46 88 22 46 88",
+    "colorMask": "00 gg gg gg rr rr rr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 67,
+    "text": "FF 11 33 55 55 77 99",
+    "colorMask": "00 gg gg gg rr rr rr",
+    "note": "Any 2 Suits"
+  },
+  {
+    "index": 68,
+    "text": "11 11223 112233",
+    "colorMask": "gg rrrrr 000000",
+    "note": "Any 3 Suits, These Nos. Only"
+  },
+  {
+    "index": 69,
+    "text": "998 99887 998877",
+    "colorMask": "ggg rrrrr 000000",
+    "note": "Any 3 Suits, These Nos. Only"
+  },
+  {
+    "index": 70,
+    "text": "FF 33 66 99 369 369",
+    "colorMask": "00 gg gg gg rrr 000",
+    "note": "Any 3 Suits"
+  },
+  {
+    "index": 71,
+    "text": "11 22 33 44 55 DD DD",
+    "colorMask": "gg gg gg gg gg rr 00",
+    "note": "Any 5 Consec. Nos. w Opp. Dragons"
+  },
+  {
+    "index": 72,
+    "text": "2024 NN EW SS 2024",
+    "colorMask": "gggg 00 00 00 rrrr",
+    "note": "Any 2 Suits"
+  }
+]
