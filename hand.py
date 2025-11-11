@@ -92,7 +92,7 @@ class Hand:
         # Parse the hand text into individual characters (tiles)
         tiles = []
         for group in text_to_use.split():
-            if group not in ['+', '=']:  # Skip special characters
+            if group not in ['+', '=', 'x', 'X']:  # Skip special characters
                 tiles.extend(list(group))  # Add each individual tile
         
         # Parse the mask into individual characters
@@ -230,7 +230,7 @@ class Hand:
         # Parse the hand text into individual characters (tiles)
         tiles = []
         for group in text_to_use.split():
-            if group not in ['+', '=']:  # Skip special characters
+            if group not in ['+', '=', 'x', 'X']:  # Skip special characters
                 tiles.extend(list(group))  # Add each individual tile
         
         # Find the minimum and maximum numbered tile in the hand
@@ -287,7 +287,7 @@ class Hand:
         # Parse the hand text into individual characters (tiles)
         tiles = []
         for group in text_to_use.split():
-            if group not in ['+', '=']:  # Skip special characters
+            if group not in ['+', '=', 'x', 'X']:  # Skip special characters
                 tiles.extend(list(group))  # Add each individual tile
         
         # Find numbered tiles to determine the max number
