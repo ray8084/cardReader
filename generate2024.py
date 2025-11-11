@@ -43,7 +43,8 @@ class Card2024(CardGeneratorBase):
         p1.addTileSets()
 
         p2 = self.add_hand(2, "FF 2024 2222 2222", "00 gggg rrrr 0000", "00 0000 1111 1111", "Any 3 Suits, Like Kongs 2s or 4s", "2024", False, 25)
-        p2.addTileSets()
+        p2.addTileSets("FF 2024 2222 2222")
+        p2.addTileSets("FF 2024 4444 4444")
 
         p3 = self.add_hand(3, "NN EEE 2024 WWW SS", "00 000 0000 000 00", "00 111 0000 111 00", "2024 Any 1 Suit", "2024", True, 30)
         p3.addTileSets()
@@ -119,15 +120,15 @@ class Card2024(CardGeneratorBase):
         p21.addTileSets_Run()
 
         p22 = self.add_hand(22, "FFFFF DDDD 11111", "00000 gggg rrrrr", "11111 1111 11111", "Any 2 Suits, Quint Any No.", "Quints", False, 40)
-        p22.addTileSets()
+        p22.addTileSets_AnyWindAnyNumber()
 
 
     def generateConsecutiveRun(self):
         p23 = self.add_hand(23, "111 22 3333 44 555", "000 00 0000 00 000", "111 00 1111 00 111", "These Nos. Only", "Consecutive Run", False, 25)
-        p23.addTileSets_Run()
+        p23.addTileSets()
 
         p24 = self.add_hand(24, "555 66 7777 88 999", "000 00 0000 00 000", "111 00 1111 00 111", "These Nos. Only", "Consecutive Run", False, 25)
-        p24.addTileSets_Run()
+        p24.addTileSets()
 
         p25 = self.add_hand(25, "11 222 DDDD 333 44", "gg ggg rrrr ggg gg", "00 111 1111 111 00", "Any 4 Consec. Nos. in Any 1 Suit, Kong Opp. Dragons", "Consecutive Run", False, 25)
         p25.addTileSets_Run()
@@ -238,7 +239,9 @@ class Card2024(CardGeneratorBase):
         p58.addTileSets()
 
         p59 = self.add_hand(59, "FF 3 66 999 333 333", "00 0 00 000 000 000", "00 0 00 111 111 111", "Any 3 Suits, Like Pungs 3, 6 or 9", "369", False, 25)
-        p59.addTileSets()
+        p59.addTileSets("FF 3 66 999 333 333")
+        p59.addTileSets("FF 3 66 999 666 666")
+        p59.addTileSets("FF 3 66 999 999 999")
 
         p60 = self.add_hand(60, "FF 3333 6666 9999", "00 0000 0000 0000", "00 1111 1111 1111", "Any 1 Suit", "369", False, 25)
         p60.addTileSets()
@@ -247,7 +250,9 @@ class Card2024(CardGeneratorBase):
         p61.addTileSets()
 
         p62 = self.add_hand(62, "333 DDDD 333 DDDD", "ggg gggg rrr rrrr", "111 1111 111 1111", "Any 2 Suits, Pungs 3, 6 or 9 w Matching Dragons", "369", False, 25)
-        p62.addTileSets()
+        p62.addTileSets("333 DDDD 333 DDDD")
+        p62.addTileSets("666 DDDD 666 DDDD")
+        p62.addTileSets("999 DDDD 999 DDDD")
 
         p63 = self.add_hand(63, "3333 66 66 66 9999", "gggg rr gg 00 gggg", "1111 00 00 00 1111", "Any 3 Suits, 3s and 9s Match", "369", False, 30)
         p63.addTileSets()
