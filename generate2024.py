@@ -102,13 +102,13 @@ class Card2024(CardGeneratorBase):
 
     def generateQuints(self):
         p19 = self.add_hand(19, "FF 11111 22 33333", "00 00000 00 00000", "00 11111 00 11111", "Any 1 Suit, Any 3 Consec. Nos.", "Quints", False, 40)
-        p19.addTileSets()
+        p19.addTileSets_Run()
 
         p20 = self.add_hand(20, "11111 NNNN 88888", "ggggg 0000 rrrrr", "11111 1111 11111", "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind", "Quints", False, 40)
         p20.addTileSets()
 
         p21 = self.add_hand(21, "11 22222 11 22222", "gg ggggg rr rrrrr", "00 11111 00 11111", "Any 2 Suits, Any 2 Consec. Nos.", "Quints", False, 45)
-        p21.addTileSets()
+        p21.addTileSets_Run()
 
         p22 = self.add_hand(22, "FFFFF DDDD 11111", "00000 gggg rrrrr", "11111 1111 11111", "Any 2 Suits, Quint Any No.", "Quints", False, 40)
         p22.addTileSets()
@@ -201,19 +201,19 @@ class Card2024(CardGeneratorBase):
         p49.addTileSets()
 
         p50 = self.add_hand(50, "NNN SSS 1111 2222", "000 000 gggg rrrr", "111 111 1111 1111", "Any 2 Suits, Any 2 Consec. Nos.", "Winds - Dragons", False, 25)
-        p50.addTileSets()
+        p50.addTileSets_Run()
 
         p51 = self.add_hand(51, "EEE WWWW 1111 2222", "000 0000 gggg rrrr", "111 1111 1111 1111", "Any 2 Suits, Any 2 Consec. Nos.", "Winds - Dragons", False, 25)
-        p51.addTileSets()
+        p51.addTileSets_Run()
 
         p52 = self.add_hand(52, "FF NNN EEE WWW SSSS", "00 000 000 000 0000", "00 111 111 111 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 30)
-        p52.addTileSets()
+        p52.addTileSets_Run()
 
         p53 = self.add_hand(53, "NNNN 11 22 33 SSSS", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 25)
-        p53.addTileSets()
+        p53.addTileSets_Run()
 
         p54 = self.add_hand(54, "EEEE 11 22 33 WWWW", "0000 00 00 00 0000", "1111 00 00 00 1111", "Any 1 Suit, Any 4 Consec. Nos.", "Winds - Dragons", False, 25)
-        p54.addTileSets()
+        p54.addTileSets_Run()
 
         p55 = self.add_hand(55, "FF DDDD NEWS DDDD", "00 gggg 0000 rrrr", "00 1111 0000 1111", "Any 2 Dragons", "Winds - Dragons", True, 30)
         p55.addTileSets()
@@ -268,7 +268,7 @@ class Card2024(CardGeneratorBase):
         p70.addTileSets()
 
         p71 = self.add_hand(71, "11 22 33 44 55 DD DD", "gg gg gg gg gg rr 00", "00 00 00 00 00 00 00", "Any 5 Consec. Nos. w Opp. Dragons", "Singles and Pairs", True, 50)
-        p71.addTileSets()
+        p71.addTileSets_Run()
 
         p72 = self.add_hand(72, "2024 NN EW SS 2024", "gggg 00 00 00 rrrr", "0000 00 00 00 0000", "Any 2 Suits", "Singles and Pairs", True, 75)
         p72.addTileSets()

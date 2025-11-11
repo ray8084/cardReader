@@ -178,7 +178,7 @@
       "section": "Quints",
       "value": 40,
       "concealed": false,
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "11111 NNNN 88888",
@@ -197,7 +197,7 @@
       "section": "Quints",
       "value": 45,
       "concealed": false,
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "FFFFF DDDD 11111",
@@ -463,7 +463,7 @@
       "value": 25,
       "concealed": false,
       "validation": "// invalid: only 12 tiles (3+4+4)",
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "EEE WWWW 1111 2222",
@@ -472,7 +472,7 @@
       "section": "Winds - Dragons",
       "value": 25,
       "concealed": false,
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "FF NNN EEE WWW SSSS",
@@ -481,7 +481,7 @@
       "section": "Winds - Dragons",
       "value": 30,
       "concealed": false,
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "NNNN 11 22 33 SSSS",
@@ -490,7 +490,7 @@
       "section": "Winds - Dragons",
       "value": 25,
       "concealed": false,
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "EEEE 11 22 33 WWWW",
@@ -500,7 +500,7 @@
       "value": 25,
       "concealed": false,
       "validation": "// invalid: 15 tiles (4+2+2+2+5)",
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "FF DDDD NEWS DDDD",
@@ -655,7 +655,7 @@
       "section": "Singles and Pairs",
       "value": 50,
       "concealed": true,
-      "algorithm": "default"
+      "algorithm": "runs"
     },
     {
       "text": "2024 NN EW SS 2024",

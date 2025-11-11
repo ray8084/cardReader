@@ -168,11 +168,18 @@ class Card{year}(CardGeneratorBase):
             joker_mask = joker_mask.replace('"', '\\"')
             
             tile_set_method = "addTileSets"
-            family_lower = family.lower()
-            if "like" in family_lower and "number" in family_lower:
+            algorithm = str(hand.get("algorithm", "")).lower()
+            if algorithm == "like numbers":
                 tile_set_method = "addTileSets_LikeNumbers"
-            elif "run" in family_lower:
+            elif algorithm == "runs":
                 tile_set_method = "addTileSets_Run"
+            else:
+                # Fallback to family-based inference if algorithm not provided
+                family_lower = family.lower()
+                if "like" in family_lower and "number" in family_lower:
+                    tile_set_method = "addTileSets_LikeNumbers"
+                elif "run" in family_lower:
+                    tile_set_method = "addTileSets_Run"
 
             script_content += f'''        p{global_hand_counter} = self.add_hand({hand_id}, "{text}", "{mask}", "{joker_mask}", "{note}", "{family}", {str(concealed).title()}, {points})
         p{global_hand_counter}.{tile_set_method}()
