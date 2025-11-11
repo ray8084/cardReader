@@ -311,3 +311,61 @@ class Hand:
                 
                 # Call the main addTileSets method with the modified hand text
                 self.addTileSets(text_with_number)
+
+    def removeTileSets_LinkNumbers(self):
+        """
+        Remove tile sets where number groups reuse the same underlying number.
+
+        Useful for hands that require different numbers across like-number groups,
+        such as quints that must be non-matching.
+        """
+        # Identify contiguous digit groups in the hand text so we can map them to
+        # positions within generated tile sets.
+        digit_groups = []
+        tile_index = 0
+
+        for group in self.text.split():
+            if group in ['+', '=']:
+                continue
+
+            length = len(group)
+            if group.isdigit():
+                digit_groups.append((tile_index, length))
+
+            tile_index += length
+
+        if len(digit_groups) < 2:
+            # Nothing to enforce if we have fewer than two numeric groups.
+            return
+
+        filtered_tile_sets = []
+
+        for tile_set in self.tile_sets:
+            duplicate_found = False
+            seen_values = set()
+
+            for start, length in digit_groups:
+                segment = tile_set[start:start + length]
+                if not segment:
+                    continue
+
+                # Normalise the segment down to its base number (mod 10 removes suit).
+                base_values = {tile_id % 10 for tile_id in segment}
+                if not base_values:
+                    continue
+
+                if len(base_values) == 1:
+                    key = next(iter(base_values))
+                else:
+                    key = tuple(sorted(base_values))
+
+                if key in seen_values:
+                    duplicate_found = True
+                    break
+
+                seen_values.add(key)
+
+            if not duplicate_found:
+                filtered_tile_sets.append(tile_set)
+
+        self.tile_sets = filtered_tile_sets

@@ -105,7 +105,8 @@ class Card2024(CardGeneratorBase):
         p19.addTileSets_Run()
 
         p20 = self.add_hand(20, "11111 NNNN 88888", "ggggg 0000 rrrrr", "11111 1111 11111", "Any 2 Suits, Quints Any 2 Non-Matching Nos., Any Wind", "Quints", False, 40)
-        p20.addTileSets()
+        p20.addTileSets_AnyWindAnyNumber()
+        p20.removeTileSets_LinkNumbers()
 
         p21 = self.add_hand(21, "11 22222 11 22222", "gg ggggg rr rrrrr", "00 11111 00 11111", "Any 2 Suits, Any 2 Consec. Nos.", "Quints", False, 45)
         p21.addTileSets_Run()
