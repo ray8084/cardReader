@@ -277,4 +277,7 @@ class Card2024(CardGeneratorBase):
 
 if __name__ == "__main__":
     card = Card2024()
+    output_path = "card2024.json"
+    card.export_to_json(output_path)
     print(f"Generated {len(card.hand_list)} hands for {card.get_year()}")
+    print(f"Exported card data to {output_path}")
